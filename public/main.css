@@ -1,0 +1,62 @@
+/*landing page*/
+.form-horizontal {
+  position: relative;
+  top: 20px;
+  border: 1px solid black;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  padding-left: 20px;
+  padding-right: 20px;
+  border-radius: 10px;
+}
+
+/*user dashboard*/
+.dashDescript {
+  border: 1px solid black;
+  border-radius: 10px;
+  position: relative;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.dashSelect {
+  border: 1px solid black;
+  border-radius: 10px;
+  position: relative;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.dashSelect a {
+  display: block;
+}
+
+/*browsing page*/
+.searchInput {
+  width: 500px;
+}
+
+/*generator page*/
+.malt-section {
+  border: 1px solid black;
+}
+
+.hops-section {
+  border: 1px solid black;
+}
+
+.yeast-section {
+  border: 1px solid black;
+}
+
+.mash-schedule-section {
+  border: 1px solid black;
+}
+
+textarea{
+    resize: none
+}

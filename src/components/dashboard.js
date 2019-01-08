@@ -6,7 +6,7 @@ export default function Dashboard(props) {
         <div class="dashboard-section">
           <div class="grid-container">
               <div class="grid-item dash-desc">
-                {props.description}
+                <p>Welcome to your Homebrew Dashboard. From here you can do one of two things. First you can choose to "Create a Recipe" where you can submit your own homebrew recipes to the website. Secondly, you can view any recipes you have already submitted to the site and choose to either edit or delete them.<p>
               </div>
               <div class="grid-item dash-select">
                 <div class="dashSelect">
@@ -18,7 +18,3 @@ export default function Dashboard(props) {
         </div>
     )
 }
-
-Dashboard.defualtProps = {
-    description: 'Welcome to your Homebrew Dashboard. From here you can do one of two things. First you can choose to "Create a Recipe" where you can submit your own homebrew recipes to the website. Secondly, you can view any recipes you have already submitted to the site and choose to either edit or delete them.'
-};

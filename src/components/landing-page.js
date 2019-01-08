@@ -1,34 +1,45 @@
 import React from 'react';
 import './landing-page.css';
+import Signup from './signup';
 
-export class Login extends React.Component() {
-    render() {
-        return(
-          <div class="col-md-6" style="opacity: 0.5;">
-            <form class="form-horizontal" role="form">
-              <div class="form-group">
-                <div class="col-sm-2">
-                  <label htmlFor="inputEmail3" class="control-label">Email</label>
-                </div>
-                <div class="col-sm-10">
-                  <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
-                </div>
+export default function Landing(props) {
+    return(
+        <div class="section">ls
+          <div class="container">
+            <div class="row">
+              <div class="col-md-6">
+                <h1>Welcome to the Homebrew Generator</h1>
+                <h3>The What!?</h3>
+                <p>The Homebrew Generator is a tool that allows homebrewers like YOU and
+                  many others that participate in the hobby of homebrewing to create and
+                  share recipes with one another.
+                  <br>etc...</p>
               </div>
-              <div class="form-group">
-                <div class="col-sm-2">
-                  <label for="inputPassword3" class="control-label">Password</label>
-                </div>
-                <div class="col-sm-10">
-                  <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
-                </div>
+              <div class="col-md-6">
+                <Signup />
               </div>
-              <div class="form-group">
-                <div class="col-sm-offset-2 col-sm-10">
-                  <button type="submit" class="btn btn-default">Sign up</button>
-                </div>
-              </div>
-            </form>
+            </div>
           </div>
-        )
-    }
-}
+        </div>
+        <div class="section">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-12">
+                <h1>What is needed for a homebrew recipe</h1>
+                <p>talking ablut what is needed for a recipe</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="section">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-12">
+                <h1>Browse HUNDREDS of homebrew recipes</h1>
+                <p>talk about the homebrew browsing system.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+    )
+} 

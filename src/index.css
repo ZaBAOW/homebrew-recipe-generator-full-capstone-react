@@ -1,0 +1,146 @@
+/*general resetting css*/
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+}
+
+/*navbar css*/
+.navbar {
+    border: 1px solid black;
+    background-color: beige;
+    padding-top: 10px;
+    overflow: auto;
+    position: fixed;
+    width: 100%;
+    top: 0;
+}
+
+.navbar-header {
+    border: 1px solid black;
+    width: 40%;
+    text-align: center;
+    position: fixed;
+}
+
+.navbar-brand {
+    font-size: 24px
+}
+
+.navbar-selection {
+    border: solid 1px black;
+    width: 60%;
+    float: right;
+    text-align: center;
+}
+
+.navbar-brand {
+    display: inline-block;
+}
+
+.navbar-nav li {
+    display: inline-block;
+    padding-right: 30px;
+    font-size: 24px
+}
+
+/*brew-creator + brew-viewer css*/
+.brew-form {
+    border: 1px solid black;
+    width: 600px;
+    height: auto;
+    margin-top: 70px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+}
+
+.container {
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+.brew-name-section {
+    margin-top: 10px;
+}
+
+.malt-section {
+    border: 1px solid black;
+    margin-top: 10px;
+    margin-bottom: 10px
+}
+
+.malt-name {
+    display: inline-block;
+}
+
+.malt-measure {
+    display: inline-block;
+}
+
+.yeast-section {
+    border: 1px solid black;
+    margin-top: 10px;
+    margin-bottom: 10px
+}
+
+.hops-section {
+    border: 1px solid black;
+    margin-top: 10px;
+    margin-bottom: 10px
+}
+
+.mash-schedule-section {
+    border: 1px solid black;
+}
+
+/*dashboard css*/
+.dashboard-section {
+    display: grid;
+    position: relative;
+    top: 15%;
+    background-color: chocolate
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    padding-top: 10%;
+    padding-bottom: 10%;
+}
+
+.grid-item {
+    border: 1px solid black;
+    width: 50%;
+    background-color: darkorange;
+    padding: 5%;
+    border-radius: 2%;
+}
+
+.dash-desc {
+    position: relative;
+    left: 10%
+}
+
+.dash-select {
+    text-align: center;
+    width: 400px;
+    position: relative;
+    right: 20%
+}
+
+.dashSelect {
+    width: 100%;
+    padding-top: 10%
+}
+
+.dashSelect a {
+    display: block;
+    padding-bottom: 10px;
+}
+
+/*Footer css*/
+
+/*browser css*/

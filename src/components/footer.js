@@ -8,7 +8,7 @@ export default function Footer(props) {
             <div class="row">
               <div class="col-sm-6">
                 <h1>Footer header</h1>
-                    {props.about}
+                    <p>This is the page footer</p>
               </div>
               <div class="col-sm-6">
                 <p class="text-info text-right">
@@ -36,8 +36,4 @@ export default function Footer(props) {
           </div>
         </footer>
     )
-}
-
-Footer.defaultProps = {
-    about: 'This is the page footer'
 }

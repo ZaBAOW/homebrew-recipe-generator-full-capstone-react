@@ -31,9 +31,18 @@ class App extends Component {
                     <Route exact path="/" component={Landing} />
                     <Route exact path="/auth/signup" component={Signup} />
                     <Route exact path="/auth/login" component={Login} />
-                    <Route exact path="/dashboard/archive" component={Archive} /> 
-                    <Route exact path="/submit" component={Creator} />
-                    <Route exact path="/browse" component={Browser} />
+                    <Route exact path="/dashboard/archive" component={Archive} />
+                    <Route exact path="/nav/dashboard" component={Nav} />
+                    <Route exact path="/nav/dashboard" component={Nav} />
+                    <Route exact path="/nav/browse" component={Nav} />
+                    <Route exact path="/browser/view" component={Browser} />
+                    <Route exact path="/nav/dashboard" component={Nav} />
+                    <Route exact path="/nav/logout" component={Nav} />
+                    <Route exact path="/nav/dashboard" component={Nav} />
+                    <Route exact path="/nav/signup" component={Nav} />
+                    <Route exact path="/nav/login" component={Nav} />
+                    <Route exact path="/" component={Footer} />
+                    <Route exact path="/dashboard/create" component={Dashboard} />
                 </div>
             </Router>
         )

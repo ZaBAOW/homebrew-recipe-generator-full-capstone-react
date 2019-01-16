@@ -143,4 +143,38 @@ export const loginUser = (username, password) => dispatch => {
 // User Logout
 export const logoutUser = user => dispatch => {
     fetch(`${API_ORIGIN}/auth/`)
-}
+};
+
+// error handler
+export const normalizeResponseErrors = res => {
+    if (!res.ok) {
+        if(
+            res.headers.has('content-type') &&
+            res.headers.get('content-type').startsWith('application/json')
+        ) {
+            return res.json().then(err => Promise.reject(err));
+        }
+        return Promise.reject({
+            conde: res.status,
+            message: res.statusText
+        });
+    }
+    return res;
+};
+
+// protected data endpoints
+export const fetchProtectedData = () => (dispatch, getState) => {
+    const authToken = getState().auth.authToken;
+    return fetch(`${API_BASE_URL}/protected`, {
+        method: 'GET',
+        headers: {
+            Authorization: `Bearer ${authToken}`
+        }
+    })
+    .then(res => normalizeResponseErrors(res))
+    .then(res => res.json())
+    .then(({data}) => dispatch(fetchProtectedDataSuccess(data)))
+    .catch(err => {
+        dispatch(fetchProtectedDataError(err));
+    });
+};

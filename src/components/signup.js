@@ -2,7 +2,7 @@ import React from 'react';
 import '../index.css';
 
 import { connect } from "react-redux";
-import { signupUser } from "../actions";
+import { signupUser } from "../actions/index";
 
 export class Signup extends React.Component {
     constructor(props) {
@@ -18,6 +18,7 @@ export class Signup extends React.Component {
           password: this.password.value
         };
         this.props.dispatch(signupUser(user));
+        // switch over to login form
         inputs.map(input => (input.value = ""));
     }
     

@@ -9,6 +9,7 @@ export const SUBMIT_BREW = "SUBMIT_BREW";
 export const DELETE_BREW = "DELETE_BREW";
 export const EDIT_BREW = "EDIT_BREW";
 export const BROWSE = "BROWSE";
+epoxrt const APPEND_RESULTS = "APPEND_RESULTS";
 export const VIEW_BREW = "VIEW_BREW";
 export const ERROR = "ERROR";
 export const SET_AUTH_TOKEN = 'SET_AUTH_TOKEN';
@@ -72,9 +73,19 @@ export const editBrew = brewId => ({
     brewId
 });
 
-export const browse = keyword => ({
+export const browse = brews => ({
     type: BROWSE,
-    keyword
+    brews
+});
+
+export const appendResults = brews => ({
+    type: APPEND_RESULTS,
+    brews;
+});
+
+export const clearResults = brews => ({
+    type: CLEAR_RESULTS,
+    brews;
 });
 
 export const viewBrew = brewId => ({
@@ -176,5 +187,29 @@ export const fetchProtectedData = () => (dispatch, getState) => {
     .then(({data}) => dispatch(fetchProtectedDataSuccess(data)))
     .catch(err => {
         dispatch(fetchProtectedDataError(err));
+    });
+};
+
+// browse hombrews
+export const browseBrews = keyword => dispatch => {
+    dispatch(request());
+    fetch(`${API_ORIGIN}/brews/browse/${keyword}`), {
+        method: 'GET',
+        headers: {
+            "content-type": "application/json"
+        },
+        body: JSON.stringify(keyword);
+    }
+    .then(res => {
+        if (!res.ok) {
+            return Promise.reject(res.statusText);
+        }
+        return res.json();
+    })
+    .then(res => {
+        dispatch(appendResults(res.response.body));
+    })
+    .catch(err => {
+        console.log(err);
     });
 };

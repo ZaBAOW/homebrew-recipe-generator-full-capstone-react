@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import {connect} from 'react-redux';
+import {Route, withRouter} from 'react-router-dom';
 
 import Landing from './components/landing-page';
 import Login from './components/login';
@@ -13,12 +14,39 @@ import Result from './components/browser-result';
 import Creator from './components/breww-creator';
 import Viewer from './components/brew-viewer';
 import Archive from './components/your-brew';
+import {refreshAuthToken} from '../actions/index';
 
 import { BrowserRouter as Router, Link } from 'react-router-dom';
 
 import './App.css';
 
-class App extends Component {
+export class App extends Component {
+    componentDidUpdate(prevProps) {
+        if (!prevProps.loggedIn && this.props.loggedIn) {
+            this.startPeriodicRefresh();
+        } else if (prevProps.loggedIn && !this.props.loggedIn) {
+            this.stopPeriodicRefresh();
+        }
+    }
+    
+    componentWillUnmount() {
+        this.stopPeriodicRefresh();
+    }
+    
+    startPeriodicRefresh() {
+        this.refreshInterval = setInterval(
+            () = this.props.dispatch(refreshAuthToken()),
+            60 * 60 * 1000
+        );
+    }
+    
+    stopPeriodicRefresh() {
+        if (!this.refreshInterval) {
+            return;
+        }
+        clearInterval(this.refreshInterval);
+    }
+    
     render() {
         return (
             <Router>

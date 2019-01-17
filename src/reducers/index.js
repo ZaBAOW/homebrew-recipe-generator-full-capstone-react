@@ -47,6 +47,30 @@ export const reducer = (state = initialState, action) => {
         );
     }
     
+    if (action.type === actions.BROWSE) {
+        RETURN Object.assign({}, state, {
+            loading: false,
+            results: action.brews
+        });
+    }
+    
+    if (action.type === actions.APPEND_RESULTS) {
+        const brews = actions.brews.items;
+        return Object.assign({}, state, {
+            error: null,
+            loading: false,
+            brews: brews
+        });
+    }
+    
+    if (actions.type === actions.CLEAR_RESULTS) {
+        return Object.assign({}, state, {
+            error: null,
+            loading: false,
+            brews: []
+        });
+    }
+    
     if (actions.type === actions.AUTH_REQUEST) {
         return Object.assign({}, state, {
             loading: true,

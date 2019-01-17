@@ -1,7 +1,9 @@
 import React from 'react';
 import './landing-page.css';
+import {reduxForm} from 'redux-form';
+import {loginUser} from '../actions/index';
 
-export class Signup extends React.Component() {
+export class Login extends React.Component() {
     onSubmit(e) {
         e.preventDefault();
         const inputs = [this.username, this.password];
@@ -9,8 +11,10 @@ export class Signup extends React.Component() {
           username: this.username.value,
           password: this.password.value
         };
-        this.props.dispatch(login(user));
+        this.props.dispatch(loginUser(user));
+        // if succesful, change nav links
         inputs.map(input => (input.value = ""));
+        // redirects to dashboard
     }
     
     render() {
@@ -41,3 +45,8 @@ export class Signup extends React.Component() {
         )
     }
 }
+
+export default reduxForm({
+    form: 'login',
+    onSubmitFail: (errors, dispatch) => dispatch(focus('login', 'username'))
+})(loginForm);

@@ -9,7 +9,9 @@ export const SUBMIT_BREW = "SUBMIT_BREW";
 export const DELETE_BREW = "DELETE_BREW";
 export const EDIT_BREW = "EDIT_BREW";
 export const BROWSE = "BROWSE";
-epoxrt const APPEND_RESULTS = "APPEND_RESULTS";
+export const APPEND_RESULTS = "APPEND_RESULTS";
+export const CLEAR_RESULTS = "CLEAR_RESULTS";
+export const SELECT_BREW = "SELECT_BREW";
 export const VIEW_BREW = "VIEW_BREW";
 export const ERROR = "ERROR";
 export const SET_AUTH_TOKEN = 'SET_AUTH_TOKEN';
@@ -86,6 +88,12 @@ export const appendResults = brews => ({
 export const clearResults = brews => ({
     type: CLEAR_RESULTS,
     brews;
+});
+
+export const selectBrew = (brew, brewId) => ({
+    type: SELECT_BREW,
+    brew,
+    brewId
 });
 
 export const viewBrew = brewId => ({

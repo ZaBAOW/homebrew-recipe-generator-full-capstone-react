@@ -71,6 +71,14 @@ export const reducer = (state = initialState, action) => {
         });
     }
     
+    if (actions.type === actions.SELECT_BREW) {
+        return Object.assign({}, state, {
+            brew: actions.brew,
+            brewId: actions.brewId,
+            loading: false
+        });
+    }
+    
     if (actions.type === actions.AUTH_REQUEST) {
         return Object.assign({}, state, {
             loading: true,

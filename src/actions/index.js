@@ -221,3 +221,63 @@ export const browseBrews = keyword => dispatch => {
         console.log(err);
     });
 };
+
+// submitting a homebrew
+export const submitBrew = (brew, userID, token) => dispatch => {
+    const brewObj = {
+        id: brew.id.brewId,
+        brewName: brew.brewName,
+        maltName: brew.maltName,
+        maltMeasure: brew.maltMeasure,
+        yeastName: brew.yeastName,
+        yeastMeasure: brew.yeastMeasure,
+        yeastSchedule: brew.yeastSchedule,
+        hopsName: brew.hopsName,
+        hopsMeasure: brew.hopsMeasure,
+        mashSchedule: brew.mashSchedule
+    };
+
+    const userBrew = { brew: brewObj, id: userID};
+    
+    dispatch(request());
+    fetch(`${API_ORIGIN}/brews`, {
+        method: 'POST',
+        headers: {
+            "content-type": "application/json",
+            Authorization: `Bearer ${token}`
+        },
+        body: JSON.stringify(userBrew)
+    })
+    .then(res => {
+        if(!res.ok){
+            return Promise.reject(res.statusText);
+        }
+        return res.josn();
+    })
+    .then(res => {
+        console.log(res);
+        dispatch(addedToDatabase(res));
+    })
+    .catch(err => {
+        console.log(err);
+    })
+};
+
+// deleting a homebrew
+export const deleteBrew = (id, token) => dispatch => {
+    dispatch(request);
+    fetch(`${API_ORIGIN}/brews/${userId}`, {
+        method: "DELETE",
+        mode: "cors",
+        headers: {
+            "Access-Control-Allow-Origin": "*",
+            Authorization: `Bearer ${token}`
+        }
+    })
+    .then(res => {
+        dispatch(deleteFromDatabase(id));
+    })
+    .catch(err => {
+        console.log(err);
+    });
+};

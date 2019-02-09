@@ -2,6 +2,7 @@ import jwtDecode from "jwt-decode";
 import { API_ORIGIN } from "../config";
 import {saveAuthToken, clearAuthToken} from '../local-storage';
 
+export const REQUEST = 'REQUEST';
 export const LOG_IN = "LOG_IN";
 export const LOG_OUT = "LOG_OUT";
 export const SIGN_UP = "SIGN_UP";
@@ -14,11 +15,19 @@ export const CLEAR_RESULTS = "CLEAR_RESULTS";
 export const SELECT_BREW = "SELECT_BREW";
 export const VIEW_BREW = "VIEW_BREW";
 export const ERROR = "ERROR";
-export const SET_AUTH_TOKEN = 'SET_AUTH_TOKEN';
+export const SET_AUTH_TOKEN = "SET_AUTH_TOKEN";
 export const CLEAR_AUTH = 'CLEAR_AUTH';
 export const AUTH_REQUEST = 'AUTH_REQUEST';
-export const AUTH_SUCCESS = 'AUTH_SUCCESS';
+export const AUTH_SUCCESS = "AUTH_SUCCESS";
 export const AUTH_ERROR = 'AUTH_ERROR';
+export const FETCH_PROTECTED_DATA_ERROR = 'FETCH_PROTECTED_DATA_ERROR';
+export const FETCH_PROTECTED_DATA_SUCCESS = 'FETCH_PROTECTED_DATA_SUCCESS';
+export const ADDED_TO_DATABASE = 'ADDED_TO_DATABASE';
+export const DELETE_FROM_DATABASE = 'DELETED_FROM_DATABASE';
+
+export const request = () => ({
+    type: REQUEST
+});
 
 //authentication actions
 export const setAuthToken = authToken => ({
@@ -58,6 +67,15 @@ export const signUp = user => ({
     user
 });
 
+export const fetchProtectedDataError = err => ({
+    type: FETCH_PROTECTED_DATA_ERROR,
+    error
+});
+
+export const fetchProtectedDataSuccess = data => ({
+    type: FETCH_PROTECTED_DATA_SUCCESS,
+    data
+})
 
 //hombrew actions
 export const submitBrew = brew => ({
@@ -75,6 +93,16 @@ export const editBrew = brewId => ({
     brewId
 });
 
+export const addedToDatabase = brew => ({
+    type: ADDED_TO_DATABASE,
+    brew
+});
+
+export const deleteFromDatabase = brewId => ({
+    type: DELETE_FROM_DATABASE,
+    brewId
+});
+
 export const browse = brews => ({
     type: BROWSE,
     brews
@@ -82,12 +110,12 @@ export const browse = brews => ({
 
 export const appendResults = brews => ({
     type: APPEND_RESULTS,
-    brews;
+    brews
 });
 
 export const clearResults = brews => ({
     type: CLEAR_RESULTS,
-    brews;
+    brews
 });
 
 export const selectBrew = (brew, brewId) => ({
@@ -112,18 +140,17 @@ const storeAuthInfo = (authToken, dispatch) => {
     const decodedToken = jwtDecode(authToken);
     dispatch(setAuthToken(authToken));
     dispatch(authSuccess(decodedToken));
-    dispatch(logSession({ user: decodedToken.username }));
 };
 
 // User signup
 export const signupUser = user => dispatch => {
-    dispatch(request());
+    dispatch(signUp());
     fetch(`${API_ORIGIN}/users`, {
         method: "POST",
         headers: {
             "content-type": "application/json"
         },
-        body: JOSN.stringify(user)
+        body: JSON.stringify(user)
     })
     .then(res => {
         if (!res.ok) {
@@ -133,13 +160,14 @@ export const signupUser = user => dispatch => {
     })
     .then(authToken => storeAuthInfo(authToken.token, dispatch))
     .catch(err => {
-        dispatch(fetchErr(err));
+//        dispatch(fetchErr(err));
+        console.log(err);
     })
 };
 
 // User Login
 export const loginUser = (username, password) => dispatch => {
-    dispatch(request());
+    dispatch(logIn());
     fetch(`${API_ORIGIN}/auth/login`, {
         method:"POST",
         headers: {
@@ -155,7 +183,8 @@ export const loginUser = (username, password) => dispatch => {
     })
     .then(authToken => storeAuthInfo(authToken.token, dispatch))
     .catch(err => {
-        dispatch(frameErr(err));
+//        dispatch(frameErr(err));
+        console.log(err);
     });
 };
 
@@ -184,7 +213,7 @@ export const normalizeResponseErrors = res => {
 // protected data endpoints
 export const fetchProtectedData = () => (dispatch, getState) => {
     const authToken = getState().auth.authToken;
-    return fetch(`${API_BASE_URL}/protected`, {
+    return fetch(`${API_ORIGIN}/protected`, {
         method: 'GET',
         headers: {
             Authorization: `Bearer ${authToken}`
@@ -198,6 +227,30 @@ export const fetchProtectedData = () => (dispatch, getState) => {
     });
 };
 
+//refreshing auth token
+export const refreshAuthToken = () => (dispatch, getState) => {
+    dispatch(authRequest());
+    const authToken = getState().auth.authToken;
+    return fetch(`${API_ORIGIN}/auth/refresh`, {
+        method: 'POST',
+        headers: {
+            // Provide our existing token as credentials to get a new one
+            Authorization: `Bearer ${authToken}`
+        }
+    })
+        .then(res => normalizeResponseErrors(res))
+        .then(res => res.json())
+        .then(({authToken}) => storeAuthInfo(authToken, dispatch))
+        .catch(err => {
+            // We couldn't get a refresh token because our current credentials
+            // are invalid or expired, or something else went wrong, so clear
+            // them and sign us out
+            dispatch(authError(err));
+            dispatch(clearAuth());
+            clearAuthToken(authToken);
+        });
+};
+
 // browse hombrews
 export const browseBrews = keyword => dispatch => {
     dispatch(request());
@@ -206,7 +259,7 @@ export const browseBrews = keyword => dispatch => {
         headers: {
             "content-type": "application/json"
         },
-        body: JSON.stringify(keyword);
+        body: JSON.stringify(keyword)
     }
     .then(res => {
         if (!res.ok) {
@@ -223,7 +276,7 @@ export const browseBrews = keyword => dispatch => {
 };
 
 // submitting a homebrew
-export const submitBrew = (brew, userID, token) => dispatch => {
+export const submitRecipe = (brew, userID, token) => dispatch => {
     const brewObj = {
         id: brew.id.brewId,
         brewName: brew.brewName,
@@ -264,9 +317,9 @@ export const submitBrew = (brew, userID, token) => dispatch => {
 };
 
 // deleting a homebrew
-export const deleteBrew = (id, token) => dispatch => {
+export const deleteRecipe = (id, token) => dispatch => {
     dispatch(request);
-    fetch(`${API_ORIGIN}/brews/${userId}`, {
+    fetch(`${API_ORIGIN}/brews/${id}`, {
         method: "DELETE",
         mode: "cors",
         headers: {

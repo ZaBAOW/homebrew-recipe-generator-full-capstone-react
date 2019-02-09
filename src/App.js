@@ -1,22 +1,23 @@
 import React, { Component } from 'react';
 
 import {connect} from 'react-redux';
-import {Route, withRouter} from 'react-router-dom';
+//import {Route, withRouter} from 'react-router-dom';
 
 import Landing from './components/landing-page';
 import Login from './components/login';
-import Signup form './components/signup';
+import Signup from './components/signup';
 import Nav from './components/nav';
 import Footer from './components/footer';
 import Dashboard from './components/dashboard';
 import Browser from './components/browser';
 import Result from './components/browser-result';
-import Creator from './components/breww-creator';
+import Creator from './components/brew-creator';
 import Viewer from './components/brew-viewer';
 import Archive from './components/your-brew';
-import {refreshAuthToken} from '../actions/index';
+import Welcome from './components/welcome';
+import {refreshAuthToken} from './actions/index';
 
-import { BrowserRouter as Router, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
 import './App.css';
 
@@ -35,7 +36,7 @@ export class App extends Component {
     
     startPeriodicRefresh() {
         this.refreshInterval = setInterval(
-            () = this.props.dispatch(refreshAuthToken()),
+            () => this.props.dispatch(refreshAuthToken()),
             60 * 60 * 1000
         );
     }
@@ -54,7 +55,7 @@ export class App extends Component {
                     <Route exact path="/dashboard/user" render={() => <Welcome person={this.props.loggedIn} />} />
                     <header>
                         <h1><Link to="/">Homebrew generator</Link></h1>
-                        <Route exact path="/dashboard/user" component={nav} />
+                        <Route exact path="/dashboard/user" component={Nav} />
                     </header>
                     <Route exact path="/" component={Landing} />
                     <Route exact path="/auth/signup" component={Signup} />

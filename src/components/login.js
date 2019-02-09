@@ -1,9 +1,14 @@
 import React from 'react';
-import './landing-page.css';
-import {reduxForm} from 'redux-form';
+//import './landing-page.css';
+import {reduxForm, Field, focus} from 'redux-form';
 import {loginUser} from '../actions/index';
 
-export class Login extends React.Component() {
+export class Login extends React.Component {
+    constructor(props) {
+        super(props);
+        this.onSubmit = this.onSubmit.bind(this);
+    }
+    
     onSubmit(e) {
         e.preventDefault();
         const inputs = [this.username, this.password];
@@ -25,7 +30,7 @@ export class Login extends React.Component() {
                   <label htmlFor="inputEmail3" class="control-label">Email</label>
                 </div>
                 <div class="col-sm-10">
-                  <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+                  <input type="email" class="form-control" id="inputEmail3" placeholder="Email"></input>
                 </div>
               </div>
               <div class="form-group">
@@ -33,7 +38,7 @@ export class Login extends React.Component() {
                   <label for="inputPassword3" class="control-label">Password</label>
                 </div>
                 <div class="col-sm-10">
-                  <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+                  <input type="password" class="form-control" id="inputPassword3" placeholder="Password"></input>
                 </div>
               </div>
               <div class="form-group">
@@ -49,4 +54,4 @@ export class Login extends React.Component() {
 export default reduxForm({
     form: 'login',
     onSubmitFail: (errors, dispatch) => dispatch(focus('login', 'username'))
-})(loginForm);
+})(Login);

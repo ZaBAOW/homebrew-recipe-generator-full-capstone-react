@@ -1,5 +1,6 @@
-import React form 'react';
-import './nav.css';
+import React from 'react';
+//import './nav.css';
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 export default function Nav(props) {
     return (

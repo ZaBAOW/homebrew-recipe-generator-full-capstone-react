@@ -1,4 +1,5 @@
 import * as actions from "../actions";
+//import {FETCH_PROTECTED_DATA_SUCCESS} from "../actions";
 
 const initialState = {
     authToken: "",
@@ -21,7 +22,7 @@ const initialState = {
     results: []
 }
 
-export const reducer = (state = initialState, action) => {
+export default function reducer(state = initialState, action) {
     if (action.type === actions.ERROR) {
         return Object.assign({}, state, {
             error: action.err
@@ -48,14 +49,14 @@ export const reducer = (state = initialState, action) => {
     }
     
     if (action.type === actions.BROWSE) {
-        RETURN Object.assign({}, state, {
+        return Object.assign({}, state, {
             loading: false,
             results: action.brews
         });
     }
     
     if (action.type === actions.APPEND_RESULTS) {
-        const brews = actions.brews.items;
+        const brews = actions;
         return Object.assign({}, state, {
             error: null,
             loading: false,
@@ -63,35 +64,34 @@ export const reducer = (state = initialState, action) => {
         });
     }
     
-    if (actions.type === actions.CLEAR_RESULTS) {
+    if (action.type === actions.CLEAR_RESULTS) {
         return Object.assign({}, state, {
-            error: null,
             loading: false,
             brews: []
         });
     }
     
-    if (actions.type === actions.SELECT_BREW) {
+    if (action.type === actions.SELECT_BREW) {
         return Object.assign({}, state, {
-            brew: actions.brew,
-            brewId: actions.brewId,
+            brew: action.brew,
+            brewId: action.brewId,
             loading: false
         });
     }
     
-    if (actions.type === actions.SUBMIT_BREW) {
+    if (action.type === actions.SUBMIT_BREW) {
         return Object.assign({} , state, {
             loading: false
         });
     }
     
-    if (actions.type === actions.DELETE_BREW) {
+    if (action.type === actions.DELETE_BREW) {
         return Object.assign({}, state, {
             loading: false
         });
     }
     
-    if (actions.type === actions.AUTH_REQUEST) {
+    if (action.type === actions.AUTH_REQUEST) {
         return Object.assign({}, state, {
             loading: true,
             error: null
@@ -110,5 +110,17 @@ export const reducer = (state = initialState, action) => {
             currentUser: action.currentUser
         });
     }
+  
+    if (action.type === actions.FETCH_PROTECTED_DATA_SUCCESS) {
+        return Object.assign({}, state, {
+            data: action.data,
+            error: null
+        });
+    } else if (action.type === actions.FETCH_PROTECTED_DATA_ERROR) {
+        return Object.assign({}, state, {
+            error: action.error
+        });
+    }
+    
     return state;
 };

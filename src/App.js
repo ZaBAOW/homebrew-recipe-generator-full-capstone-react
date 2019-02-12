@@ -72,6 +72,7 @@ export class App extends Component {
                     <Route exact path="/nav/login" component={Nav} />
                     <Route exact path="/" component={Footer} />
                     <Route exact path="/dashboard/create" component={Dashboard} />
+                    <Footer />
                 </div>
             </Router>
         )

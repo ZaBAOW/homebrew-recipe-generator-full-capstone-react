@@ -1,5 +1,5 @@
 import React from 'react';
-//import './landing-page.css';
+
 import Signup from './signup';
 
 export default function Landing(props) {

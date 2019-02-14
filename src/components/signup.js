@@ -1,5 +1,5 @@
 import React from 'react';
-//import '../index.css';
+
 import { Link, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import { signupUser } from "../actions/index";

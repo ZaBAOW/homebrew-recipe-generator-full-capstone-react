@@ -1,14 +1,15 @@
 import React from 'react';
 //import './landing-page.css';
 import {reduxForm, Field, focus} from 'redux-form';
-import {loginUser} from '../actions/index';
+import { connect } from "react-redux";
+import {loginUser} from '../actions';
 
 export class Login extends React.Component {
-    constructor(props) {
+      constructor(props) {
         super(props);
         this.onSubmit = this.onSubmit.bind(this);
-    }
-    
+      }
+
     onSubmit(e) {
         e.preventDefault();
         const inputs = [this.username, this.password];
@@ -24,34 +25,41 @@ export class Login extends React.Component {
     
     render() {
         return(
-            <form class="form-horizontal" role="form">
-              <div class="form-group">
-                <div class="col-sm-2">
-                  <label htmlFor="inputEmail3" class="control-label">Email</label>
+            <form className="form-horizontal" role="form">
+              <div className="form-group">
+                <div className="col-sm-2">
+                  <label htmlFor="inputEmail3" className="control-label">Email</label>
                 </div>
-                <div class="col-sm-10">
-                  <input type="email" class="form-control" id="inputEmail3" placeholder="Email"></input>
-                </div>
-              </div>
-              <div class="form-group">
-                <div class="col-sm-2">
-                  <label for="inputPassword3" class="control-label">Password</label>
-                </div>
-                <div class="col-sm-10">
-                  <input type="password" class="form-control" id="inputPassword3" placeholder="Password"></input>
+                <div className="col-sm-10">
+                  <input type="username" className="form-control" id="inputUsername" placeholder="Username"></input>
                 </div>
               </div>
-              <div class="form-group">
-                <div class="col-sm-offset-2 col-sm-10">
-                  <button type="submit" class="btn btn-default">Log In</button>
+              <div className="form-group">
+                <div className="col-sm-2">
+                  <label for="inputPassword3" className="control-label">Password</label>
+                </div>
+                <div className="col-sm-10">
+                  <input type="password" className="form-control" id="loginPassword3" placeholder="Password"></input>
+                </div>
+              </div>
+              <div className="form-group">
+                <div className="col-sm-offset-2 col-sm-10">
+                  <button type="submit" className="btn btn-default">Log In</button>
                 </div>
               </div>
             </form>
         )
     }
 }
+//
+//export default reduxForm({
+//    form: 'login',
+//    onSubmitFail: (errors, dispatch) => dispatch(focus('login', 'username'))
+//})(Login);
 
-export default reduxForm({
-    form: 'login',
-    onSubmitFail: (errors, dispatch) => dispatch(focus('login', 'username'))
-})(Login);
+export const mapStateToProps = state => ({
+    loggedIn: state.user,
+    error: state.error
+});
+
+export default connect(mapStateToProps)(Login);

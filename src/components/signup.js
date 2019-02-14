@@ -1,6 +1,6 @@
 import React from 'react';
 //import '../index.css';
-
+import { Link, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import { signupUser } from "../actions/index";
 
@@ -24,21 +24,21 @@ export class Signup extends React.Component {
     
     render() {
         return(
-            <form className="form-horizontal" role="form">
+            <form className="form-horizontal" role="form" onSubmit={this.onSubmit}>
               <div className="form-group">
                 <div className="col-sm-2">
-                  <label htmlFor="inputEmail3" className="control-label">Email</label>
+                  <label htmlFor="inputEmail3" className="control-label">Username</label>
                 </div>
                 <div className="col-sm-10">
-                  <input type="email" className="form-control" id="inputEmail3" placeholder="Email"></input>
+                  <input type="username" className="form-control" id="inputUsername" placeholder="Username" ref={input => (this.username = input)}></input>
                 </div>
               </div>
               <div className="form-group">
                 <div className="col-sm-2">
-                  <label for="inputPassword3" className="control-label">Password</label>
+                  <label htmlFor="inputPassword3" className="control-label">Password</label>
                 </div>
                 <div className="col-sm-10">
-                  <input type="password" className="form-control" id="inputPassword3" placeholder="Password"></input>
+                  <input type="password" className="form-control" id="singupPassword3" placeholder="Password" ref={input => (this.password = input)}></input>
                 </div>
               </div>
               <div className="form-group">
@@ -56,4 +56,4 @@ export const mapStateToProps = state => ({
     error: state.error
 });
 
-export default connect(mapStateToProps)(signupUser);
+export default connect(mapStateToProps)(Signup);

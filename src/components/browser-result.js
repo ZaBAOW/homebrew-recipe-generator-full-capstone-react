@@ -4,9 +4,9 @@ import React from 'react';
 
 export default function Result(props) {
     return(
-        <div class="result-container">
+        <div className="result-container">
             {props.brewName}
-            <div class="detail-container">
+            <div className="detail-container">
                 {props.brewType}
                 {props.abv}
             </div>

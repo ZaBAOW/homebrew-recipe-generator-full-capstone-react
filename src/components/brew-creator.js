@@ -26,40 +26,40 @@ export class Create extends React.Component {
     
     render() {
         return(
-             <form class="brew-form" onSubmit={this.onSubmit}>
-              <div class="container">
-                <div class="row">
-                  <div class="col-md-12">
-                    <div class="brew-name-section">Brew Title:
-                      <input type="text" class="brewName"></input>
+             <form className="brew-form" onSubmit={this.onSubmit}>
+              <div className="container">
+                <div className="row">
+                  <div className="col-md-12">
+                    <div className="brew-name-section">Brew Title:
+                      <input type="text" className="brewName"></input>
                     </div>
-                    <div class="malt-section"><p>Malts:</p>
-                      <div class="maltName">Malt Types:
+                    <div className="malt-section"><p>Malts:</p>
+                      <div className="maltName">Malt Types:
                         <input type="text" placeholder="name of malt"></input>
                         <button></button>
                       </div>
-                      <div class="maltMeasure">Measurements:
+                      <div className="maltMeasure">Measurements:
                         <input type="text" placeholder="amount of malt"></input>
                       </div>
                     </div>
-                    <div class="hops-section"><p>Hops:</p>
-                      <div class="hopsName">Hops Types:
+                    <div className="hops-section"><p>Hops:</p>
+                      <div className="hopsName">Hops Types:
                         <input type="text" placeholder="name of hops"></input>
                       </div>
-                      <div class="hopsMeasure">Measurements:
+                      <div className="hopsMeasure">Measurements:
                         <input type="text" placeholder="amount of hops"></input>
                       </div>
                     </div>
-                    <div class="yeast-section"><p>Yeast:</p>
-                      <div class="yeastName">Yeast Types:
+                    <div className="yeast-section"><p>Yeast:</p>
+                      <div className="yeastName">Yeast Types:
                         <input type="text" placeholder="name of yeast"></input>
                       </div>
                       <p>Yeast Schedule:</p>
-                        <textarea class="yeastSchedule" rows="15" col="100" placeholder="Type your yeast schedule here" class="yeast-schedule"></textarea>
+                        <textarea className="yeastSchedule" rows="15" col="100" placeholder="Type your yeast schedule here" className="yeast-schedule"></textarea>
                     </div>
-                    <div class="mash-scheduleSection"><p>Mash Schedule:</p>
+                    <div className="mash-scheduleSection"><p>Mash Schedule:</p>
                       <div>
-                        <textarea class="mashSchedule" rows="15" col="100" placeholder="type your schedule here"></textarea>
+                        <textarea className="mashSchedule" rows="15" col="100" placeholder="type your schedule here"></textarea>
                       </div>
                     </div>
                     <button>Submit Hombrew</button>

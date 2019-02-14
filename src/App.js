@@ -13,7 +13,7 @@ import Browser from './components/browser';
 import Result from './components/browser-result';
 import Creator from './components/brew-creator';
 import Viewer from './components/brew-viewer';
-import Archive from './components/your-brew';
+//import Archive from './components/your-brew';
 import Welcome from './components/welcome';
 import {refreshAuthToken} from './actions/index';
 
@@ -60,7 +60,6 @@ export class App extends Component {
                     <Route exact path="/" component={Landing} />
                     <Route exact path="/auth/signup" component={Signup} />
                     <Route exact path="/auth/login" component={Login} />
-                    <Route exact path="/dashboard/archive" component={Archive} />
                     <Route exact path="/nav/dashboard" component={Nav} />
                     <Route exact path="/nav/dashboard" component={Nav} />
                     <Route exact path="/nav/browse" component={Nav} />

@@ -2,6 +2,8 @@ import jwtDecode from "jwt-decode";
 import { API_ORIGIN } from "../config";
 import {saveAuthToken, clearAuthToken} from '../local-storage';
 
+const HOST = 'https://homebrew-recipe-generator-node.herokuapp.com/';
+
 export const REQUEST = 'REQUEST';
 export const LOG_IN = "LOG_IN";
 export const LOG_OUT = "LOG_OUT";
@@ -145,7 +147,7 @@ const storeAuthInfo = (authToken, dispatch) => {
 // User signup
 export const signupUser = user => dispatch => {
     dispatch(signUp());
-    fetch(`${API_ORIGIN}/users`, {
+    fetch(`${HOST}/users`, {
         method: "POST",
         headers: {
             "content-type": "application/json"
@@ -168,7 +170,7 @@ export const signupUser = user => dispatch => {
 // User Login
 export const loginUser = (username, password) => dispatch => {
     dispatch(logIn());
-    fetch(`${API_ORIGIN}/auth/login`, {
+    fetch(`${HOST}/auth/login`, {
         method:"POST",
         headers: {
             "content-type": "application/json"
@@ -190,7 +192,7 @@ export const loginUser = (username, password) => dispatch => {
 
 // User Logout
 export const logoutUser = user => dispatch => {
-    fetch(`${API_ORIGIN}/auth/`)
+    fetch(`${HOST}/auth/`)
 };
 
 // error handler
@@ -213,7 +215,7 @@ export const normalizeResponseErrors = res => {
 // protected data endpoints
 export const fetchProtectedData = () => (dispatch, getState) => {
     const authToken = getState().auth.authToken;
-    return fetch(`${API_ORIGIN}/protected`, {
+    return fetch(`${HOST}/protected`, {
         method: 'GET',
         headers: {
             Authorization: `Bearer ${authToken}`
@@ -231,7 +233,7 @@ export const fetchProtectedData = () => (dispatch, getState) => {
 export const refreshAuthToken = () => (dispatch, getState) => {
     dispatch(authRequest());
     const authToken = getState().auth.authToken;
-    return fetch(`${API_ORIGIN}/auth/refresh`, {
+    return fetch(`${HOST}/auth/refresh`, {
         method: 'POST',
         headers: {
             // Provide our existing token as credentials to get a new one
@@ -254,7 +256,7 @@ export const refreshAuthToken = () => (dispatch, getState) => {
 // browse hombrews
 export const browseBrews = keyword => dispatch => {
     dispatch(request());
-    fetch(`${API_ORIGIN}/brews/browse/${keyword}`), {
+    fetch(`${HOST}/brews/browse/${keyword}`), {
         method: 'GET',
         headers: {
             "content-type": "application/json"
@@ -293,7 +295,7 @@ export const submitRecipe = (brew, userID, token) => dispatch => {
     const userBrew = { brew: brewObj, id: userID};
     
     dispatch(request());
-    fetch(`${API_ORIGIN}/brews`, {
+    fetch(`${HOST}/brews`, {
         method: 'POST',
         headers: {
             "content-type": "application/json",
@@ -319,7 +321,7 @@ export const submitRecipe = (brew, userID, token) => dispatch => {
 // deleting a homebrew
 export const deleteRecipe = (id, token) => dispatch => {
     dispatch(request);
-    fetch(`${API_ORIGIN}/brews/${id}`, {
+    fetch(`${HOST}/brews/${id}`, {
         method: "DELETE",
         mode: "cors",
         headers: {

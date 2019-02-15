@@ -2,7 +2,7 @@ import jwtDecode from "jwt-decode";
 import { API_ORIGIN } from "../config";
 import {saveAuthToken, clearAuthToken} from '../local-storage';
 
-const HOST = 'https://homebrew-recipe-generator-node.herokuapp.com/';
+const HOST = 'https://homebrew-recipe-generator-reac.herokuapp.com/';
 
 export const REQUEST = 'REQUEST';
 export const LOG_IN = "LOG_IN";

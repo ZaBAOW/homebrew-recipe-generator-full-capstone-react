@@ -1,1 +1,1 @@
-exports.API_ORIGIN = process.env.REACT_APP_API_ORIGIN || "https://homebrew-recipe-generator.herokuapp.com/"
+exports.API_ORIGIN = process.env.REACT_APP_API_ORIGIN || "https://homebrew-recipe-generator-node.herokuapp.com/"

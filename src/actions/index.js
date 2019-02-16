@@ -254,7 +254,7 @@ export const refreshAuthToken = () => (dispatch, getState) => {
 // browse hombrews
 export const browseBrews = keyword => dispatch => {
     dispatch(request());
-    fetch(`${API_ORIGIN}/brews/browse/${keyword}`), {
+    return fetch(`${API_ORIGIN}/brews/browse/${keyword}`), {
         method: 'GET',
         headers: {
             "content-type": "application/json"

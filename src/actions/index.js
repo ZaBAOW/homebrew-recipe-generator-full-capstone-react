@@ -264,13 +264,12 @@ export const refreshAuthToken = () => (dispatch, getState) => {
 export const browseBrews = keyword => dispatch => {
     console.log('begginning search...');
     dispatch(request());
-    return fetch(`${API_ORIGIN}/brews/search`), {
+    return fetch(`${API_ORIGIN}/brews/search/${keyword}`, {
         method: 'GET',
         headers: {
             "content-type": "application/json"
-        },
-        body: JSON.stringify(keyword)
-    }
+        }
+    })
     .then(res => {
         console.log(res);
         if (!res.ok) {

@@ -21,12 +21,11 @@ export class Browser extends React.Component {
         console.log('keyword recieved');
         if (keyword) {
             console.log('keyword: ', keyword);
-            console.log(this.props.authToken);
             this.props.dispatch(browseBrews(keyword));
         }
     }
     
-//    componendDidMount() {
+//    componentDidMount() {
 //        clearDropdown(this.ref.brews, this.props.dispatch);
 //    }
 //    

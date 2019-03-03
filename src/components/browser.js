@@ -20,8 +20,9 @@ export class Browser extends React.Component {
         const keyword = this.textInput.value.trim();
         console.log('keyword recieved');
         if (keyword) {
-            console.log('sending keyword to search function');
-            this.props.dispatch(browseBrews(keyword, this.props.authToken));
+            console.log('keyword: ', keyword);
+            console.log(this.props.authToken);
+            this.props.dispatch(browseBrews(keyword));
         }
     }
     

@@ -137,9 +137,14 @@ export const error = err => ({
 });
 
 const storeAuthInfo = (authToken, dispatch) => {
-    const decodedToken = jwtDecode(authToken);
-    dispatch(setAuthToken(authToken));
-    dispatch(authSuccess(decodedToken));
+    console.log(authToken);
+    console.log("start");
+    console.log("authToken: ", jwtDecode(authToken));
+    console.log("end");
+//    dispatch(setAuthToken(authToken));
+//    console.log('set authToken pass');
+//    dispatch(authSuccess(decodedToken));
+//    console.log('auth Success pass');
 };
 
 // User signup
@@ -156,9 +161,13 @@ export const signupUser = user => dispatch => {
         if (!res.ok) {
             return Promise.reject(res.statusText);
         }
+        console.log('first check')
         return res.json();
     })
-    .then(authToken => storeAuthInfo(authToken.token, dispatch))
+    .then(authToken => {
+        console.log(authToken);
+        return storeAuthInfo(authToken.token, dispatch);
+    })
     .catch(err => {
 //        dispatch(fetchErr(err));
         console.log(err);
@@ -253,8 +262,9 @@ export const refreshAuthToken = () => (dispatch, getState) => {
 
 // browse hombrews
 export const browseBrews = keyword => dispatch => {
+    console.log('begginning search...');
     dispatch(request());
-    return fetch(`${API_ORIGIN}/brews/browse/${keyword}`), {
+    return fetch(`${API_ORIGIN}/brews/search`), {
         method: 'GET',
         headers: {
             "content-type": "application/json"
@@ -262,6 +272,7 @@ export const browseBrews = keyword => dispatch => {
         body: JSON.stringify(keyword)
     }
     .then(res => {
+        console.log(res);
         if (!res.ok) {
             return Promise.reject(res.statusText);
         }
@@ -317,20 +328,20 @@ export const submitRecipe = (brew, userID, token) => dispatch => {
 };
 
 // deleting a homebrew
-export const deleteRecipe = (id, token) => dispatch => {
-    dispatch(request);
-    fetch(`${API_ORIGIN}/brews/${id}`, {
-        method: "DELETE",
-        mode: "cors",
-        headers: {
-            "Access-Control-Allow-Origin": "*",
-            Authorization: `Bearer ${token}`
-        }
-    })
-    .then(res => {
-        dispatch(deleteFromDatabase(id));
-    })
-    .catch(err => {
-        console.log(err);
-    });
-};
+//export const deleteRecipe = (id, token) => dispatch => {
+//    dispatch(request);
+//    fetch(`${API_ORIGIN}/brews/${id}`, {
+//        method: "DELETE",
+//        mode: "cors",
+//        headers: {
+//            "Access-Control-Allow-Origin": "*",
+//            Authorization: `Bearer ${token}`
+//        }
+//    })
+//    .then(res => {
+//        dispatch(deleteFromDatabase(id));
+//    })
+//    .catch(err => {
+//        console.log(err);
+//    });
+//};

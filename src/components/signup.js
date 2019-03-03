@@ -18,7 +18,6 @@ export class Signup extends React.Component {
           password: this.password.value
         };
         this.props.dispatch(signupUser(user));
-        // switch over to login form
         inputs.map(input => (input.value = ""));
     }
     
@@ -30,7 +29,7 @@ export class Signup extends React.Component {
                   <label htmlFor="inputEmail3" className="control-label">Username</label>
                 </div>
                 <div className="col-sm-10">
-                  <input type="username" className="form-control" id="inputUsername" placeholder="Username" ref={input => (this.username = input)}></input>
+                  <input type="username" className="form-control" id="signupUsername" placeholder="Username" ref={input => (this.username = input)}></input>
                 </div>
               </div>
               <div className="form-group">
@@ -43,7 +42,7 @@ export class Signup extends React.Component {
               </div>
               <div className="form-group">
                 <div className="col-sm-offset-2 col-sm-10">
-                  <button type="submit" className="btn btn-default">Sign Up</button>
+                  <button type="submit" className="btn btn-default" onClick={ this._toggleFormState}>Sign Up</button>
                 </div>
               </div>
             </form>

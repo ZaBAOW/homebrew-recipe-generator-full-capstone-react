@@ -36,7 +36,7 @@ export class Login extends React.Component {
               </div>
               <div className="form-group">
                 <div className="col-sm-2">
-                  <label for="inputPassword3" className="control-label">Password</label>
+                  <label htmlFor="inputPassword3" className="control-label">Password</label>
                 </div>
                 <div className="col-sm-10">
                   <input type="password" className="form-control" id="loginPassword3" placeholder="Password"></input>

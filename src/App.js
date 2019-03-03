@@ -6,7 +6,7 @@ import {connect} from 'react-redux';
 import Landing from './components/landing-page';
 import Login from './components/login';
 import Signup from './components/signup';
-import Nav from './components/nav';
+import NotLoggedNav from './components/notLoggedNav';
 import Footer from './components/footer';
 import Dashboard from './components/dashboard';
 import Browser from './components/browser';
@@ -16,6 +16,7 @@ import Viewer from './components/brew-viewer';
 //import Archive from './components/your-brew';
 import Welcome from './components/welcome';
 import {refreshAuthToken} from './actions/index';
+import LoggedNav from './components/loggedNav';
 
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
@@ -55,21 +56,14 @@ export class App extends Component {
                     <Route exact path="/dashboard/user" render={() => <Welcome person={this.props.loggedIn} />} />
                     <header>
                         <h1><Link to="/">Homebrew generator</Link></h1>
-                        <Route exact path="/dashboard/user" component={Nav} />
+                        
                     </header>
+                    <NotLoggedNav />
                     <Route exact path="/" component={Landing} />
-                    <Route exact path="/auth/signup" component={Signup} />
+                    <Route exact path="/users" component={Signup} />
                     <Route exact path="/auth/login" component={Login} />
-                    <Route exact path="/nav/dashboard" component={Nav} />
-                    <Route exact path="/nav/dashboard" component={Nav} />
-                    <Route exact path="/nav/browse" component={Nav} />
-                    <Route exact path="/browser/view" component={Browser} />
-                    <Route exact path="/nav/dashboard" component={Nav} />
-                    <Route exact path="/nav/logout" component={Nav} />
-                    <Route exact path="/nav/dashboard" component={Nav} />
-                    <Route exact path="/nav/signup" component={Nav} />
-                    <Route exact path="/nav/login" component={Nav} />
-                    <Route exact path="/" component={Footer} />
+                    <Route exact path="/dashboard" component={Dashboard} />
+                    <Route exact path="/browser" component={Browser} />
                     <Route exact path="/dashboard/create" component={Dashboard} />
                     <Footer />
                 </div>

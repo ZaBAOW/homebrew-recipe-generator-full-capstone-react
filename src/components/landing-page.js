@@ -2,7 +2,7 @@ import React from 'react';
 
 import Signup from './signup';
 
-export default function Landing(props) {
+export default function Landing() {
     return(
       <div className="landing-page">
         <div className="section">

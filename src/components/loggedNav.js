@@ -2,7 +2,7 @@ import React from 'react';
 //import './nav.css';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
-export default function Nav(props) {
+export default function loggedNav(props) {
     return (
         <div className="navbar navbar-default navbar-static-top">
           <div className="container">
@@ -15,7 +15,7 @@ export default function Nav(props) {
                   <Link to="/browser">Browse</Link>
                 </li>
                 <li>
-                  <button>Login</button>
+                  <Link to="/dashboard">Dashboard</Link>
                 </li>
               </ul>
             </div>
@@ -24,6 +24,6 @@ export default function Nav(props) {
     )
 }
 
-Nav.defaultProps = {
+loggedNav.defaultProps = {
     brand: 'Homebrew Generator'
 };

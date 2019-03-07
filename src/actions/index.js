@@ -263,7 +263,7 @@ export const refreshAuthToken = () => (dispatch, getState) => {
 // browse hombrews
 export const browseBrews = keyword => dispatch => {
     console.log('begginning search...');
-    dispatch(request());
+    console.log('keyword', keyword);
     return fetch(`${API_ORIGIN}/brews/search/${keyword}`, {
         method: 'GET',
         headers: {

@@ -1,11 +1,11 @@
 import React from 'react';
 //import './browser.css';
-import './browser-result';
+import Results from './browser-result';
 //import Nav from './notLoggedNav';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 import { connect } from 'react-redux';
-import { browseBrews } from '../actions/index';
+import { browseBrews, selectBrew } from '../actions/index';
 import { clearDropdown } from '../custom';
 
 export class Browser extends React.Component {
@@ -25,6 +25,15 @@ export class Browser extends React.Component {
         }
     }
     
+    highlightBrew(target) {
+        let currentBrew;
+        console.log(this.props.brews);
+        currentBrew = this.props.brews.fing(
+            brew => brew.id.brewId === target.id
+        );
+        this.props.dispatch(selectBrew(currentBrew, target.id));
+    }
+    
 //    componentDidMount() {
 //        clearDropdown(this.ref.brews, this.props.dispatch);
 //    }
@@ -40,6 +49,7 @@ export class Browser extends React.Component {
               <input type="text" className="searchInput" placeholder="type keywords to search for a brew" ref={input => (this.textInput = input)} />
               <button className="search">Search</button>
             </div>
+            <div className="result-section"><Results /></div>
           </form>
         )
     }

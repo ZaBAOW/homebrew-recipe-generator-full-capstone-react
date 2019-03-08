@@ -57,10 +57,11 @@ export default function reducer(state = initialState, action) {
     
     if (action.type === actions.APPEND_RESULTS) {
         const brews = actions;
+        console.log('recieved in reducers', actions.appendResults);
         return Object.assign({}, state, {
             error: null,
             loading: false,
-            brews: brews
+            results: []
         });
     }
     

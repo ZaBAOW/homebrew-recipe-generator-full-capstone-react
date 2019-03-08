@@ -264,7 +264,7 @@ export const refreshAuthToken = () => (dispatch, getState) => {
 export const browseBrews = keyword => dispatch => {
     console.log('begginning search...');
     console.log('keyword', keyword);
-    return fetch(`${API_ORIGIN}/brews/discover/${keyword}`, {
+    return fetch(`${API_ORIGIN}/brews/get-one/${keyword}`, {
         method: 'GET',
         headers: {
             "content-type": "application/json"
@@ -277,13 +277,30 @@ export const browseBrews = keyword => dispatch => {
         }
         return res.json();
     })
-    .then(res => {
-        dispatch(appendResults(res.response.body));
+    .then(brews => {
+        console.log('browser response: ', brews);
+        console.log('got your results, displaying them now');
+        dispatch(appendResults(brews));
     })
     .catch(err => {
         console.log(err);
     });
 };
+
+// Append search results to result area
+//export const Append = brews => dispatch => {
+//    const type = APPEND_RESULTS;
+//    console.log('displaying results...');
+//    console.log('length of brews ',brews.length);
+//    for(var i = 0; i < brews.length; i++) {
+//        const resultObj = {
+//            brewName: brews[i].brewName,
+//            id: brews[i].id,
+//            abv: brews[i].abv,
+//            userId: brews[i].userId
+//        }
+//    }
+//}
 
 // submitting a homebrew
 export const submitRecipe = (brew, userID, token) => dispatch => {
@@ -327,20 +344,20 @@ export const submitRecipe = (brew, userID, token) => dispatch => {
 };
 
 // deleting a homebrew
-//export const deleteRecipe = (id, token) => dispatch => {
-//    dispatch(request);
-//    fetch(`${API_ORIGIN}/brews/${id}`, {
-//        method: "DELETE",
-//        mode: "cors",
-//        headers: {
-//            "Access-Control-Allow-Origin": "*",
-//            Authorization: `Bearer ${token}`
-//        }
-//    })
-//    .then(res => {
-//        dispatch(deleteFromDatabase(id));
-//    })
-//    .catch(err => {
-//        console.log(err);
-//    });
-//};
+export const deleteRecipe = (id, token) => dispatch => {
+    dispatch(request);
+    fetch(`${API_ORIGIN}/brews/${id}`, {
+        method: "DELETE",
+        mode: "cors",
+        headers: {
+            "Access-Control-Allow-Origin": "*",
+            Authorization: `Bearer ${token}`
+        }
+    })
+    .then(res => {
+        dispatch(deleteFromDatabase(id));
+    })
+    .catch(err => {
+        console.log(err);
+    });
+};

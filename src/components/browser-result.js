@@ -7,7 +7,6 @@ export default function Result(props) {
         <div className="result-container">
             {props.brewName}
             <div className="detail-container">
-                {props.brewType}
                 {props.abv}
             </div>
         </div>
@@ -16,7 +15,6 @@ export default function Result(props) {
 
 Result.defaultProps = {
     brewName: '' ,
-    brewType: '' ,
     abv: ''
 }
 

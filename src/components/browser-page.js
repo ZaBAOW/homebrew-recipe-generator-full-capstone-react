@@ -28,7 +28,7 @@ export class BrowserPage extends React.Component {
           <h2>Search</h2>
           <Browser
             placeholder="Search by brew name"
-            onSearch={term => this.onSearch(term)}
+            onSearch={keyword => this.onSearch(keyword)}
           />
           <div className="brew-outer" ref="brews">
             <Brews />

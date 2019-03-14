@@ -15,21 +15,23 @@ export class Brews extends React.Component {
   render() {
 
     let resultsList = [];
-//    console.log(this.props.brews);
-//    // for rendering search list
-//      resultsList = this.props.brews.map((brew, index) => {
-//        return (
-//          <div className="item" key={index}>
-//            <h3>{brew.snippet.title}</h3>
-//            <button
-//              className="thumbnail"
-//              type="button"
-//              id={brew.id.brewId}
-//            >
-//            </button>
-//          </div>
-//        );
-//      });
+    console.log(this.props);
+    // for rendering search list
+    if (this.props.brews.length > 0) {
+      resultsList = this.props.brews.map((brew, index) => {
+        return (
+          <div className="item" key={index}>
+            <h3>{brew.snippet.title}</h3>
+            <button
+              className="thumbnail"
+              type="button"
+              id={brew.id.brewId}
+            >
+            </button>
+          </div>
+        );
+      });
+    }
 
     // for rendering watchlist
 //    if (this.props.watchlist.length > 0) {

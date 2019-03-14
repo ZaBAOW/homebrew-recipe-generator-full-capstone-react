@@ -17,7 +17,7 @@ const initialState = {
     mashSchedule: "",
     currentBrew: "",
     keyword: "",
-    searchResults: []
+    brews: []
 }
 
 export default function reducer(state = initialState, action) {
@@ -56,8 +56,9 @@ export default function reducer(state = initialState, action) {
     }
     
     if (action.type === actions.APPEND_RESULTS) {
+        console.log(action.payload);
         return Object.assign({}, state, {
-            results: action.payload.results
+            brews: action.payload
         })
     }
     

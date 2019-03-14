@@ -3,7 +3,6 @@ import * as actions from "../actions";
 
 const initialState = {
     authToken: "",
-    loading: false,
     archive: [],
     userId: "",
     user: null,
@@ -16,10 +15,9 @@ const initialState = {
     hopsName: "",
     hopsMeasure: null,
     mashSchedule: "",
-    error: null,
     currentBrew: "",
     keyword: "",
-    results: []
+    searchResults: []
 }
 
 export default function reducer(state = initialState, action) {
@@ -30,6 +28,8 @@ export default function reducer(state = initialState, action) {
     }
     
     if (action.type === actions.SIGN_UP) {
+        const newUser = actions.signUp;
+        console.log(newUser);
         return Object.assign({}, state, {
             error: null,
             user: action.users
@@ -56,13 +56,9 @@ export default function reducer(state = initialState, action) {
     }
     
     if (action.type === actions.APPEND_RESULTS) {
-        const brews = actions;
-        console.log('recieved in reducers', actions.appendResults);
         return Object.assign({}, state, {
-            error: null,
-            loading: false,
-            results: []
-        });
+            results: action.payload.results
+        })
     }
     
     if (action.type === actions.CLEAR_RESULTS) {
@@ -122,6 +118,5 @@ export default function reducer(state = initialState, action) {
             error: action.error
         });
     }
-    
     return state;
 };

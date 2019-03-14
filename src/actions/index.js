@@ -107,10 +107,14 @@ export const browse = brews => ({
     type: BROWSE,
     brews
 });
-
-export const appendResults = brews => ({
-    type: APPEND_RESULTS,
-    brews
+//
+//export const appendResults = results => ({
+//    type: APPEND_RESULTS,
+//    results
+//});
+export const appendResults = results => ({
+        type: APPEND_RESULTS,
+        payload: {results}
 });
 
 export const clearResults = brews => ({
@@ -263,7 +267,6 @@ export const refreshAuthToken = () => (dispatch, getState) => {
 // browse hombrews
 export const browseBrews = keyword => dispatch => {
     console.log('begginning search...');
-    console.log('keyword', keyword);
     return fetch(`${API_ORIGIN}/brews/get-one/${keyword}`, {
         method: 'GET',
         headers: {
@@ -277,10 +280,13 @@ export const browseBrews = keyword => dispatch => {
         }
         return res.json();
     })
-    .then(brews => {
-        console.log('browser response: ', brews);
+    .then(res => {
+        console.log('browser response: ', res);
         console.log('got your results, displaying them now');
+        const brews = res;
+        console.log(brews);
         dispatch(appendResults(brews));
+        return brews;
     })
     .catch(err => {
         console.log(err);
@@ -361,3 +367,12 @@ export const deleteRecipe = (id, token) => dispatch => {
         console.log(err);
     });
 };
+
+export const logger = store => next => actions => {
+        console.group(actions.type);
+        console.info('dispatching', actions);
+        let result = next(actions);
+        console.log('next state', store.getState());
+        console.groupEnd();
+        return result;
+    }

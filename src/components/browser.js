@@ -1,6 +1,7 @@
 import React from 'react';
 //import './browser.css';
 import Results from './browser-result';
+import store from '../store';
 //import Nav from './notLoggedNav';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
@@ -8,7 +9,7 @@ import { connect } from 'react-redux';
 import { browseBrews, selectBrew } from '../actions/index';
 import { clearDropdown } from '../custom';
 
-export class Browser extends React.Component {
+export default class Browser extends React.Component {
     constructor(props) {
         super(props);
         this.onSubmit = this.onSubmit.bind(this);
@@ -16,48 +17,23 @@ export class Browser extends React.Component {
     
     onSubmit(e) {
         e.preventDefault();
-        console.log(this.textInput.value.trim());
         const keyword = this.textInput.value.trim();
         console.log('keyword recieved');
         if (keyword) {
-            console.log('keyword: ', keyword);
-            this.props.dispatch(browseBrews(keyword));
+            this.props.onSearch(keyword);
         }
+        this.textInput.value = "";
     }
-    
-    highlightBrew(target) {
-        let currentBrew;
-        console.log(this.props.brews);
-        currentBrew = this.props.brews.fing(
-            brew => brew.id.brewId === target.id
-        );
-        this.props.dispatch(selectBrew(currentBrew, target.id));
-    }
-    
-//    componentDidMount() {
-//        clearDropdown(this.ref.brews, this.props.dispatch);
-//    }
-//    
-//    componentWillUnmount() {
-//        clearDropdown(this.ref.brews, this.props.dispatch);
-//    }
     
     render() {
         return (
           <form className="search-brew" onSubmit={this.onSubmit}>
              <div className="search-bar text-center">
               <input type="text" className="searchInput" placeholder="type keywords to search for a brew" ref={input => (this.textInput = input)} />
+              {this.props.results}
               <button className="search">Search</button>
             </div>
-            <div className="result-section"><Results /></div>
           </form>
-        )
+        );
     }
 }
-
-export const mapStateToProps = state => ({
-    brews: state.brews,
-    error: state.error
-});
-
-export default connect(mapStateToProps)(Browser);

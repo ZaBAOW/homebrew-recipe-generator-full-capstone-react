@@ -9,7 +9,7 @@ import Signup from './components/signup';
 import NotLoggedNav from './components/notLoggedNav';
 import Footer from './components/footer';
 import Dashboard from './components/dashboard';
-import Browser from './components/browser';
+import BrowserPage from './components/browser-page';
 import Result from './components/browser-result';
 import Creator from './components/brew-creator';
 import Viewer from './components/brew-viewer';
@@ -63,7 +63,7 @@ export class App extends Component {
                     <Route exact path="/users" component={Signup} />
                     <Route exact path="/auth/login" component={Login} />
                     <Route exact path="/dashboard" component={Dashboard} />
-                    <Route exact path="/browser" component={Browser} />
+                    <Route exact path="/browser" component={BrowserPage} />
                     <Route exact path="/dashboard/create" component={Dashboard} />
                     <Footer />
                 </div>

@@ -12,21 +12,28 @@ export class Brews extends React.Component {
 //    this.props.dispatch(deleteRecipe(target.id, this.props.authToken));
 //  }
 
+    
   render() {
 
     let resultsList = [];
-    console.log(this.props);
     // for rendering search list
-    if (this.props.brews.length > 0) {
-      resultsList = this.props.brews.map((brew, index) => {
+    if (this.props.brews.length == 0) {
+      console.log('brew prop is undefined')
+      console.log(this.props.brews.length);
+    } 
+    
+    if (this.props.brews.length != 0){
+      console.log('brews lenght is not 0!');
+      resultsList = this.props.brews.results.map((brew, index) => {
         return (
           <div className="item" key={index}>
-            <h3>{brew.snippet.title}</h3>
+            <h3>{brew.brewName}</h3>
             <button
               className="thumbnail"
               type="button"
-              id={brew.id.brewId}
+              id={brew.id}
             >
+            click to view
             </button>
           </div>
         );

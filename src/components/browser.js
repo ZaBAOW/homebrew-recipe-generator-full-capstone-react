@@ -30,7 +30,6 @@ export default class Browser extends React.Component {
           <form className="search-brew" onSubmit={this.onSubmit}>
              <div className="search-bar text-center">
               <input type="text" className="searchInput" placeholder="type keywords to search for a brew" ref={input => (this.textInput = input)} />
-              {this.props.results}
               <button className="search">Search</button>
             </div>
           </form>

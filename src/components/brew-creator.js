@@ -1,15 +1,21 @@
 import React from 'react';
+import { connect } from  'react-redux';
 //import './brew-creator.css';
 import { submitRecipe } from '../actions';
 
-export class Create extends React.Component {
+export class Creator extends React.Component {
+    constructor(props) {
+        super(props);
+        this.onSubmit = this.onSubmit.bind(this);
+    }
     
     // malt field may have multiple malts which may require
     // the field to be retrieved as an array. Same with malt
     // measurements.
     onSubmit(e) {
         e.preventDefault();
-        const inputs = [this.brewName, this.maltName, this.maltMeasure, this.hopsName, this.hopsMeasure, this.yeastName, this.yeastSchedule, this.mashSchedule]
+        const inputs = [this.brewName.value, this.maltName.value, this.maltMeasure.value, this.hopsName.value, this.hopsMeasure.value, this.yeastName.value, this.yeastSchedule.value, this.mashSchedule.value]
+        console.log(inputs);
         const homeBrew = {
             brewName: this.brewName.value,
             maltName: this.maltName.value,
@@ -20,8 +26,9 @@ export class Create extends React.Component {
             yeastSchedule: this.yeastSchedule.value,
             mashSchedule: this.mashSchedule.value
         }
-        this.props.dispatch(submitRecipe(homeBrew));
-        inputs.map(input => (input.value = ""));
+        console.log(homeBrew);
+//        this.props.dispatch(submitRecipe(homeBrew));
+        this.props.history.push('/dashboard/archive');
     }
     
     render() {
@@ -31,35 +38,34 @@ export class Create extends React.Component {
                 <div className="row">
                   <div className="col-md-12">
                     <div className="brew-name-section">Brew Title:
-                      <input type="text" className="brewName"></input>
+                      <input type="text" className="brewName" ref={input => (this.brewName = input)}></input>
                     </div>
                     <div className="malt-section"><p>Malts:</p>
                       <div className="maltName">Malt Types:
-                        <input type="text" placeholder="name of malt"></input>
-                        <button></button>
+                        <input type="text" placeholder="name of malt" ref={input => (this.maltName = input)}></input>
                       </div>
                       <div className="maltMeasure">Measurements:
-                        <input type="text" placeholder="amount of malt"></input>
+                        <input type="text" placeholder="amount of malt" ref={input => (this.maltMeasure = input)}></input>
                       </div>
                     </div>
                     <div className="hops-section"><p>Hops:</p>
                       <div className="hopsName">Hops Types:
-                        <input type="text" placeholder="name of hops"></input>
+                        <input type="text" placeholder="name of hops" ref={input => (this.hopsName = input)}></input>
                       </div>
                       <div className="hopsMeasure">Measurements:
-                        <input type="text" placeholder="amount of hops"></input>
+                        <input type="text" placeholder="amount of hops" ref={input => (this.hopsMeasure = input)}></input>
                       </div>
                     </div>
                     <div className="yeast-section"><p>Yeast:</p>
                       <div className="yeastName">Yeast Types:
-                        <input type="text" placeholder="name of yeast"></input>
+                        <input type="text" placeholder="name of yeast" ref={input => (this.yeastName = input)}></input>
                       </div>
                       <p>Yeast Schedule:</p>
-                        <textarea className="yeastSchedule" rows="15" col="100" placeholder="Type your yeast schedule here" className="yeast-schedule"></textarea>
+                        <textarea className="yeastSchedule" rows="15" col="100" placeholder="Type your yeast schedule here" className="yeast-schedule" ref={input => (this.yeastSchedule = input)}></textarea>
                     </div>
                     <div className="mash-scheduleSection"><p>Mash Schedule:</p>
                       <div>
-                        <textarea className="mashSchedule" rows="15" col="100" placeholder="type your schedule here"></textarea>
+                        <textarea className="mashSchedule" rows="15" col="100" placeholder="type your schedule here" ref={input => (this.mashSchedule = input)}></textarea>
                       </div>
                     </div>
                     <button>Submit Hombrew</button>
@@ -70,3 +76,10 @@ export class Create extends React.Component {
         )
     }
 }
+
+export const mapStateToProps = state => ({
+    brews: state.brews,
+    error: state.error
+});
+
+export default connect(mapStateToProps)(Creator)

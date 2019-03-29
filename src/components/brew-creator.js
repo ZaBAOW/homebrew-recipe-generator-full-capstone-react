@@ -27,8 +27,8 @@ export class Creator extends React.Component {
             mashSchedule: this.mashSchedule.value
         }
         console.log(homeBrew);
-//        this.props.dispatch(submitRecipe(homeBrew));
-        this.props.history.push('/dashboard/archive');
+        this.props.dispatch(submitRecipe(homeBrew));
+//        this.props.history.push('/dashboard/archive');
     }
     
     render() {

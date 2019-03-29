@@ -36,6 +36,14 @@ export default function reducer(state = initialState, action) {
         })
     }
     
+    if (action.type === actions.LOG_IN) {
+        return Object.assign({}, state,  {
+            error: null,
+            loading: false,
+            user: action.users
+        });
+    }
+    
     if (action.type === actions.LOG_OUT) {
         return Object.assign(
             {},
@@ -105,7 +113,8 @@ export default function reducer(state = initialState, action) {
     if (action.type === actions.AUTH_SUCCESS) {
         return Object.assign({}, state, {
             loading: false,
-            currentUser: action.currentUser
+            currentUser: action.currentUser,
+            userId: action.currentUser.id
         });
     }
   

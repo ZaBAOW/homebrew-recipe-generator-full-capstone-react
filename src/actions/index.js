@@ -145,10 +145,30 @@ const storeAuthInfo = (authToken, dispatch) => {
     console.log("start");
     console.log("authToken: ", jwtDecode(authToken));
     console.log("end");
-//    dispatch(setAuthToken(authToken));
-//    console.log('set authToken pass');
-//    dispatch(authSuccess(decodedToken));
-//    console.log('auth Success pass');
+    const decodedToken = jwtDecode(authToken);
+    dispatch(setAuthToken(authToken));
+    dispatch(authSuccess(decodedToken));
+    dispatch(logSession({ user: decodedToken.username }));
+};
+
+export const logSession = user => dispatch => {
+  fetch(`${API_ORIGIN}/auth/userLoggedIn`, {
+    method: "POST",
+    mode: "cors",
+    headers: {
+      "content-type": "application/json"
+    },
+    body: JSON.stringify(user)
+  })
+    .then(res => {
+      if (!res.ok) {
+        return Promise.reject(res.statusText);
+      }
+      return res.json();
+    })
+    .then(res => {
+      dispatch(logIn(res.loggedIn));
+    });
 };
 
 // User signup
@@ -180,7 +200,7 @@ export const signupUser = user => dispatch => {
 
 // User Login
 export const loginUser = (username, password) => dispatch => {
-    dispatch(logIn());
+    dispatch(request());
     fetch(`${API_ORIGIN}/auth/login`, {
         method:"POST",
         headers: {
@@ -196,7 +216,6 @@ export const loginUser = (username, password) => dispatch => {
     })
     .then(authToken => storeAuthInfo(authToken.token, dispatch))
     .catch(err => {
-//        dispatch(frameErr(err));
         console.log(err);
     });
 };
@@ -310,8 +329,10 @@ export const browseBrews = keyword => dispatch => {
 
 // submitting a homebrew
 export const submitRecipe = (brew, userID, token) => dispatch => {
+    console.log(brew);
+    console.log(userID);
+    console.log(token);
     const brewObj = {
-        id: brew.id.brewId,
         brewName: brew.brewName,
         maltName: brew.maltName,
         maltMeasure: brew.maltMeasure,
@@ -322,7 +343,8 @@ export const submitRecipe = (brew, userID, token) => dispatch => {
         hopsMeasure: brew.hopsMeasure,
         mashSchedule: brew.mashSchedule
     };
-
+    
+    console.log(brewObj);
     const userBrew = { brew: brewObj, id: userID};
     
     dispatch(request());

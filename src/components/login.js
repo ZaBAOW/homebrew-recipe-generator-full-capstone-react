@@ -1,6 +1,7 @@
 import React from 'react';
 //import './landing-page.css';
 import {reduxForm, Field, focus} from 'redux-form';
+import { Link, Redirect } from  "react-router-dom";
 import { connect } from "react-redux";
 import {loginUser} from '../actions';
 
@@ -20,10 +21,13 @@ export class Login extends React.Component {
         this.props.dispatch(loginUser(user));
         // if succesful, change nav links
         inputs.map(input => (input.value = ""));
-        // redirects to dashboard
     }
     
     render() {
+        if (this.props.loggedIn) {
+            return <Redirect to="/dashboard" />;
+        }
+        
         return(
             <form className="form-horizontal" role="form">
               <div className="form-group">

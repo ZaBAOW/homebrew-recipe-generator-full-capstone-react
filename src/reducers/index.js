@@ -6,6 +6,7 @@ const initialState = {
     archive: [],
     userId: "",
     user: null,
+    loggedUsers: [],
     brewId: "",
     brewName: "",
     maltName: "",
@@ -36,11 +37,19 @@ export default function reducer(state = initialState, action) {
         })
     }
     
-    if (action.type === actions.LOG_IN) {
+    if (action.type === actions.LOG_USER) {
+        return Object.assign({}, state, {
+            error: null,
+            loading: false,
+            user: action.user
+        });
+    }
+    
+    if (action.type === actions.LOG_IN_LIST) {
         return Object.assign({}, state,  {
             error: null,
             loading: false,
-            user: action.users
+            loggedUsers: action.users
         });
     }
     

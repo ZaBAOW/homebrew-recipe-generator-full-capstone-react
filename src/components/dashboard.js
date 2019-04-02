@@ -1,8 +1,10 @@
 import React from 'react';
+import verifyLogin from './login-verification';
+import { connect } from "react-redux";
 //import './dashboard.css';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
-export default function Dashboard(props) {
+export function Dashboard(props) {
     return (
         <div className="dashboard-section">
           <div className="grid-container">
@@ -19,3 +21,10 @@ export default function Dashboard(props) {
         </div>
     )
 }
+
+export const mapStateToProps = state => ({
+    authToken: state.authToken,
+    userID: state.userId
+})
+
+export default verifyLogin()(connect(mapStateToProps)(Dashboard));

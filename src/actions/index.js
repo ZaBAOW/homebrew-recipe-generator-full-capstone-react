@@ -3,7 +3,8 @@ import { API_ORIGIN } from "../config";
 import {saveAuthToken, clearAuthToken} from '../local-storage';
 
 export const REQUEST = 'REQUEST';
-export const LOG_IN = "LOG_IN";
+export const LOG_IN_LIST = "LOG_IN_LIST";
+export const LOG_USER = "LOG_USER";
 export const LOG_OUT = "LOG_OUT";
 export const SIGN_UP = "SIGN_UP";
 export const SUBMIT_BREW = "SUBMIT_BREW";
@@ -54,7 +55,12 @@ export const authError = error => ({
 });
 
 export const logIn = user => ({
-    type: LOG_IN,
+    type: LOG_IN_LIST,
+    user
+});
+
+export const logUser = user => ({
+    type: LOG_USER,
     user
 });
 
@@ -167,7 +173,8 @@ export const logSession = user => dispatch => {
       return res.json();
     })
     .then(res => {
-      dispatch(logIn(res.loggedIn));
+      console.log(res);
+      dispatch(logUser(res.loggedIn));
     });
 };
 
@@ -199,14 +206,16 @@ export const signupUser = user => dispatch => {
 };
 
 // User Login
-export const loginUser = (username, password) => dispatch => {
+export const loginUser = user => dispatch => {
     dispatch(request());
+    console.log("api url", API_ORIGIN);
+    console.log('loggin you in...');
     fetch(`${API_ORIGIN}/auth/login`, {
         method:"POST",
         headers: {
             "content-type": "application/json"
         },
-        body: JSON.stringify(username, password)
+        body: JSON.stringify(user)
     })
     .then(res => {
         if(!res.ok) {
@@ -214,7 +223,9 @@ export const loginUser = (username, password) => dispatch => {
         }
         return res.json();
     })
-    .then(authToken => storeAuthInfo(authToken.token, dispatch))
+    .then(authToken => {
+        console.log(authToken.authToken);
+        storeAuthInfo(authToken.authToken, dispatch)})
     .catch(err => {
         console.log(err);
     });

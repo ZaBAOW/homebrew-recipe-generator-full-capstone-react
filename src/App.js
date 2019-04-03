@@ -6,7 +6,6 @@ import {connect} from 'react-redux';
 import Landing from './components/landing-page';
 import Login from './components/login';
 import Signup from './components/signup';
-import NotLoggedNav from './components/notLoggedNav';
 import Footer from './components/footer';
 import Dashboard from './components/dashboard';
 import BrowserPage from './components/browser-page';
@@ -16,7 +15,7 @@ import Viewer from './components/brew-viewer';
 import Archive from './components/your-brew';
 import Welcome from './components/welcome';
 import {refreshAuthToken} from './actions/index';
-import LoggedNav from './components/loggedNav';
+import Nav from './components/Nav';
 
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
@@ -28,6 +27,15 @@ export class App extends Component {
             this.startPeriodicRefresh();
         } else if (prevProps.loggedIn && !this.props.loggedIn) {
             this.stopPeriodicRefresh();
+        }
+    }
+    
+    checkLoggedStatus(props) {
+        if(this.props.loggedIn) {
+            //render LoggedNav
+        }
+        if(!this.props.loggedIn) {
+            // render NotLoggedNav
         }
     }
     
@@ -58,7 +66,7 @@ export class App extends Component {
                         <h1><Link to="/">Homebrew generator</Link></h1>
                         
                     </header>
-                    <NotLoggedNav />
+                    <Nav />
                     <Route exact path="/" component={Landing} />
                     <Route exact path="/users" component={Signup} />
                     <Route exact path="/auth/login" component={Login} />

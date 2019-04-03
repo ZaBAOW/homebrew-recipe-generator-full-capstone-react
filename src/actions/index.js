@@ -154,10 +154,11 @@ const storeAuthInfo = (authToken, dispatch) => {
     const decodedToken = jwtDecode(authToken);
     dispatch(setAuthToken(authToken));
     dispatch(authSuccess(decodedToken));
-    dispatch(logSession({ user: decodedToken.username }));
+    dispatch(logSession({ user: decodedToken.user }));
 };
 
 export const logSession = user => dispatch => {
+  console.log('user being logged in: ', user);
   fetch(`${API_ORIGIN}/auth/userLoggedIn`, {
     method: "POST",
     mode: "cors",
@@ -173,7 +174,7 @@ export const logSession = user => dispatch => {
       return res.json();
     })
     .then(res => {
-      console.log(res);
+      console.log(res.loggedIn);
       dispatch(logUser(res.loggedIn));
     });
 };
@@ -224,7 +225,7 @@ export const loginUser = user => dispatch => {
         return res.json();
     })
     .then(authToken => {
-        console.log(authToken.authToken);
+        console.log('authToken: ', authToken.authToken);
         storeAuthInfo(authToken.authToken, dispatch)})
     .catch(err => {
         console.log(err);
@@ -233,7 +234,22 @@ export const loginUser = user => dispatch => {
 
 // User Logout
 export const logoutUser = user => dispatch => {
-    fetch(`${API_ORIGIN}/auth/`)
+    console.log(user);
+    fetch(`${API_ORIGIN}/auth/userLoggedIn`, {
+        method: "DELETE",
+        mode: "cors",
+        headers: {
+            "content-type": "application/json"
+        },
+        body: JSON.stringify({ user: user })
+    })
+    .then(res => {
+        console.log(res.loggedIn);
+        dispatch(logOut());
+    })
+    .catch(err => {
+        console.log(err);
+    });
 };
 
 // error handler

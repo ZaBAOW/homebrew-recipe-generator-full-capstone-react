@@ -174,8 +174,8 @@ export const logSession = user => dispatch => {
       return res.json();
     })
     .then(res => {
-      console.log(res.loggedIn);
-      dispatch(logUser(res.loggedIn));
+      console.log(res.loggedIn[0]);
+      dispatch(logUser(res.loggedIn[0]));
     });
 };
 
@@ -234,6 +234,7 @@ export const loginUser = user => dispatch => {
 
 // User Logout
 export const logoutUser = user => dispatch => {
+    console.log('logging you out...');
     console.log(user);
     fetch(`${API_ORIGIN}/auth/userLoggedIn`, {
         method: "DELETE",

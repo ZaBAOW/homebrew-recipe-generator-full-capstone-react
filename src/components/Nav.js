@@ -11,13 +11,14 @@ export class Nav extends React.Component {
     
     
     logOut() {
-        this.props.dispatch(logOut());
+        console.log(this.props.user);
         this.props.dispatch(logoutUser(this.props.user));
+        this.props.dispatch(logOut());
     }
     
     
     render() {
-        if(this.props) {
+        if(this.props.loggedIn) {
             return (
                 <div className="navbar navbar-default navbar-static-top">
                   <div className="container">
@@ -63,6 +64,8 @@ export class Nav extends React.Component {
 }
 
 export const mapStateToProps = state => ({
+    loggedIn: state.user,
+    user: state.user,
     error: state.error
 });
 

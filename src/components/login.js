@@ -3,7 +3,7 @@ import React from 'react';
 import {reduxForm, Field, focus} from 'redux-form';
 import { Link, Redirect } from  "react-router-dom";
 import { connect } from "react-redux";
-import {loginUser} from '../actions';
+import {loginUser, logoutUser} from '../actions';
 
 export class Login extends React.Component {
       constructor(props) {
@@ -22,6 +22,8 @@ export class Login extends React.Component {
         };
         console.log('user:', user);
         this.props.dispatch(loginUser(user));
+//        this.props.dispatch(logoutUser(user.username));
+        console.log('user that was logged in: ', this.props.user);
         // if succesful, change nav links
         inputs.map(input => (input.value = ""));
     }

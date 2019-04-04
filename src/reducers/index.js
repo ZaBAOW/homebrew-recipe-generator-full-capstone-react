@@ -38,6 +38,7 @@ export default function reducer(state = initialState, action) {
     }
     
     if (action.type === actions.LOG_USER) {
+        console.log(action.user);
         return Object.assign({}, state, {
             error: null,
             loading: false,
@@ -49,7 +50,7 @@ export default function reducer(state = initialState, action) {
         return Object.assign({}, state,  {
             error: null,
             loading: false,
-            loggedUsers: action.users
+            loggedUsers: action.user
         });
     }
     

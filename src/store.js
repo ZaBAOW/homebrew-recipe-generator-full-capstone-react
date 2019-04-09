@@ -28,11 +28,26 @@
 //export default store;
 
 
-import {createStore, applyMiddleware} from 'redux';
+import {createStore, applyMiddleware, combineReducers } from 'redux';
 // import ReduxThunk from 'redux-thunk';
 import thunk from 'redux-thunk';
-
-
+import { loadAuthToken } from './local-storage';
 import Reducer from './reducers';
+import { setAuthToken, refreshAuthToken } from './actions';
 
-export default createStore(Reducer, applyMiddleware(thunk));
+const store = createStore(
+    combineReducers({
+        root: Reducer
+    }),
+    applyMiddleware(thunk)
+);
+
+const authToken = loadAuthToken();
+if(authToken) {
+    const token = authToken;
+    store.dispatch(setAuthToken(token));
+    store.dispatch(refreshAuthToken());
+}
+
+
+export default store;

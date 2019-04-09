@@ -31,8 +31,19 @@
 import {createStore, applyMiddleware} from 'redux';
 // import ReduxThunk from 'redux-thunk';
 import thunk from 'redux-thunk';
+import {loadAuthToken} from './local-storage';
+import {setAuthToken, refreshAuthToken} from './actions';
 
 
 import Reducer from './reducers';
 
-export default createStore(Reducer, applyMiddleware(thunk));
+const store = createStore(Reducer, applyMiddleware(thunk));
+
+const authToken = loadAuthToken();
+if (authToken) {
+    const token = authToken;
+    store.dispatch(setAuthToken(token));
+    store.dispatch(refreshAuthToken());
+}
+
+export default store;

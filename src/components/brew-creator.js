@@ -14,10 +14,11 @@ export class Creator extends React.Component {
     // measurements.
     onSubmit(e) {
         e.preventDefault();
-        const inputs = [this.brewName.value, this.maltName.value, this.maltMeasure.value, this.hopsName.value, this.hopsMeasure.value, this.yeastName.value, this.yeastSchedule.value, this.mashSchedule.value]
+        const inputs = [this.brewName.value, this.abv.value, this.maltName.value, this.maltMeasure.value, this.hopsName.value, this.hopsMeasure.value, this.yeastName.value, this.yeastSchedule.value, this.mashSchedule.value]
         console.log(inputs);
         const homeBrew = {
             brewName: this.brewName.value,
+            abv: this.abv.value,
             maltName: this.maltName.value,
             maltMeasure: this.maltMeasure.value,
             hopsName: this.hopsName.value,
@@ -39,6 +40,9 @@ export class Creator extends React.Component {
                   <div className="col-md-12">
                     <div className="brew-name-section">Brew Title:
                       <input type="text" className="brewName" ref={input => (this.brewName = input)}></input>
+                    </div>
+                    <div className="abv-section">%abv:
+                        <input type="text" className="abv" ref={input => (this.abv = input)}></input>
                     </div>
                     <div className="malt-section"><p>Malts:</p>
                       <div className="maltName">Malt Types:

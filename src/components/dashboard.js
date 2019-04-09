@@ -12,10 +12,14 @@ export function Dashboard(props) {
                 <p>Welcome to your Homebrew Dashboard. From here you can do one of two things. First you can choose to "Create a Recipe" where you can submit your own homebrew recipes to the website. Secondly, you can view any recipes you have already submitted to the site and choose to either edit or delete them.</p>
               </div>
               <div className="grid-item dash-select">
-                <div className="dashSelect">
-                  <Link to="/brew-creator">Create a Recipe</Link>
-                  <Link to="/your-brews">View your existing Recipes</Link>
-                </div>
+                <ul className="dashSelect">
+                  <li>
+                  <Link to="/dashboard/create">Create a Recipe</Link>
+                  </li>
+                  <li>
+                  <Link to="/dashboard/archive">View your existing Recipes</Link>
+                  </li>
+                </ul>
               </div>
           </div>
         </div>

@@ -42,8 +42,11 @@ const store = createStore(Reducer, applyMiddleware(thunk));
 const authToken = loadAuthToken();
 if (authToken) {
     const token = authToken;
+    console.log('store recognizes authToken:', authToken);
     store.dispatch(setAuthToken(token));
+    console.log('authToken set');
     store.dispatch(refreshAuthToken());
+    console.log('authToken refreshed');
 }
 
 export default store;

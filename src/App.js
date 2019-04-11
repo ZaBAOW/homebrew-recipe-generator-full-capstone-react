@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import {connect} from 'react-redux';
-//import {Route, withRouter} from 'react-router-dom';
+import store from './store';
 
 import Landing from './components/landing-page';
 import Login from './components/login';
@@ -22,6 +22,8 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import './App.css';
 
 export class App extends Component {
+    
+    
     componentDidUpdate(prevProps) {
         if (!prevProps.loggedIn && this.props.loggedIn) {
             this.startPeriodicRefresh();

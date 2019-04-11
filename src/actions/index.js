@@ -154,6 +154,8 @@ const storeAuthInfo = (authToken, dispatch) => {
     const decodedToken = jwtDecode(authToken);
     dispatch(setAuthToken(authToken));
     dispatch(authSuccess(decodedToken));
+    saveAuthToken(authToken);
+    console.log('authToken succesfully stored');
     dispatch(logSession({ user: decodedToken.user }));
 };
 
@@ -290,7 +292,7 @@ export const fetchProtectedData = () => (dispatch, getState) => {
 //refreshing auth token
 export const refreshAuthToken = () => (dispatch, getState) => {
     dispatch(authRequest());
-    const authToken = getState().auth.authToken;
+    const authToken = getState().authToken;
     return fetch(`${API_ORIGIN}/auth/refresh`, {
         method: 'POST',
         headers: {

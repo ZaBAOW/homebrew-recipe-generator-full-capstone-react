@@ -247,7 +247,8 @@ export const logoutUser = user => dispatch => {
         body: JSON.stringify({ user: user })
     })
     .then(res => {
-        console.log(res.loggedIn);
+        console.log('youve been logged out');
+        clearAuthToken();
         dispatch(logOut());
     })
     .catch(err => {

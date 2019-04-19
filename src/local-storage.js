@@ -14,5 +14,13 @@ export const clearAuthToken = () => {
     try {
         console.log('clearing authToken...');
         localStorage.removeItem('authToken');
+        localStorage.removeItem('userId');
+    } catch (e) {}
+};
+
+export const saveId = id => {
+    try {
+        localStorage.setItem('userId', id);
+        console.log('userId set...');
     } catch (e) {}
 };

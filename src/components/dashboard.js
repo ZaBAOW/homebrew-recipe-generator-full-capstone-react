@@ -13,8 +13,8 @@ export function Dashboard(props) {
               </div>
               <div className="grid-item dash-select">
                 <div className="dashSelect">
-                  <Link to="/brew-creator">Create a Recipe</Link>
-                  <Link to="/your-brews">View your existing Recipes</Link>
+                  <Link to="dashboard/brew-creator">Create a Recipe</Link>
+                  <Link to="dashboard/archive">View your existing Recipes</Link>
                 </div>
               </div>
           </div>

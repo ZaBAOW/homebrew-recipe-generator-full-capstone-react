@@ -1,6 +1,6 @@
 import jwtDecode from "jwt-decode";
 import { API_ORIGIN } from "../config";
-import {saveAuthToken, clearAuthToken} from '../local-storage';
+import {saveAuthToken, clearAuthToken, saveId} from '../local-storage';
 
 export const REQUEST = 'REQUEST';
 export const LOG_IN_LIST = "LOG_IN_LIST";
@@ -12,6 +12,7 @@ export const DELETE_BREW = "DELETE_BREW";
 export const EDIT_BREW = "EDIT_BREW";
 export const BROWSE = "BROWSE";
 export const APPEND_RESULTS = "APPEND_RESULTS";
+export const APPEND_ARCHIVE = "APPEND_ARCHIVE";
 export const CLEAR_RESULTS = "CLEAR_RESULTS";
 export const SELECT_BREW = "SELECT_BREW";
 export const VIEW_BREW = "VIEW_BREW";
@@ -123,6 +124,11 @@ export const appendResults = results => ({
         payload: {results}
 });
 
+export const appendArchive = results => ({
+        type: APPEND_ARCHIVE,
+        payload: {results}
+});
+
 export const clearResults = brews => ({
     type: CLEAR_RESULTS,
     brews
@@ -176,8 +182,10 @@ export const logSession = user => dispatch => {
       return res.json();
     })
     .then(res => {
-      console.log(res.loggedIn[0]);
+      console.log(res.loggedIn[0]._id);
+      const id = res.loggedIn[0]._id;
       dispatch(logUser(res.loggedIn[0]));
+      saveId(id);
     });
 };
 
@@ -342,6 +350,32 @@ export const browseBrews = keyword => dispatch => {
         console.log(err);
     });
 };
+
+export const getYourBrews = userId => dispatch => {
+    console.log('fetching brews form database...');
+    console.log(userId);
+    return fetch(`${API_ORIGIN}/brews/getArchive/${userId}`, {
+        method: 'GET',
+        headers: {
+            "content-type": 'application/json'
+        }
+    })
+    .then(res => {
+        return res.json();
+    })
+    .then(res => {
+        const brews = res.data;
+        console.log(res.status);
+        console.log(brews);
+        if(res.status === 400) {
+            return;
+        }else if (res.status === 200) {
+            console.log('your archive:', brews);
+            dispatch(appendArchive(brews));
+            return brews;
+        }
+    })
+}
 
 // Append search results to result area
 //export const Append = brews => dispatch => {

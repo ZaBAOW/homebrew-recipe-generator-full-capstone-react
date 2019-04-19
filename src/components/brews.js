@@ -23,15 +23,16 @@ export class Brews extends React.Component {
     } 
     
     if (this.props.brews.length != 0){
-      console.log('brews lenght is not 0!');
-      resultsList = this.props.brews.results.map((brew, index) => {
+      console.log('brews length is not 0!');
+      console.log('brews length: ', this.props.brews);
+      resultsList = this.props.brews.map((brew, index) => {
         return (
           <div className="item" key={index}>
-            <h3>{brew.brewName}</h3>
+            <h3>{brew.results[index].brewName}</h3>
             <button
               className="thumbnail"
               type="button"
-              id={brew.id}
+              id={brew.results[index].id}
             >
             click to view
             </button>

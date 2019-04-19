@@ -1,5 +1,5 @@
 import React from "react";
-import Nav from "./notLoggedNav";
+import Nav from "./Nav";
 import Browser from "./browser";
 import Brews from "./brews";
 

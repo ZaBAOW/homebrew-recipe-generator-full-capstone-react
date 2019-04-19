@@ -81,6 +81,12 @@ export default function reducer(state = initialState, action) {
         })
     }
     
+    if (action.type === actions.APPEND_ARCHIVE) {
+        return Object.assign({}, state, {
+            brews: [action.payload]
+        })
+    }
+    
     if (action.type === actions.CLEAR_RESULTS) {
         return Object.assign({}, state, {
             loading: false,

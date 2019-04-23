@@ -14,20 +14,25 @@ export class Creator extends React.Component {
     // measurements.
     onSubmit(e) {
         e.preventDefault();
-        const inputs = [this.brewName.value, this.maltName.value, this.maltMeasure.value, this.hopsName.value, this.hopsMeasure.value, this.yeastName.value, this.yeastSchedule.value, this.mashSchedule.value]
+        const inputs = [this.brewName.value, this.abv.value, this.maltName.value, this.maltMeasure.value, this.hopsName.value, this.hopsMeasure.value, this.yeastName.value, this.yeastMeasure.value, this.yeastSchedule.value, this.mashSchedule.value]
         console.log(inputs);
         const homeBrew = {
             brewName: this.brewName.value,
+            abv: this.abv.value,
             maltName: this.maltName.value,
             maltMeasure: this.maltMeasure.value,
             hopsName: this.hopsName.value,
             hopsMeasure: this.hopsMeasure.value,
             yeastName: this.yeastName.value,
+            yeastMeasure: this.yeastMeasure.value,
             yeastSchedule: this.yeastSchedule.value,
             mashSchedule: this.mashSchedule.value
         }
         console.log(homeBrew);
-        this.props.dispatch(submitRecipe(homeBrew));
+        const userId = localStorage.getItem('userId');
+        console.log(localStorage.getItem('userId'));
+        const token = localStorage.getItem('authToken');
+        this.props.dispatch(submitRecipe(homeBrew, userId, token));
 //        this.props.history.push('/dashboard/archive');
     }
     
@@ -39,6 +44,9 @@ export class Creator extends React.Component {
                   <div className="col-md-12">
                     <div className="brew-name-section">Brew Title:
                       <input type="text" className="brewName" ref={input => (this.brewName = input)}></input>
+                    </div>
+                   <div className="abv-section">%abv:
+                      <input type="text" className="abv" ref={input => (this.abv = input)}></input>
                     </div>
                     <div className="malt-section"><p>Malts:</p>
                       <div className="maltName">Malt Types:
@@ -59,6 +67,9 @@ export class Creator extends React.Component {
                     <div className="yeast-section"><p>Yeast:</p>
                       <div className="yeastName">Yeast Types:
                         <input type="text" placeholder="name of yeast" ref={input => (this.yeastName = input)}></input>
+                      </div>
+                      <div className="yeastMeasure">Measurements:
+                        <input type="text" placeholder="amount of yeast" ref={input => (this.yeastMeasure = input)}></input>
                       </div>
                       <p>Yeast Schedule:</p>
                         <textarea className="yeastSchedule" rows="15" col="100" placeholder="Type your yeast schedule here" className="yeast-schedule" ref={input => (this.yeastSchedule = input)}></textarea>

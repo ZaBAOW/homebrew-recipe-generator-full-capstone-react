@@ -399,6 +399,7 @@ export const submitRecipe = (brew, userID, token) => dispatch => {
     console.log(token);
     const brewObj = {
         brewName: brew.brewName,
+        abv: brew.abv,
         maltName: brew.maltName,
         maltMeasure: brew.maltMeasure,
         yeastName: brew.yeastName,
@@ -409,9 +410,8 @@ export const submitRecipe = (brew, userID, token) => dispatch => {
         mashSchedule: brew.mashSchedule
     };
     
-    console.log(brewObj);
     const userBrew = { brew: brewObj, id: userID};
-    
+    console.log('userbrew: ', userBrew);
     dispatch(request());
     fetch(`${API_ORIGIN}/brews`, {
         method: 'POST',
@@ -425,7 +425,7 @@ export const submitRecipe = (brew, userID, token) => dispatch => {
         if(!res.ok){
             return Promise.reject(res.statusText);
         }
-        return res.josn();
+        return res.json();
     })
     .then(res => {
         console.log(res);

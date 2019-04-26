@@ -17,9 +17,11 @@ export class Brews extends React.Component {
 
     let resultsList = [];
     // for rendering search list
-    if (this.props.brews.length == 0 || this.props.brews === undefined) {
-      console.log('brew prop is undefined')
-      console.log(this.props.brews.length);
+    if (this.props.brews === undefined) {
+        if (this.props.brews.length == 0{
+                console.log('brew prop is undefined')
+                console.log(this.props.brews.length);
+            })
     } 
     
     if (this.props.brews.length != 0){

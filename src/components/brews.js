@@ -21,7 +21,7 @@ export class Brews extends React.Component {
         if (this.props.brews.length == 0){
                 console.log('brew prop is undefined')
                 console.log(this.props.brews.length);
-            })
+            }
     } 
     
     if (this.props.brews.length != 0){

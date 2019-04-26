@@ -23,7 +23,6 @@ export class Brews extends React.Component {
     } 
     
     if (this.props.brews.length != 0){
-      console.log('brews length is not 0!');
       console.log('brews length: ', this.props.brews.results);
       resultsList = this.props.brews.results.map((brew, index) => {
         return (

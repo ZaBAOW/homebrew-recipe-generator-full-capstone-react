@@ -1,6 +1,6 @@
 import React from 'react';
 import Nav from "./Nav";
-import Brews from './brews'
+import Brews from './brews-archive'
 import { connect } from  'react-redux';
 
 import { getYourBrews} from "../actions";

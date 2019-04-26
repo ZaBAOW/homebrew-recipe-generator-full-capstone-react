@@ -24,8 +24,8 @@ export class Brews extends React.Component {
     
     if (this.props.brews.length != 0){
       console.log('brews length is not 0!');
-      console.log('brews length: ', this.props.brews.results);
-      resultsList = this.props.brews.results.map((brew, index) => {
+      console.log('brews length: ', this.props.brews[0].results);
+      resultsList = this.props.brews[0].results.map((brew, index) => {
         return (
           <div className="item" key={index}>
             <h3>{brew.brewName}</h3>

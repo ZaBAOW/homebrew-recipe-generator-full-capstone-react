@@ -18,29 +18,31 @@ export class Brews extends React.Component {
     let resultsList = [];
     // for rendering search list
     if (this.props.brews === undefined) {
+        console.log('brew prop is undefined');
+    } else {
+        console.log('brew prop was not undefined');
         if (this.props.brews.length == 0){
-                console.log('brew prop is undefined')
-                console.log(this.props.brews.length);
-            }
+            console.log('brew prop is 0');
+            console.log(this.props.brews.length);
+        } else {
+          console.log('brews length: ', this.props.brews.results);
+          resultsList = this.props.brews.results.map((brew, index) => {
+            return (
+              <div className="item" key={index}>
+                <h3>{brew.brewName}</h3>
+                <button
+                  className="thumbnail"
+                  type="button"
+                  id={brew.id}
+                >
+                click to view
+                </button>
+              </div>
+            );
+          });
+        }
     } 
-    
-    if (this.props.brews.length != 0){
-      console.log('brews length: ', this.props.brews.results);
-      resultsList = this.props.brews.results.map((brew, index) => {
-        return (
-          <div className="item" key={index}>
-            <h3>{brew.brewName}</h3>
-            <button
-              className="thumbnail"
-              type="button"
-              id={brew.id}
-            >
-            click to view
-            </button>
-          </div>
-        );
-      });
-    }
+
 
     // for rendering watchlist
 //    if (this.props.watchlist.length > 0) {

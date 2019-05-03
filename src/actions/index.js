@@ -140,9 +140,9 @@ export const selectBrew = (brew, brewId) => ({
     brewId
 });
 
-export const viewBrew = brewId => ({
+export const viewBrew = brew => ({
     type: VIEW_BREW,
-    brewId
+    brew
 });
 
 
@@ -327,6 +327,7 @@ export const browseBrews = keyword => dispatch => {
     console.log('begginning search...');
     return fetch(`${API_ORIGIN}/brews/get-one/${keyword}`, {
         method: 'GET',
+        mode: 'cors',
         headers: {
             "content-type": "application/json"
         }
@@ -374,6 +375,26 @@ export const getYourBrews = userId => dispatch => {
             dispatch(appendArchive(brews));
             return brews;
         }
+    })
+}
+
+export const viewRecipe = brewId => dispatch => {
+    console.log('brew to be viewed:', brewId);
+    return fetch(`${API_ORIGIN}/brews/viewBrew/${brewId}`, {
+        method: 'GET',
+        headers: {
+            "content-type": 'application/json'
+        }
+    })
+    .then(res => {
+        console.log(res);
+        return res.json();
+    })
+    .then(res => {
+        const brew = res.data;
+        console.log('brew data:', brew);
+        dispatch(viewBrew(brew));
+        return brew;
     })
 }
 

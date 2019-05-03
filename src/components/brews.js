@@ -2,7 +2,7 @@ import React from "react";
 import Spinner from "react-spinkit";
 import { connect } from "react-redux";
 
-import { deleteRecipe } from "../actions";
+import { deleteRecipe, viewRecipe } from "../actions";
 import { Redirect } from "react-router-dom";
 
 
@@ -12,6 +12,15 @@ export class Brews extends React.Component {
 //    this.props.dispatch(deleteRecipe(target.id, this.props.authToken));
 //  }
 
+    
+    handleId(e) {
+        console.log('click!');
+//        e.preventDefault();
+        const brewId = this.input.value;
+        console.log('clicked brewId:', brewId);
+        console.log(brewId);
+        this.props.dispatch(viewRecipe(brewId));
+    }
     
   render() {
 
@@ -33,10 +42,11 @@ export class Brews extends React.Component {
                 <button
                   className="thumbnail"
                   type="button"
-                  id={brew.id}
+                  onClick={() => this.handleId()}
                 >
                 click to view
                 </button>
+                <input type='hidden' className='brewId' value={brew._id} ref={input => (this.input = input)} />
               </div>
             );
           });

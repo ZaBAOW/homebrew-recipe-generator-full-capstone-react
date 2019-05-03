@@ -18,7 +18,8 @@ const initialState = {
     mashSchedule: "",
     currentBrew: "",
     keyword: "",
-    brews: []
+    brews: [],
+    abv: ""
 }
 
 export default function reducer(state = initialState, action) {
@@ -72,6 +73,23 @@ export default function reducer(state = initialState, action) {
             loading: false,
             results: action.brews
         });
+    }
+    
+    if (action.type === actions.VIEW_BREW) {
+        console.log('inserting data into props');
+        console.log(action.brew.brew[0].brewName);
+        return Object.assign({}, state, {
+            brewName: action.brew.brew[0].brewName,
+            abv: action.brew.brew[0].abv,
+            hopsName: action.brew.hop.hopsName,
+            hopsMeasure: action.brew.hop.hopsMeasure,
+            maltName: action.brew.malts.maltName,
+            maltMeasure: action.brew.malts.maltMeasure,
+            mashSchedule: action.brew.mashes.mashSchedule,
+            yeastName: action.brew.yeasts.yeastName,
+            yeastMeasure: action.brew.yeasts.yeastMeasure,
+            yeastSchedule: action.brew.yeasts.yeastSchedule
+        })
     }
     
     if (action.type === actions.APPEND_RESULTS) {

@@ -15,6 +15,8 @@ export default class Browser extends React.Component {
         this.onSubmit = this.onSubmit.bind(this);
     }
     
+    
+    
     onSubmit(e) {
         e.preventDefault();
         const keyword = this.textInput.value.trim();

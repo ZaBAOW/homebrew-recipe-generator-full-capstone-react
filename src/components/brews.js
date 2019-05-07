@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 
 import { deleteRecipe, viewRecipe } from "../actions";
 import { Redirect } from "react-router-dom";
+import viewBrew from './brew-viewer';
 
 
 export class Brews extends React.Component {
@@ -13,13 +14,13 @@ export class Brews extends React.Component {
 //  }
 
     
-    handleId(e) {
+    handleId(id) {
         console.log('click!');
-//        e.preventDefault();
-        const brewId = this.input.value;
+        const brewId = id;
         console.log('clicked brewId:', brewId);
         console.log(brewId);
         this.props.dispatch(viewRecipe(brewId));
+        
     }
     
   render() {
@@ -36,17 +37,19 @@ export class Brews extends React.Component {
         } else {
           console.log('brews length: ', this.props.brews.results);
           resultsList = this.props.brews.results.map((brew, index) => {
+            const brewId = brew._id;
             return (
               <div className="item" key={index}>
                 <h3>{brew.brewName}</h3>
                 <button
                   className="thumbnail"
                   type="button"
-                  onClick={() => this.handleId()}
+                  onClick={() => this.handleId(brew._id)}
                 >
                 click to view
                 </button>
                 <input type='hidden' className='brewId' value={brew._id} ref={input => (this.input = input)} />
+                <viewBrew openRecipe={() => this.getRecipe} />
               </div>
             );
           });

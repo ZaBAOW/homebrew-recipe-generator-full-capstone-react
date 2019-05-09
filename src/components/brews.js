@@ -1,10 +1,11 @@
+    
 import React from "react";
 import Spinner from "react-spinkit";
 import { connect } from "react-redux";
 
 import { deleteRecipe, viewRecipe } from "../actions";
 import { Redirect } from "react-router-dom";
-import viewBrew from './brew-viewer';
+import ViewBrew from './brew-viewer';
 
 
 export class Brews extends React.Component {
@@ -20,7 +21,7 @@ export class Brews extends React.Component {
         console.log('clicked brewId:', brewId);
         console.log(brewId);
         this.props.dispatch(viewRecipe(brewId));
-        
+        console.log(this.props);
     }
     
   render() {
@@ -49,7 +50,7 @@ export class Brews extends React.Component {
                 click to view
                 </button>
                 <input type='hidden' className='brewId' value={brew._id} ref={input => (this.input = input)} />
-                <viewBrew openRecipe={() => this.getRecipe} />
+                <ViewBrew recipe = {this.props}/>
               </div>
             );
           });
@@ -89,6 +90,14 @@ export class Brews extends React.Component {
 
 export const mapStateToProps = state => ({
   brews: state.brews,
+  maltName: state.maltName,
+  maltMeasure: state.maltMeasure,
+  hopsName: state.hopsName,
+  hopsMeasure: state.hopsMeasure,
+  yeastName: state.yeastName,
+  yeastMeasure: state.yeastMeasure,
+  yeastSchedule: state.yeastSchedule,
+  mashSchedule: state.mashSchedule,
   loading: state.loading
 });
 

@@ -82,12 +82,12 @@ export default function reducer(state = initialState, action) {
             brewName: action.brew.brew[0].brewName,
             abv: action.brew.brew[0].abv,
             hopsName: action.brew.hop.hopsName,
-            hopsMeasure: action.brew.hop.hopsMeasure,
+            hopsMeasure: action.brew.hop.hopsMeasurement,
             maltName: action.brew.malts.maltName,
-            maltMeasure: action.brew.malts.maltMeasure,
+            maltMeasure: action.brew.malts.maltMeasurement,
             mashSchedule: action.brew.mashes.mashSchedule,
             yeastName: action.brew.yeasts.yeastName,
-            yeastMeasure: action.brew.yeasts.yeastMeasure,
+            yeastMeasure: action.brew.yeasts.yeastMeasurement,
             yeastSchedule: action.brew.yeasts.yeastSchedule
         })
     }

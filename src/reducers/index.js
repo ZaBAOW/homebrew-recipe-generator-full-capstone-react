@@ -92,6 +92,23 @@ export default function reducer(state = initialState, action) {
         })
     }
     
+        if (action.type === actions.CLEAR_RECIPE) {
+        console.log('inserting data into props');
+        console.log(action.brew.brew[0].brewName);
+        return Object.assign({}, state, {
+            brewName: "",
+            abv: "",
+            hopsName: "",
+            hopsMeasure: "",
+            maltName: "",
+            maltMeasure: "",
+            mashSchedule: "",
+            yeastName: "",
+            yeastMeasure: "",
+            yeastSchedule: ""
+        })
+    }
+    
     if (action.type === actions.APPEND_RESULTS) {
         console.log(action.payload);
         return Object.assign({}, state, {

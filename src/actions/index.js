@@ -16,6 +16,7 @@ export const APPEND_ARCHIVE = "APPEND_ARCHIVE";
 export const CLEAR_RESULTS = "CLEAR_RESULTS";
 export const SELECT_BREW = "SELECT_BREW";
 export const VIEW_BREW = "VIEW_BREW";
+export const CLEAR_RECIPE = "CLEAR_RECIPE";
 export const ERROR = "ERROR";
 export const SET_AUTH_TOKEN = "SET_AUTH_TOKEN";
 export const CLEAR_AUTH = 'CLEAR_AUTH';
@@ -144,6 +145,10 @@ export const viewBrew = brew => ({
     type: VIEW_BREW,
     brew
 });
+
+export const clearRecipe = () => ({
+    type: CLEAR_RECIPE
+})
 
 
 //error action

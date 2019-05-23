@@ -1,5 +1,4 @@
 import React from 'react';
-//import './browser.css';
 import Results from './browser-result';
 import store from '../store';
 //import Nav from './notLoggedNav';

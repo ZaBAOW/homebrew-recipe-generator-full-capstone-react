@@ -19,6 +19,7 @@ const initialState = {
     currentBrew: "",
     keyword: "",
     brews: [],
+    items:[],
     abv: ""
 }
 
@@ -110,9 +111,10 @@ export default function reducer(state = initialState, action) {
     }
     
     if (action.type === actions.APPEND_RESULTS) {
-        console.log(action.payload);
+        console.log(action.payload.results[0].brewName);
         return Object.assign({}, state, {
-            brews: action.payload
+            brews: action.payload,
+            brewName: action.payload.results[0].brewName
         })
     }
     

@@ -8,6 +8,10 @@
 }
 
 /*navbar css*/
+h1 {
+    z-index: 10000;
+}
+
 .navbar {
     border: 1px solid black;
     background-color: beige;
@@ -19,7 +23,6 @@
 }
 
 .navbar-header {
-    border: 1px solid black;
     width: 40%;
     text-align: center;
     position: fixed;
@@ -47,6 +50,7 @@
 }
 
 /*brew-creator + brew-viewer css*/
+/*
 .brew-form {
     border: 1px solid black;
     width: 600px;
@@ -95,8 +99,10 @@
 .mash-schedule-section {
     border: 1px solid black;
 }
+*/
 
 /*dashboard css*/
+/*
 .dashboard-section {
     display: grid;
     position: relative;
@@ -140,7 +146,15 @@
     display: block;
     padding-bottom: 10px;
 }
+*/
 
 /*Footer css*/
 
 /*browser css*/
+.hidden {
+    display: none
+}
+
+.shown {
+    display: inline-block !important;
+}

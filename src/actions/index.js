@@ -329,7 +329,6 @@ export const refreshAuthToken = () => (dispatch, getState) => {
 
 // browse hombrews
 export const browseBrews = keyword => dispatch => {
-    console.log('begginning search...');
     return fetch(`${API_ORIGIN}/brews/get-one/${keyword}`, {
         method: 'GET',
         mode: 'cors',
@@ -345,10 +344,7 @@ export const browseBrews = keyword => dispatch => {
         return res.json();
     })
     .then(res => {
-        console.log('browser response: ', res);
-        console.log('got your results, displaying them now');
         const brews = res;
-        console.log(brews);
         dispatch(appendResults(brews));
         return brews;
     })
@@ -384,7 +380,6 @@ export const getYourBrews = userId => dispatch => {
 }
 
 export const viewRecipe = brewId => dispatch => {
-    console.log('brew to be viewed:', brewId);
     return fetch(`${API_ORIGIN}/brews/viewBrew/${brewId}`, {
         method: 'GET',
         headers: {
@@ -397,7 +392,6 @@ export const viewRecipe = brewId => dispatch => {
     })
     .then(res => {
         const brew = res.data;
-        console.log('brew data:', brew);
         dispatch(viewBrew(brew));
         return brew;
     })

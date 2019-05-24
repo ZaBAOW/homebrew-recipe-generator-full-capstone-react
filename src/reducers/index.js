@@ -19,6 +19,7 @@ const initialState = {
     currentBrew: "",
     keyword: "",
     brews: [],
+    results: [],
     items:[],
     abv: ""
 }
@@ -77,8 +78,6 @@ export default function reducer(state = initialState, action) {
     }
     
     if (action.type === actions.VIEW_BREW) {
-        console.log('inserting data into props');
-        console.log(action.brew.brew[0].brewName);
         return Object.assign({}, state, {
             brewName: action.brew.brew[0].brewName,
             abv: action.brew.brew[0].abv,
@@ -111,7 +110,6 @@ export default function reducer(state = initialState, action) {
     }
     
     if (action.type === actions.APPEND_RESULTS) {
-        console.log(action.payload.results[0].brewName);
         return Object.assign({}, state, {
             brews: action.payload,
             brewName: action.payload.results[0].brewName

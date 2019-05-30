@@ -2,10 +2,12 @@ import React from "react";
 import Nav from "./Nav";
 import Browser from "./browser";
 import Brews from "./brews";
+import $ from 'jquery';
 
 import { connect } from "react-redux";
 import { browseBrews} from "../actions";
 import { clearDropdown } from "../custom";
+import { findDOMNode } from 'react-dom';
 
 export class BrowserPage extends React.Component {
   // Clear the videos list if moving between pages
@@ -18,7 +20,10 @@ export class BrowserPage extends React.Component {
   }
 
   onSearch(keyword) {
+    const el = findDOMNode(this.refs.brews);
+    $(el).hide();
     this.props.dispatch(browseBrews(keyword));
+    $(el).show();
   }
 
   render() {

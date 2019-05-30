@@ -151,6 +151,10 @@ h1 {
 /*Footer css*/
 
 /*browser css*/
+.recipeSection {
+    display: none
+}
+
 .hidden {
     display: none
 }

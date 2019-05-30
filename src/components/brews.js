@@ -2,9 +2,11 @@
 import React from "react";
 import Spinner from "react-spinkit";
 import { connect } from "react-redux";
+import $ from 'jquery';
 
 import { deleteRecipe, viewRecipe } from "../actions";
 import { Redirect } from "react-router-dom";
+import { findDOMNode } from 'react-dom';
 import ViewBrew from './brew-viewer';
 
 
@@ -19,17 +21,20 @@ export class Brews extends React.Component {
         this.state = {
             isHidden: true
         }
+        this.item = React.createRef();
     }
     
     state = {
         activeSectionIndex: null
     }
 
-    toggleHidden() {
-        this.setState ({
-            isHidden: !this.state.isHidden
-        })
-    }
+
+
+//    toggleHidden() {
+//        this.setState ({
+//            isHidden: !this.state.isHidden
+//        })
+//    }
     
     handleId(id) {
         const brewId = id;
@@ -37,26 +42,30 @@ export class Brews extends React.Component {
     }
     
     renderItem(brew, index, id) {
-//        <ViewBrew recipe = {this.props} id = {id}/>
         return (
             <li className='Accordion_item' key={index}>
-                {!this.state.isHidden && <p className="recipe">This is a brew recipe</p> }
-                
+                {!this.state.isHidden && <ViewBrew recipe = {this.props} id = {id}/> }
             </li>
         )
     }
+
+    handleChange(event) {
+        this.setState({isHidden: false});
+    }
     
     handleSetActiveSection = (index, id) => {
+        this.handleChange.bind(this);
+//        console.log(el);
         this.handleId(id);
-        this.toggleHidden.bind(this);
-        this.setState({ activeSectionIndex: index,
-                        isHidden: !this.state.isHidden})
+//        $(el).slideToggle();
+//        console.log(id);
     }
 
     
   render() {
 
     let resultsList = [];
+    const style =  this.state.isHidden ? {display: 'none'} : {};
     // for rendering search list
     if (this.props.brews === undefined) {
         console.log('brew prop is undefined');
@@ -81,19 +90,15 @@ export class Brews extends React.Component {
 //                let renderOutput = this.renderItem(brew, index, brewId)
                 oldIndex = newIndex;
                 return (
-                  <div className="item" key={index}>
+                  <div className="brewItem" ref={brewId} key={index}>
                     <h3>{brew.brewName}</h3>
-                    <button
-                      className="thumbnail"
-                      type="button"
-                      onClick={() => this.handleSetActiveSection(index, brewId)}
-                    >
-                    click to view
-                    </button>
                     <input type='hidden' className='brewId' value={brew._id} ref={input => (this.input = input)} />
-                    <ul className = "recipeSection">
-                        {this.renderItem(brew, index, brewId)}
-                    </ul>
+                    <div className='toggleSection' ref={this.item} onClick={this.handleSetActiveSection(index, brewId)}>
+                        click to view
+                        <ul className = "recipeSection" id={brewId} >
+                            {this.renderItem(brew, index, brewId)}
+                        </ul>
+                    </div>
                   </div>
                 );
             }

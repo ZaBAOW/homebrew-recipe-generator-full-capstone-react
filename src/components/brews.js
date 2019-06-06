@@ -30,43 +30,18 @@ export class Brews extends React.Component {
         activeSectionIndex: null
     }
 
-
-
-//    toggleHidden() {
-//        this.setState ({
-//            isHidden: !this.state.isHidden
-//        })
-//    }
-
     
     handleId(id) {
         const brewId = id;
         this.props.dispatch(viewRecipe(brewId));
     }
-//    
-//
-//    renderItem(brew, index, id) {
-//        return (
-//            <div>
-//                <OverlayTrigger trigger="click" key={index} placement={'bottom'} 
-//                overlay = {
-//                    
-//                >
-//                <button>view recipe</button>
-//                </OverlayTrigger>
-//            </div>
-//        )
-//    }
 
     handleChange(event) {
         this.setState({hideToolTip: true});
     }
     
     handleSetActiveSection = (index, id) => {
-        this.handleChange.bind(this);
-//        console.log(el);
-//        this.handleId(id);
-//        console.log(id);
+        this.handleId(id);
     }
 
     
@@ -104,7 +79,7 @@ export class Brews extends React.Component {
                     <h3>{brew.brewName}</h3>
                     <input type='hidden' className='brewId' value={brew._id} ref={input => (this.input = input)} />
                     <div className="toggleSection" ref={this.item}>
-                        <p data-tip data-for={brewId} data-event='click'>Tooltip</p>
+                        <button data-tip data-for={brewId} data-event='click' onClick={() => {this.handleSetActiveSection(index, brewId)}}>Tooltip</button>
                         <ReactTooltip id={brewId} place="bottom" type='info'>
                             {recipeTemplate}
                         </ReactTooltip>

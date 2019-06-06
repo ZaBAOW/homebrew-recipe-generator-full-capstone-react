@@ -20,10 +20,7 @@ export class BrowserPage extends React.Component {
   }
 
   onSearch(keyword) {
-    const el = findDOMNode(this.refs.brews);
-    $(el).hide();
     this.props.dispatch(browseBrews(keyword));
-    $(el).show();
   }
 
   render() {

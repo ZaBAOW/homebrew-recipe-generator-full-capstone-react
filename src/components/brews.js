@@ -3,10 +3,12 @@ import React from "react";
 import Spinner from "react-spinkit";
 import { connect } from "react-redux";
 import $ from 'jquery';
+import ReactTooltip from 'react-tooltip';
 
 import { deleteRecipe, viewRecipe } from "../actions";
 import { Redirect } from "react-router-dom";
 import { findDOMNode } from 'react-dom';
+
 import ViewBrew from './brew-viewer';
 
 
@@ -19,7 +21,7 @@ export class Brews extends React.Component {
     constructor () {
         super()
         this.state = {
-            isHidden: true
+            hideToolTip: false
         }
         this.item = React.createRef();
     }
@@ -35,29 +37,35 @@ export class Brews extends React.Component {
 //            isHidden: !this.state.isHidden
 //        })
 //    }
+
     
     handleId(id) {
         const brewId = id;
         this.props.dispatch(viewRecipe(brewId));
     }
-    
-    renderItem(brew, index, id) {
-        return (
-            <li className='Accordion_item' key={index}>
-                {!this.state.isHidden && <ViewBrew recipe = {this.props} id = {id}/> }
-            </li>
-        )
-    }
+//    
+//
+//    renderItem(brew, index, id) {
+//        return (
+//            <div>
+//                <OverlayTrigger trigger="click" key={index} placement={'bottom'} 
+//                overlay = {
+//                    
+//                >
+//                <button>view recipe</button>
+//                </OverlayTrigger>
+//            </div>
+//        )
+//    }
 
     handleChange(event) {
-        this.setState({isHidden: false});
+        this.setState({hideToolTip: true});
     }
     
     handleSetActiveSection = (index, id) => {
         this.handleChange.bind(this);
 //        console.log(el);
-        this.handleId(id);
-//        $(el).slideToggle();
+//        this.handleId(id);
 //        console.log(id);
     }
 
@@ -84,20 +92,22 @@ export class Brews extends React.Component {
             console.log('current index:', index);
             if(newIndex != oldIndex) {
                 const brewId = brew._id;
+                console.log(brewId);
                 const {items} = this.props;
                 console.log('conditional passed');
-                const {activeSectionIndex} = this.state;
-//                let renderOutput = this.renderItem(brew, index, brewId)
                 oldIndex = newIndex;
+                const recipeTemplate =  <ViewBrew recipe = {this.props} id = {brewId} />
+                console.log(recipeTemplate);
+                const popoverClass = 'recipe-popoup-'+brew.brewName;
                 return (
                   <div className="brewItem" ref={brewId} key={index}>
                     <h3>{brew.brewName}</h3>
                     <input type='hidden' className='brewId' value={brew._id} ref={input => (this.input = input)} />
-                    <div className='toggleSection' ref={this.item} onClick={this.handleSetActiveSection(index, brewId)}>
-                        click to view
-                        <ul className = "recipeSection" id={brewId} >
-                            {this.renderItem(brew, index, brewId)}
-                        </ul>
+                    <div className="toggleSection" ref={this.item}>
+                        <p data-tip data-for={brewId} data-event='click'>Tooltip</p>
+                        <ReactTooltip id={brewId} place="bottom" type='info'>
+                            {recipeTemplate}
+                        </ReactTooltip>
                     </div>
                   </div>
                 );

@@ -8,16 +8,19 @@
     "react-test-renderer": "^16.6.3"
   },
   "dependencies": {
+    "bootstrap": "4.0.0-beta",
     "chai": "^4.2.0",
     "chai-enzyme": "^1.0.0-beta.1",
     "jquery": "^3.4.1",
     "jwt-decode": "^2.2.0",
+    "popper.js": "1.11.0",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
     "react-redux": "^5.0.2",
     "react-router-dom": "^4.3.1",
-    "react-scripts": "^2.0.5",
+    "react-scripts": "^3.0.1",
     "react-spinkit": "^3.0.0",
+    "react-tooltip": "^3.10.0",
     "redux": "^4.0.1",
     "redux-form": "^8.1.0",
     "redux-thunk": "^2.3.0"

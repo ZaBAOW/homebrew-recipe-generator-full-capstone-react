@@ -32,7 +32,7 @@ export class Archive extends React.Component {
 }
 
 export const mapStateToProps = state => ({
-    brews: state.brews,
+    archiveBrews: state.archiveBrews,
     error: state.error
 });
 

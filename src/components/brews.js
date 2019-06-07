@@ -2,7 +2,6 @@
 import React from "react";
 import Spinner from "react-spinkit";
 import { connect } from "react-redux";
-import $ from 'jquery';
 import ReactTooltip from 'react-tooltip';
 
 import { deleteRecipe, viewRecipe } from "../actions";
@@ -21,7 +20,8 @@ export class Brews extends React.Component {
     constructor () {
         super()
         this.state = {
-            hideToolTip: false
+            hideToolTip: false,
+            browserBrews: []
         }
         this.item = React.createRef();
     }
@@ -41,6 +41,7 @@ export class Brews extends React.Component {
     }
     
     handleSetActiveSection = (index, id) => {
+        console.log('click');
         this.handleId(id);
     }
 
@@ -50,16 +51,18 @@ export class Brews extends React.Component {
     let resultsList = [];
     const style =  this.state.isHidden ? {display: 'none'} : {};
     // for rendering search list
-    if (this.props.brews === undefined) {
+    console.log(this.props.browserBrews);
+    if (this.props.browserBrews === undefined) {
         console.log('brew prop is undefined');
     } else {
-        if (this.props.brews.length == 0){
+        if (this.props.browserBrews.length == 0){
             console.log('brew prop is 0');
-            console.log(this.props.brews.length);
+            console.log(this.props.browserBrews.length);
         } else {
           let oldIndex = 'a';
           let newIndex = '';
-          resultsList = this.props.brews.results.map((brew, index) => {
+          console.log('starting mapping process');
+          resultsList = this.props.browserBrews.results.map((brew, index) => {
             newIndex = index;
             console.log(brew);
             console.log('newIndex:', newIndex);
@@ -75,11 +78,11 @@ export class Brews extends React.Component {
                 console.log(recipeTemplate);
                 const popoverClass = 'recipe-popoup-'+brew.brewName;
                 return (
-                  <div className="brewItem" ref={brewId} key={index}>
+                  <div className="brewItem" key={index}>
                     <h3>{brew.brewName}</h3>
                     <input type='hidden' className='brewId' value={brew._id} ref={input => (this.input = input)} />
                     <div className="toggleSection" ref={this.item}>
-                        <button data-tip data-for={brewId} data-event='click' onClick={() => {this.handleSetActiveSection(index, brewId)}}>Tooltip</button>
+                        <button data-tip data-for={brewId} data-event='click' onClick={(index, brewId) => {this.handleSetActiveSection(index, brewId)}}>Tooltip</button>
                         <ReactTooltip id={brewId} place="bottom" type='info'>
                             {recipeTemplate}
                         </ReactTooltip>
@@ -124,7 +127,7 @@ export class Brews extends React.Component {
 }
 
 export const mapStateToProps = state => ({
-  brews: state.brews,
+  browserBrews: state.browserBrews,
   brewName: state.brewName,
   maltName: state.maltName,
   maltMeasure: state.maltMeasure,

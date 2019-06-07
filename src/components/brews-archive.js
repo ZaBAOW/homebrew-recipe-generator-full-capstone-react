@@ -1,41 +1,48 @@
 import React from "react";
 import Spinner from "react-spinkit";
 import { connect } from "react-redux";
-
+import ReactTooltip from 'react-tooltip';
 import { deleteRecipe } from "../actions";
 import { Redirect } from "react-router-dom";
-
+import ViewBrew from './brew-viewer';
 
 export class Brews extends React.Component {
 
 //  deleteRecipe(target) {
 //    this.props.dispatch(deleteRecipe(target.id, this.props.authToken));
 //  }
-
+    
+    handleToolTip = (index, id) => {
+        this.handleId(id);
+    }
     
   render() {
 
     let resultsList = [];
     // for rendering search list
-    if (this.props.brews.length == 0) {
+    if (this.props.archiveBrews.length == 0) {
       console.log('brew prop is undefined')
-      console.log(this.props.brews.length);
+      console.log(this.props.archiveBrews.length);
     } 
     
-    if (this.props.brews.length != 0){
-      console.log('brews length is not 0!');
-      console.log('brews length: ', this.props.brews[0].results);
-      resultsList = this.props.brews[0].results.map((brew, index) => {
+    if (this.props.archiveBrews.length != 0){
+      console.log('archiveBrews length is not 0!');
+      console.log('archiveBrews length: ', this.props.archiveBrews[0].results);
+      resultsList = this.props.archiveBrews[0].results.map((brew, index) => {
+        const brewId = brew._id;
+        console.log(brewId);
+        const {items} = this.props;
+        const recipeTemplate =  <ViewBrew recipe = {this.props} id = {brewId} />
         return (
-          <div className="item" key={index}>
+          <div className="brewItem" ref={brewId} key={index}>
             <h3>{brew.brewName}</h3>
-            <button
-              className="thumbnail"
-              type="button"
-              id={brew.id}
-            >
-            click to view
-            </button>
+            <input type='hidden' className='brewId' value={brew._id} ref={input => (this.input = input)} />
+            <div className="toggleSection" ref={this.item}>
+                <button data-tip data-for={brewId} data-event='click' onClick={() => {this.handleToolTip(index, brewId)}}>Tooltip</button>
+                <ReactTooltip id={brewId} place="bottom" type='info'>
+                    {recipeTemplate}
+                </ReactTooltip>
+            </div>
           </div>
         );
       });
@@ -72,8 +79,18 @@ export class Brews extends React.Component {
 }
 
 export const mapStateToProps = state => ({
-  brews: state.brews,
-  loading: state.loading
+  archiveBrews: state.archiveBrews,
+  brewName: state.brewName,
+  maltName: state.maltName,
+  maltMeasure: state.maltMeasure,
+  hopsName: state.hopsName,
+  hopsMeasure: state.hopsMeasure,
+  yeastName: state.yeastName,
+  yeastMeasure: state.yeastMeasure,
+  yeastSchedule: state.yeastSchedule,
+  mashSchedule: state.mashSchedule,
+  loading: state.loading,
+  items: state.items
 });
 
 export default connect(mapStateToProps)(Brews);

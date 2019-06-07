@@ -18,7 +18,8 @@ const initialState = {
     mashSchedule: "",
     currentBrew: "",
     keyword: "",
-    brews: [],
+    archiveBrews: [],
+    browserBrews: [],
     results: [],
     items:[],
     abv: ""
@@ -73,7 +74,7 @@ export default function reducer(state = initialState, action) {
     if (action.type === actions.BROWSE) {
         return Object.assign({}, state, {
             loading: false,
-            results: action.brews
+            results: action.browserBrews
         });
     }
     
@@ -111,21 +112,21 @@ export default function reducer(state = initialState, action) {
     
     if (action.type === actions.APPEND_RESULTS) {
         return Object.assign({}, state, {
-            brews: action.payload,
+            browserBrews: action.payload,
             brewName: action.payload.results[0].brewName
         })
     }
     
     if (action.type === actions.APPEND_ARCHIVE) {
         return Object.assign({}, state, {
-            brews: [action.payload]
+            archiveBrews: [action.payload]
         })
     }
     
     if (action.type === actions.CLEAR_RESULTS) {
         return Object.assign({}, state, {
             loading: false,
-            brews: []
+            browserBrews: []
         });
     }
     

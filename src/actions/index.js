@@ -380,6 +380,7 @@ export const getYourBrews = userId => dispatch => {
 }
 
 export const viewRecipe = brewId => dispatch => {
+    console.log(brewId);
     return fetch(`${API_ORIGIN}/brews/viewBrew/${brewId}`, {
         method: 'GET',
         headers: {
@@ -392,6 +393,7 @@ export const viewRecipe = brewId => dispatch => {
     })
     .then(res => {
         const brew = res.data;
+        console.log(res.data)
         dispatch(viewBrew(brew));
         return brew;
     })

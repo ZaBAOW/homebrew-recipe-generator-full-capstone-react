@@ -40,9 +40,10 @@ export class Brews extends React.Component {
         this.setState({hideToolTip: true});
     }
     
-    handleSetActiveSection = (index, id) => {
+    handleSetActiveSection = (index, brewId) => {
         console.log('click');
-        this.handleId(id);
+        console.log(brewId);
+        this.handleId(brewId);
     }
 
     
@@ -82,7 +83,7 @@ export class Brews extends React.Component {
                     <h3>{brew.brewName}</h3>
                     <input type='hidden' className='brewId' value={brew._id} ref={input => (this.input = input)} />
                     <div className="toggleSection" ref={this.item}>
-                        <button data-tip data-for={brewId} data-event='click' onClick={(index, brewId) => {this.handleSetActiveSection(index, brewId)}}>Tooltip</button>
+                        <a data-for={brewId} data-tip="" data-event='click' afterShow = {this.handleSetActiveSection(index, brewId)}>Tooltip</a>
                         <ReactTooltip id={brewId} place="bottom" type='info'>
                             {recipeTemplate}
                         </ReactTooltip>

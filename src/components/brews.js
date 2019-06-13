@@ -69,7 +69,9 @@ export class Brews extends React.Component {
             console.log('newIndex:', newIndex);
             console.log('oldIndex', oldIndex);
             console.log('current index:', index);
-            if(newIndex != oldIndex) {
+            if((newIndex + 1) == resultsList.length) {
+                console.log('finished displaying results');
+            } else if(newIndex != oldIndex) {
                 const brewId = brew._id;
                 console.log(brewId);
                 const {items} = this.props;
@@ -83,8 +85,8 @@ export class Brews extends React.Component {
                     <h3>{brew.brewName}</h3>
                     <input type='hidden' className='brewId' value={brew._id} ref={input => (this.input = input)} />
                     <div className="toggleSection" ref={this.item}>
-                        <a data-for={brewId} data-tip="" data-event='click' afterShow = {this.handleSetActiveSection(index, brewId)}>Tooltip</a>
-                        <ReactTooltip id={brewId} place="bottom" type='info'>
+                        <a data-for={brewId} data-tip="" data-event='click' >Tooltip</a>
+                        <ReactTooltip id={brewId} place="bottom" type='info' afterShow = {() => {this.handleSetActiveSection(index, brewId)}}>
                             {recipeTemplate}
                         </ReactTooltip>
                     </div>
@@ -123,7 +125,9 @@ export class Brews extends React.Component {
 //        );
 //      });
 //    }
-    return <div className="results-list">{resultsList}</div>;
+    return (
+        <div className="results-list">{resultsList}</div>
+    )
   }
 }
 

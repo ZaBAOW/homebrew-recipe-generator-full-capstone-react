@@ -2,7 +2,7 @@ import React from "react";
 import Spinner from "react-spinkit";
 import { connect } from "react-redux";
 import ReactTooltip from 'react-tooltip';
-import { deleteRecipe } from "../actions";
+import { deleteRecipe, viewRecipe } from "../actions";
 import { Redirect } from "react-router-dom";
 import ViewBrew from './brew-viewer';
 
@@ -11,6 +11,11 @@ export class Brews extends React.Component {
 //  deleteRecipe(target) {
 //    this.props.dispatch(deleteRecipe(target.id, this.props.authToken));
 //  }
+    
+    handleId(id) {
+        const brewId = id;
+        this.props.dispatch(viewRecipe(brewId));
+    }
     
     handleToolTip = (index, id) => {
         this.handleId(id);
@@ -38,7 +43,7 @@ export class Brews extends React.Component {
             <h3>{brew.brewName}</h3>
             <input type='hidden' className='brewId' value={brew._id} ref={input => (this.input = input)} />
             <div className="toggleSection" ref={this.item}>
-                <button data-tip data-for={brewId} data-event='click' onClick={() => {this.handleToolTip(index, brewId)}}>Tooltip</button>
+                <a data-for={brewId} data-tip="" data-event='click' afterShow = {this.handleToolTip(index, brewId)}>Tooltip</a>
                 <ReactTooltip id={brewId} place="bottom" type='info'>
                     {recipeTemplate}
                 </ReactTooltip>

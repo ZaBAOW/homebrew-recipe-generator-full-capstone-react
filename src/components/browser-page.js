@@ -11,9 +11,9 @@ import { findDOMNode } from 'react-dom';
 
 export class BrowserPage extends React.Component {
   // Clear the videos list if moving between pages
-  componentDidMount() {
-    clearDropdown(this.refs.brews, this.props.dispatch);
-  }
+//  componentDidMount() {
+//    clearDropdown(this.refs.brews, this.props.dispatch);
+//  }
 
   componentWillUnmount() {
     clearDropdown(this.refs.brews, this.props.dispatch);

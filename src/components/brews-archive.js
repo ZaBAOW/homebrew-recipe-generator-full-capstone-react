@@ -1,8 +1,10 @@
 import React from "react";
 import Spinner from "react-spinkit";
 import { connect } from "react-redux";
+import $ from 'jquery';
 import ReactTooltip from 'react-tooltip';
 import { deleteRecipe, viewRecipe } from "../actions";
+import {findDOMNode} from 'react-dom';
 import { Redirect } from "react-router-dom";
 import ViewBrew from './brew-viewer';
 
@@ -15,6 +17,12 @@ export class Brews extends React.Component {
     handleId(id) {
         const brewId = id;
         this.props.dispatch(viewRecipe(brewId));
+    }
+    
+    showToolTip = (id) => {
+        console.log(id);
+        $('.brewToolTip').attr('data-tip-disable', 'true');
+        document.getElementById(id).setAttribute("data-tip-disable", "false");
     }
     
     handleToolTip = (index, id) => {
@@ -43,8 +51,10 @@ export class Brews extends React.Component {
             <h3>{brew.brewName}</h3>
             <input type='hidden' className='brewId' value={brew._id} ref={input => (this.input = input)} />
             <div className="toggleSection" ref={this.item}>
-                <a data-for={brewId} data-tip="" data-event='click' afterShow = {this.handleToolTip(index, brewId)}>Tooltip</a>
-                <ReactTooltip id={brewId} place="bottom" type='info'>
+                <a id= {brewId} className="brewTooltip" ref={brew.brewName} data-for={brewId} data-tip="" data-tip-disable='true' data-event='click'>Tooltip</a>
+                <button onClick= {() => this.showToolTip(brewId)}
+                >Click to View</button>
+                <ReactTooltip id={brewId} place="bottom" type='info' afterShow = {() => {this.handleToolTip(index, brewId)}}>
                     {recipeTemplate}
                 </ReactTooltip>
             </div>

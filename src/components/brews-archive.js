@@ -8,11 +8,17 @@ import {findDOMNode} from 'react-dom';
 import { Redirect } from "react-router-dom";
 import ViewBrew from './brew-viewer';
 
-export class Brews extends React.Component {
+export class Yourbrews extends React.Component {
 
 //  deleteRecipe(target) {
 //    this.props.dispatch(deleteRecipe(target.id, this.props.authToken));
 //  }
+    constructor () {
+        super()
+        this.state = {
+            archiveBrews: []
+        }
+    }
     
     handleId(id) {
         const brewId = id;
@@ -33,12 +39,13 @@ export class Brews extends React.Component {
 
     let resultsList = [];
     // for rendering search list
-    if (this.props.archiveBrews.length == 0) {
-      console.log('brew prop is undefined')
+    console.log(this.props.archiveBrews);
+    if(this.props.archiveBrews === undefined) {
+        console.log('brew prop is undefined')
+    } else if (this.props.archiveBrews.length == 0) {
+      console.log('brew prop is null')
       console.log(this.props.archiveBrews.length);
-    } 
-    
-    if (this.props.archiveBrews.length != 0){
+    } else {
       console.log('archiveBrews length is not 0!');
       console.log('archiveBrews length: ', this.props.archiveBrews[0].results);
       resultsList = this.props.archiveBrews[0].results.map((brew, index) => {
@@ -108,4 +115,4 @@ export const mapStateToProps = state => ({
   items: state.items
 });
 
-export default connect(mapStateToProps)(Brews);
+export default connect(mapStateToProps)(Yourbrews);

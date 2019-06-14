@@ -1,6 +1,6 @@
 import React from 'react';
 import Nav from "./Nav";
-import Brews from './brews-archive'
+import Yourbrews from './brews-archive'
 import { connect } from  'react-redux';
 
 import { getYourBrews} from "../actions";
@@ -24,7 +24,7 @@ export class Archive extends React.Component {
         return (
             <div>
                 <section className="archive-section">
-                    <Brews />
+                    <Yourbrews />
                 </section>
             </div>
         )

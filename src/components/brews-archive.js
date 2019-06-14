@@ -27,6 +27,7 @@ export class Yourbrews extends React.Component {
     
     showToolTip = (id) => {
         console.log(id);
+        ReactTooltip.hide();
         $('.brewToolTip').attr('data-tip-disable', 'true');
         document.getElementById(id).setAttribute("data-tip-disable", "false");
     }
@@ -57,8 +58,8 @@ export class Yourbrews extends React.Component {
           <div className="brewItem" ref={brewId} key={index}>
             <h3>{brew.brewName}</h3>
             <input type='hidden' className='brewId' value={brew._id} ref={input => (this.input = input)} />
-            <div className="toggleSection" ref={this.item}>
-                <a id= {brewId} className="brewTooltip" ref={brew.brewName} data-for={brewId} data-tip="" data-tip-disable='true' data-event='click'>Tooltip</a>
+            <div className="toggleSection">
+                <a id= {brewId} className="brewTooltip" ref='tooltip' data-for={brewId} data-tip="" data-tip-disable='true' data-event='click'>Tooltip</a>
                 <button onClick= {() => this.showToolTip(brewId)}
                 >Click to View</button>
                 <ReactTooltip id={brewId} place="bottom" type='info' afterShow = {() => {this.handleToolTip(index, brewId)}}>

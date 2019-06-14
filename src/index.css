@@ -66,6 +66,20 @@ h1 {
   width: 500px;
 }
 
+/*archive brew card*/
+.results-list {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-column-gap: 50px;
+    grid-row-gap: 50px;
+}
+
+.brewItem {
+    display: inline-block;
+    border: 1px solid black;
+    text-align: center;
+}
+
 /*brew-creator + brew-viewer css*/
 .brew-form {
     border: 1px solid black;

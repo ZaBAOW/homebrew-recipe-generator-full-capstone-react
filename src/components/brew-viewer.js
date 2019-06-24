@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 
 export default function ViewBrew(props) {
     return (
-        <div id= {props.id} className="recipeView" display="none">
+        <div id= {props.id} className="recipeView">
             <div className="abv" value={props.recipe.brews}></div>
             <div className="hopsName">Hops type: {props.recipe.hopsName}</div>
             <div className="hopsMeasure">Measurement: {props.recipe.hopsMeasure}</div>

@@ -62,10 +62,9 @@ export class App extends Component {
     render() {
         return (
             <Router>
-                <div className='container'>
+                <div className='root-container'>
                     <Route exact path="/dashboard/user" render={() => <Welcome person={this.props.loggedIn} />} />
                     <header>
-                        <h1><Link to="/">Homebrew generator</Link></h1>
                         
                     </header>
                     <Nav />

@@ -26,18 +26,28 @@ export class Yourbrews extends React.Component {
     }
     
     showToolTip = (id) => {
-        console.log(id);
-        ReactTooltip.hide();
-        $('.brewToolTip').attr('data-tip-disable', 'true');
-        document.getElementById(id).setAttribute("data-tip-disable", "false");
+        console.log('showing tooltip...');
+        console.log($("#" + id).parent().find(".brewTooltip"));
+        console.log("#" + id);
+//        ReactTooltip.hide();
+//        $('.brewToolTip').attr('data-tip-disable', 'true');
     }
+
     
-    handleToolTip = (index, id) => {
+    handleToolTip = (index, id, brewName) => {
+        $('.toggleSection').attr('style', 'display: none');
         this.handleId(id);
+        $('#' + brewName).attr('style', 'dipslay: inline-block');
     }
     
   render() {
-
+//    var _ = this;
+//    $('a').on('click', function() {
+//        const anchors = document.getElementsByClassName('brewTooltip');
+//        console.log(anchors);
+//        _.showToolTip(id);
+//    })
+      
     let resultsList = [];
     // for rendering search list
     console.log(this.props.archiveBrews);
@@ -53,23 +63,29 @@ export class Yourbrews extends React.Component {
         const brewId = brew._id;
         console.log(brewId);
         const {items} = this.props;
+        const brewName = brew.brewName;
         const recipeTemplate =  <ViewBrew recipe = {this.props} id = {brewId} />
         return (
           <div className="brewItem" ref={brewId} key={index}>
-            <h3>{brew.brewName}</h3>
+            <h2>{brewName}</h2>
+            <h3>{brew.abv}</h3>
             <input type='hidden' className='brewId' value={brew._id} ref={input => (this.input = input)} />
-            <div className="toggleSection">
-                <a id= {brewId} className="brewTooltip" ref='tooltip' data-for={brewId} data-tip="" data-tip-disable='true' data-event='click'>Tooltip</a>
-                <button onClick= {() => this.showToolTip(brewId)}
-                >Click to View</button>
-                <ReactTooltip id={brewId} place="bottom" type='info' afterShow = {() => {this.handleToolTip(index, brewId)}}>
-                    {recipeTemplate}
-                </ReactTooltip>
+            <button type='button' onClick={() => {this.handleToolTip(index,brewId, brewName)}}>View Recipe</button>
+            <div style={{display: 'none'}} id={brewName} className="toggleSection">
+                {recipeTemplate}
             </div>
           </div>
         );
       });
     }
+
+//                <a id= {brewId} className="brewTooltip" ref={brewId} data-for={brewId} data-tip="" data-tip-disable="false" data-event="click">tooltip</a>
+//                <ReactTooltip id={brewId} place="bottom" type='info' afterShow = {() => {this.handleToolTip(index, brewId)}}>
+//                    {recipeTemplate}
+//                </ReactTooltip>
+    
+//    <button className="" onClick= {() => this.showToolTip(brewId)}
+//                >Click to View</button>
 
     // for rendering watchlist
 //    if (this.props.watchlist.length > 0) {

@@ -28,6 +28,10 @@ h1 {
     position: fixed;
 }
 
+.navbar-collapse a {
+    text-align: center;
+}
+
 .navbar-brand {
     font-size: 24px
 }
@@ -63,7 +67,15 @@ h1 {
 
 /*browsing page*/
 .searchInput {
-  width: 500px;
+  width: 300px;
+}
+
+.search-brew {
+    border: 1px solid black;
+}
+
+.brew-outer {
+    margin-top: 10px;
 }
 
 /*archive brew card*/
@@ -94,6 +106,12 @@ h1 {
 .container {
     padding-left: 50px;
     padding-right: 50px;
+}
+
+.root-container {
+    padding-left: 50px;
+    padding-right: 50px;
+    margin-top: 50px;
 }
 
 .brew-name-section {

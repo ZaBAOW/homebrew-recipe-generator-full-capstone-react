@@ -25,12 +25,13 @@ export class Nav extends React.Component {
                     <div className="navbar-header">
                     </div>
                     <div className="collapse navbar-collapse" id="navbar-ex-collapse">
+                      <a href="/">Homebrew generator</a>
                       <ul className="nav navbar-nav navbar-right">
                         <li>
-                          <Link to="/browser">Browse</Link>
+                          <Link to="/browser" className="browser-link">Browse</Link>
                         </li>
                         <li>
-                          <Link to="/dashboard">Dashboard</Link>
+                          <Link to="/dashboard" className="dashboard-link">Dashboard</Link>
                         </li>
                         <Link to="/auth/login" className="logoutButton" onClick={() => this.logOut()}>Logout</Link>
                       </ul>

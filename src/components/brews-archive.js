@@ -24,14 +24,6 @@ export class Yourbrews extends React.Component {
         const brewId = id;
         this.props.dispatch(viewRecipe(brewId));
     }
-    
-    showToolTip = (id) => {
-        console.log('showing tooltip...');
-        console.log($("#" + id).parent().find(".brewTooltip"));
-        console.log("#" + id);
-//        ReactTooltip.hide();
-//        $('.brewToolTip').attr('data-tip-disable', 'true');
-    }
 
     
     handleToolTip = (index, id, brewName) => {
@@ -41,12 +33,6 @@ export class Yourbrews extends React.Component {
     }
     
   render() {
-//    var _ = this;
-//    $('a').on('click', function() {
-//        const anchors = document.getElementsByClassName('brewTooltip');
-//        console.log(anchors);
-//        _.showToolTip(id);
-//    })
       
     let resultsList = [];
     // for rendering search list
@@ -78,14 +64,7 @@ export class Yourbrews extends React.Component {
         );
       });
     }
-
-//                <a id= {brewId} className="brewTooltip" ref={brewId} data-for={brewId} data-tip="" data-tip-disable="false" data-event="click">tooltip</a>
-//                <ReactTooltip id={brewId} place="bottom" type='info' afterShow = {() => {this.handleToolTip(index, brewId)}}>
-//                    {recipeTemplate}
-//                </ReactTooltip>
     
-//    <button className="" onClick= {() => this.showToolTip(brewId)}
-//                >Click to View</button>
 
     // for rendering watchlist
 //    if (this.props.watchlist.length > 0) {

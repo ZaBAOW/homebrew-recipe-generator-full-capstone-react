@@ -2,6 +2,7 @@ import React from 'react';
 import Nav from "./Nav";
 import Yourbrews from './brews-archive'
 import { connect } from  'react-redux';
+import $ from  'jquery';
 
 import { getYourBrews} from "../actions";
 
@@ -20,12 +21,17 @@ export class Archive extends React.Component {
         this.props.dispatch(getYourBrews(userId));
     }
     
+    handleHide = () => {
+        $('.toggleSection').attr('style', 'display: none');
+    }
+    
     render() {
         return (
             <div>
                 <section className="archive-section">
                     <Yourbrews />
                 </section>
+                <button className='hide-all' onClick={() => this.handleHide()}>Hide Recipes</button>
             </div>
         )
     }

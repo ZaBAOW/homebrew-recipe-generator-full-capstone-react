@@ -12,10 +12,6 @@ import ViewBrew from './brew-viewer';
 
 
 export class Brews extends React.Component {
-
-//  deleteRecipe(target) {
-//    this.props.dispatch(deleteRecipe(target.id, this.props.authToken));
-//  }
     
     constructor () {
         super()
@@ -83,7 +79,8 @@ export class Brews extends React.Component {
                 const popoverClass = 'recipe-popoup-'+brew.brewName;
                 return (
                   <div className="brewItem" key={index}>
-                    <h3>{brewName}</h3>
+                    <h2>{brewName}</h2>
+                    <h3>{brew.abv}</h3>
                     <input type='hidden' className='brewId' value={brew._id} ref={input => (this.input = input)} />
                     <button type='button' onClick={() => {this.handleToolTip(index,brewId, brewName)}}>View Recipe</button>
                     <div style={{display: 'none'}} id={brewName} className="toggleSection">
@@ -96,34 +93,6 @@ export class Brews extends React.Component {
           });
         }
     } 
-
-
-    // for rendering watchlist
-//    if (this.props.watchlist.length > 0) {
-//      videoGallery = this.props.watchlist.map((video, index) => {
-//        return (
-//          <div className="item" key={index}>
-//            <h3>{video.title}</h3>
-//            <button
-//              type="button"
-//              id={video._id}
-//              className="remove-btn"
-//              onClick={e => this.deleteVideo(e.currentTarget)}
-//            >
-//              Remove
-//            </button>
-//            <button
-//              className="thumbnail"
-//              type="button"
-//              id={video.videoID}
-//              onClick={e => this.playVideo(e.currentTarget, "watchlist")}
-//            >
-//              <img src={video.thumbnail} alt={video.title} />
-//            </button>
-//          </div>
-//        );
-//      });
-//    }
     return (
         <div className="results-list">{resultsList}</div>
     )

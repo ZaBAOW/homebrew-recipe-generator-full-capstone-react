@@ -22,6 +22,10 @@ export class BrowserPage extends React.Component {
   onSearch(keyword) {
     this.props.dispatch(browseBrews(keyword));
   }
+    
+  handleHide = () => {
+        $('.toggleSection').attr('style', 'display: none');
+  }
 
   render() {
     return (
@@ -36,6 +40,7 @@ export class BrowserPage extends React.Component {
             <Brews />
           </div>
         </section>
+        <button className='hide-all' onClick={() => this.handleHide()}>Hide Recipes</button>
       </div>
     );
   }

@@ -40,18 +40,12 @@ export class Brews extends React.Component {
         this.setState({hideToolTip: true});
     }
 
-    showToolTip = (id) => {
-        console.log(id);
-        $('.brewToolTip').attr('data-tip-disable', 'true');
-        document.getElementById(id).setAttribute("data-tip-disable", "false");
-    }
-    
-    handleSetActiveSection = (index, brewId) => {
+    handleToolTip = (index, id, brewName) => {
         console.log('click');
-        console.log(brewId);
-        this.handleId(brewId);
+        $('.toggleSection').attr('style', 'display: none');
+        this.handleId(id);
+        $('#' + brewName).attr('style', 'dipslay: inline-block');
     }
-
     
   render() {
 
@@ -79,6 +73,7 @@ export class Brews extends React.Component {
                 console.log('finished displaying results');
             } else if(newIndex != oldIndex) {
                 const brewId = brew._id;
+                const brewName = brew.brewName;
                 console.log(brewId);
                 const {items} = this.props;
                 console.log('conditional passed');
@@ -88,15 +83,11 @@ export class Brews extends React.Component {
                 const popoverClass = 'recipe-popoup-'+brew.brewName;
                 return (
                   <div className="brewItem" key={index}>
-                    <h3>{brew.brewName}</h3>
+                    <h3>{brewName}</h3>
                     <input type='hidden' className='brewId' value={brew._id} ref={input => (this.input = input)} />
-                    <div className="toggleSection" ref={this.item}>
-                        <a id= {brewId} data-for={brewId} className="brewTooltip" data-tip-disable='true' data-tip="" data-event='click' >Tooltip</a>
-                        <button onClick= {() => this.showToolTip(brewId)}
-                        >Click to View</button>
-                        <ReactTooltip id={brewId} place="bottom" type='info' afterShow = {() => {this.handleSetActiveSection(index, brewId)}}>
-                            {recipeTemplate}
-                        </ReactTooltip>
+                    <button type='button' onClick={() => {this.handleToolTip(index,brewId, brewName)}}>View Recipe</button>
+                    <div style={{display: 'none'}} id={brewName} className="toggleSection">
+                        {recipeTemplate}
                     </div>
                   </div>
                 );

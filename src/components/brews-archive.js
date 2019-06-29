@@ -53,8 +53,8 @@ export class Yourbrews extends React.Component {
         const recipeTemplate =  <ViewBrew recipe = {this.props} id = {brewId} />
         return (
           <div className="brewItem" ref={brewId} key={index}>
-            <h2>{brewName}</h2>
-            <h3>{brew.abv}</h3>
+            <h2>Brew Name: {brewName}</h2>
+            <h3>%abv: {brew.abv}</h3>
             <input type='hidden' className='brewId' value={brew._id} ref={input => (this.input = input)} />
             <button type='button' onClick={() => {this.handleToolTip(index,brewId, brewName)}}>View Recipe</button>
             <div style={{display: 'none'}} id={brewName} className="toggleSection">

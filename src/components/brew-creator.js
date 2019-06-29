@@ -43,10 +43,10 @@ export class Creator extends React.Component {
                 <div className="row">
                   <div className="col-md-12">
                     <div className="brew-name-section">Brew Title:
-                      <input type="text" className="brewName" ref={input => (this.brewName = input)}></input>
+                      <input type="text" placeholder="Name of your Brew" className="brewName" ref={input => (this.brewName = input)}></input>
                     </div>
                    <div className="abv-section">%abv:
-                      <input type="text" className="abv" ref={input => (this.abv = input)}></input>
+                      <input type="text" placeholder="% alcohol by volume" className="abv" ref={input => (this.abv = input)}></input>
                     </div>
                     <div className="malt-section"><p>Malts:</p>
                       <div className="maltName">Malt Types:

@@ -31,7 +31,7 @@ export class BrowserPage extends React.Component {
     return (
       <div>
         <section className="form-search">
-          <h2>Search</h2>
+          <h2 class="browser-page-header color-primary-5">Search</h2>
           <Browser
             placeholder="Search by brew name"
             onSearch={keyword => this.onSearch(keyword)}
@@ -41,6 +41,9 @@ export class BrowserPage extends React.Component {
           </div>
         </section>
         <button className='hide-all' onClick={() => this.handleHide()}>Hide Recipes</button>
+        <span className="tooltip">&#10068;
+                <span className="tooltiptext tooltip-bottom">click this button to close any and all open recipes</span>
+            </span>
       </div>
     );
   }

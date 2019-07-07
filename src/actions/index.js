@@ -431,7 +431,16 @@ export const submitRecipe = (brew, userID, token) => dispatch => {
         hopsMeasure: brew.hopsMeasure,
         mashSchedule: brew.mashSchedule
     };
-    
+    const checkArray = Object.values(brewObj);
+    console.log(checkArray);
+    console.log(checkArray[0]);
+    for(var i = 0; i <= checkArray.length; i++) {
+        console.log(checkArray[i]);
+        if(checkArray[i] === "") {
+            console.log([i]);
+            return alert('A field was left blank!');
+        }
+    }
     const userBrew = { brew: brewObj, id: userID};
     console.log('userbrew: ', userBrew);
     dispatch(request());

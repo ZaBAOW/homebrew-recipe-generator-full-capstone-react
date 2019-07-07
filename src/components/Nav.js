@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from "react-redux";
 import { logOut, logoutUser } from "../actions";
+import Logo from '../images/homebrew-generator-logo.png';
 //import './nav.css';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
@@ -20,12 +21,13 @@ export class Nav extends React.Component {
     render() {
         if(this.props.loggedIn) {
             return (
-                <div className="navbar navbar-default navbar-static-top">
+                <div className="navbar navbar-default navbar-static-top color-bgprimary-2">
                   <div className="container">
                     <div className="navbar-header">
                     </div>
                     <div className="collapse navbar-collapse" id="navbar-ex-collapse">
-                      <a href="/">Homebrew generator</a>
+                      <img src={Logo} className='logo'></img>
+                      <a href="/" className='home-link'>Homebrew generator</a>
                       <ul className="nav navbar-nav navbar-right">
                         <li>
                           <Link to="/browser" className="browser-link">Browse</Link>
@@ -43,17 +45,19 @@ export class Nav extends React.Component {
     
         if(!this.props.loggedIn) {
             return (
-                <div className="navbar navbar-default navbar-static-top">
+                <div className="navbar navbar-default navbar-static-top color-bgprimary-2">
                   <div className="container">
                     <div className="navbar-header">
                     </div>
                     <div className="collapse navbar-collapse" id="navbar-ex-collapse">
+                      <img src={Logo} className='logo'></img>
+                      <a href="/" className='home-link color-primary-4'>Homebrew generator</a>
                       <ul className="nav navbar-nav navbar-right">
                         <li>
-                          <Link to="/browser">Browse</Link>
+                          <Link to="/browser" className='color-primary-4'>Browse</Link>
                         </li>
                         <li>
-                          <Link to="/auth/login">Login</Link>
+                          <Link to="/auth/login" className='color-primary-4'>Login</Link>
                         </li>
                       </ul>
                     </div>

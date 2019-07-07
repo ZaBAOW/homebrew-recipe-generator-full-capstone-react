@@ -35,28 +35,13 @@ export class Login extends React.Component {
         }
         
         return(
-            <form className="form-horizontal" role="form" onSubmit={this.onSubmit}>
-              <div className="form-group">
-                <div className="col-sm-2">
-                  <label htmlFor="inputEmail3" className="control-label">Email</label>
-                </div>
-                <div className="col-sm-10">
-                  <input type="username" className="form-control" id="inputUsername" placeholder="Username" ref={input => (this.username = input)}></input>
-                </div>
-              </div>
-              <div className="form-group">
-                <div className="col-sm-2">
-                  <label htmlFor="inputPassword3" className="control-label" >Password</label>
-                </div>
-                <div className="col-sm-10">
-                  <input type="password" className="form-control" id="loginPassword3" placeholder="Password" ref={input => (this.password = input)}></input>
-                </div>
-              </div>
-              <div className="form-group">
-                <div className="col-sm-offset-2 col-sm-10">
-                  <button type="submit" className="btn btn-default">Log In</button>
-                </div>
-              </div>
+            <form className="form-horizontal" id='login-form' role="form" onSubmit={this.onSubmit}>
+              <h2 className="login-head color-primary-5">Login</h2>
+              <label htmlFor="inputEmail3" className="control-label color-primary-5">Username</label>
+              <input type="username" className="form-control" id="inputUsername" placeholder="myUsername" ref={input => (this.username = input)}></input>
+              <label htmlFor="inputPassword3" className="control-label color-primary-5" >Password</label>
+              <input type="password" className="form-control" id="loginPassword3" placeholder="myPassword" ref={input => (this.password = input)}></input>
+              <button type="submit" className="login-btn">Log In</button>
             </form>
         )
     }

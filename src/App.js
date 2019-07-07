@@ -62,7 +62,7 @@ export class App extends Component {
     render() {
         return (
             <Router>
-                <div className='root-container'>
+                <div className='root-container color-bgprimary-5'>
                     <Route exact path="/dashboard/user" render={() => <Welcome person={this.props.loggedIn} />} />
                     <header>
                         

@@ -23,10 +23,10 @@ export class Signup extends React.Component {
     
     render() {
         return(
-            <form className="form-horizontal" role="form" onSubmit={this.onSubmit}>
+            <form className="form-horizontal sign-up" role="form" onSubmit={this.onSubmit}>
               <div className="form-group">
                 <div className="col-sm-2">
-                  <label htmlFor="inputEmail3" className="control-label">Username</label>
+                  <label htmlFor="inputEmail3" className="control-label color-primary-5">Username</label>
                 </div>
                 <div className="col-sm-10">
                   <input type="username" className="form-control" id="signupUsername" placeholder="Username" ref={input => (this.username = input)}></input>
@@ -34,7 +34,7 @@ export class Signup extends React.Component {
               </div>
               <div className="form-group">
                 <div className="col-sm-2">
-                  <label htmlFor="inputPassword3" className="control-label">Password</label>
+                  <label htmlFor="inputPassword3" className="control-label color-primary-5">Password</label>
                 </div>
                 <div className="col-sm-10">
                   <input type="password" className="form-control" id="singupPassword3" placeholder="Password" ref={input => (this.password = input)}></input>

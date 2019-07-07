@@ -32,6 +32,9 @@ export default class Browser extends React.Component {
              <div className="search-bar text-center">
               <input type="text" className="searchInput" placeholder="type keywords to search for a brew" ref={input => (this.textInput = input)} />
               <button className="search">Search</button>
+              <span className="tooltip">&#10068;
+                    <span className="tooltiptext tooltip-bottom">Search for a brew recipe either by inputting part of or the entire name of a brew.  The more specific the search the more accurate the search results will be.  The browser is caps sensitive so make sure to use correctly capatalize the search input.</span>
+                  </span>
             </div>
           </form>
         );

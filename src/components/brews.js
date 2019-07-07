@@ -78,11 +78,11 @@ export class Brews extends React.Component {
                 console.log(recipeTemplate);
                 const popoverClass = 'recipe-popoup-'+brew.brewName;
                 return (
-                  <div className="brewItem" key={index}>
+                  <div className="brewItem color-bgsecondary-1-2" key={index}>
                     <h2>Brew Name: {brewName}</h2>
                     <h3>%abv: {brew.abv}</h3>
                     <input type='hidden' className='brewId' value={brew._id} ref={input => (this.input = input)} />
-                    <button type='button' onClick={() => {this.handleToolTip(index,brewId, brewName)}}>View Recipe</button>
+                    <button type='button' className="view-button" onClick={() => {this.handleToolTip(index,brewId, brewName)}}>View Recipe</button>
                     <div style={{display: 'none'}} id={brewName} className="toggleSection">
                         {recipeTemplate}
                     </div>

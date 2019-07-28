@@ -31,7 +31,7 @@ export class BrowserPage extends React.Component {
     return (
       <div>
         <section className="form-search">
-          <h2 class="browser-page-header color-primary-5">Search</h2>
+          <label for="searchbar" className="color-primary-5">Search</label>
           <Browser
             placeholder="Search by brew name"
             onSearch={keyword => this.onSearch(keyword)}

@@ -10,7 +10,7 @@ export default function Landing() {
             <div className="row">
               <div className="col-md-6">
                 <h1 className="color-primary-5">Welcome to the Homebrew Generator</h1>
-                <h3 className="color-primary-5">The What!?</h3>
+                <h2 className="color-primary-5">The What!?</h2>
                 <p className="color-primary-5">The Homebrew Generator is a tool that allows homebrewers like YOU and
                   many others that participate in the hobby of homebrewing to create and
                   share recipes with one another.

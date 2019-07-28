@@ -235,7 +235,7 @@ textarea {
     border: 1px solid black;
 }
 
-.yeastSchedule-view {
+.yeastSchedule-view{
     max-width: 400px;
     margin-bottom: 10px;
 }
@@ -263,7 +263,7 @@ textarea {
 }
 
 .mashSchedule {
-    max-width: 400px
+    max-width: 400px;
 }
 
 .mashTextarea {
@@ -276,6 +276,8 @@ textarea {
     margin-left: 15px;
     margin-right: 15px;
     margin-top: 10px;
+    width: auto;
+    overflow: auto;
 }
 
 .submit-button {
@@ -466,4 +468,21 @@ footer {
 .tooltip:hover .tooltiptext {
   visibility: visible;
   opacity: 1;
+}
+
+
+@media only screen and (max-width: 1024px) {
+    
+}
+
+@media only screen and (max-width: 768px) {
+    
+}
+
+@media only screen and (max-width: 480px) {
+    
+}
+
+@media only screen and (max-width: 320px) {
+    
 }

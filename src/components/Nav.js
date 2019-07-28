@@ -21,21 +21,23 @@ export class Nav extends React.Component {
     render() {
         if(this.props.loggedIn) {
             return (
-                <div className="navbar navbar-default navbar-static-top color-bgprimary-2">
+                <div role="navigation" className="navbar navbar-default navbar-static-top color-bgprimary-2">
                   <div className="container">
                     <div className="navbar-header">
                     </div>
                     <div className="collapse navbar-collapse" id="navbar-ex-collapse">
-                      <img src={Logo} className='logo'></img>
+                      <img src={Logo} role="img" alt="homebrew logo" className='logo'></img>
                       <a href="/" className='home-link'>Homebrew generator</a>
                       <ul className="nav navbar-nav navbar-right">
                         <li>
-                          <Link to="/browser" className="browser-link">Browse</Link>
+                          <Link to="/browser" role="link" className="browser-link">Browse</Link>
                         </li>
                         <li>
-                          <Link to="/dashboard" className="dashboard-link">Dashboard</Link>
+                          <Link to="/dashboard" role="link" className="dashboard-link">Dashboard</Link>
                         </li>
-                        <Link to="/auth/login" className="logoutButton" onClick={() => this.logOut()}>Logout</Link>
+                        <li>
+                          <Link to="/auth/login" role="link" className="logoutButton" onClick={() => this.logOut()}>Logout</Link>
+                        </li>
                       </ul>
                     </div>
                   </div>
@@ -50,14 +52,14 @@ export class Nav extends React.Component {
                     <div className="navbar-header">
                     </div>
                     <div className="collapse navbar-collapse" id="navbar-ex-collapse">
-                      <img src={Logo} className='logo'></img>
-                      <a href="/" className='home-link color-primary-4'>Homebrew generator</a>
+                      <img src={Logo} role="img" alt="homebrew logo" className='logo'></img>
+                      <a href="/"  role="link" className='home-link color-primary-4'>Homebrew generator</a>
                       <ul className="nav navbar-nav navbar-right">
                         <li>
-                          <Link to="/browser" className='color-primary-4'>Browse</Link>
+                          <Link to="/browser" role="link" className='color-primary-4'>Browse</Link>
                         </li>
                         <li>
-                          <Link to="/auth/login" className='color-primary-4'>Login</Link>
+                          <Link to="/auth/login" role="link" className='color-primary-4'>Login</Link>
                         </li>
                       </ul>
                     </div>

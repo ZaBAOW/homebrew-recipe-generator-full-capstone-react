@@ -393,7 +393,7 @@ export const viewRecipe = brewId => dispatch => {
     })
     .then(res => {
         const brew = res.data;
-        console.log(res.data)
+        console.log('data to be sent to reducer: ', res.data)
         dispatch(viewBrew(brew));
         return brew;
     })
@@ -460,6 +460,7 @@ export const submitRecipe = (brew, userID, token) => dispatch => {
     })
     .then(res => {
         console.log(res);
+        alert('Congrats, you just posted a recipe to the database!!!')
         dispatch(addedToDatabase(res));
     })
     .catch(err => {

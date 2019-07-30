@@ -56,10 +56,10 @@ export class Nav extends React.Component {
                       <a href="/"  role="link" className='home-link color-primary-4'>Homebrew generator</a>
                       <ul className="nav navbar-nav navbar-right">
                         <li>
-                          <Link to="/browser" role="link" className='color-primary-4'>Browse</Link>
+                          <Link to="/browser" role="link" className='browser-link color-primary-4'>Browse</Link>
                         </li>
                         <li>
-                          <Link to="/auth/login" role="link" className='color-primary-4'>Login</Link>
+                          <Link to="/auth/login" role="link" className='login-link color-primary-4'>Login</Link>
                         </li>
                       </ul>
                     </div>

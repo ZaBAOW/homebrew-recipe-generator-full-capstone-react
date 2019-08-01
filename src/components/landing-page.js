@@ -37,7 +37,7 @@ export default function Landing() {
             <div className="row">
               <div className="col-md-12 color-primary-5">
                 <h1>Browse HUNDREDS of homebrew recipes</h1>
-                <p>talk about the homebrew browsing system.</p>
+                <p>Explore the brew recipe database created by other users and hombrewers like you.  Find a recipe you find intriguing and try it out yourself.</p>
               </div>
             </div>
           </div>

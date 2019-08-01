@@ -64,34 +64,6 @@ export class Yourbrews extends React.Component {
         );
       });
     }
-    
-
-    // for rendering watchlist
-//    if (this.props.watchlist.length > 0) {
-//      videoGallery = this.props.watchlist.map((video, index) => {
-//        return (
-//          <div className="item" key={index}>
-//            <h3>{video.title}</h3>
-//            <button
-//              type="button"
-//              id={video._id}
-//              className="remove-btn"
-//              onClick={e => this.deleteVideo(e.currentTarget)}
-//            >
-//              Remove
-//            </button>
-//            <button
-//              className="thumbnail"
-//              type="button"
-//              id={video.videoID}
-//              onClick={e => this.playVideo(e.currentTarget, "watchlist")}
-//            >
-//              <img src={video.thumbnail} alt={video.title} />
-//            </button>
-//          </div>
-//        );
-//      });
-//    }
     return <div className="results-list">{resultsList}</div>;
   }
 }

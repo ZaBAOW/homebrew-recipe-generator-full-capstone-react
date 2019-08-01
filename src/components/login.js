@@ -36,6 +36,9 @@ export class Login extends React.Component {
         
         return(
             <form className="form-horizontal" id='login-form' role="form" onSubmit={this.onSubmit}>
+              <span className="tooltip">&#10068;
+                <span className="tooltiptext tooltip-bottom">For demo purposes input username: zebra and password: willyb1234</span>
+              </span>
               <h2 className="login-head color-primary-5">Login</h2>
               <label htmlFor="inputEmail3" for="loginUsername" className="control-label color-primary-5">Username</label>
               <input type="username" className="form-control" id="loginUsername" placeholder="myUsername" ref={input => (this.username = input)}></input>

@@ -111,6 +111,7 @@ h1 {
 /*archive brew card*/
 .results-list {
     display: grid;
+    grid-template-columns: auto auto auto;
     grid-column-gap: 50px;
     grid-row-gap: 50px;
 }
@@ -474,7 +475,9 @@ footer {
 
 
 @media only screen and (max-width: 1024px) {
-    
+    .results-list {
+        grid-template-columns: auto auto
+    }
 }
 
 @media only screen and (max-width: 768px) {
@@ -517,6 +520,15 @@ footer {
     .dashSelect {
         padding-top: 0%;
     }
+    
+    .home-link {
+        vertical-align: middle;
+    }
+    
+    .logo {
+        vertical-align: middle;
+    }
+    
 }
 
 @media only screen and (max-width: 480px) {

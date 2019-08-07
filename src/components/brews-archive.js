@@ -64,7 +64,8 @@ export class Yourbrews extends React.Component {
         );
       });
     }
-    return <div className="results-list">{resultsList}</div>;
+    return <div className="results-list">{resultsList}</div>
+    <button className='hide-all' onClick={() => this.handleHide()}>Hide Recipes</button>
   }
 }
 

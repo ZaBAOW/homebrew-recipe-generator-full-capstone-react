@@ -33,16 +33,14 @@ export default function reducer(state = initialState, action) {
     }
     
     if (action.type === actions.SIGN_UP) {
-        const newUser = actions.signUp;
-        console.log(newUser);
+        const newUser = action.user;
         return Object.assign({}, state, {
             error: null,
-            user: action.users
+            user: action.user
         })
     }
     
     if (action.type === actions.LOG_USER) {
-        console.log(action.user);
         return Object.assign({}, state, {
             error: null,
             loading: false,
@@ -51,10 +49,11 @@ export default function reducer(state = initialState, action) {
     }
     
     if (action.type === actions.LOG_IN_LIST) {
+        console.log(action.users)
         return Object.assign({}, state,  {
             error: null,
             loading: false,
-            loggedUsers: action.user
+            loggedUsers: action.users
         });
     }
     

@@ -196,7 +196,7 @@ export const logSession = user => dispatch => {
 
 // User signup
 export const signupUser = user => dispatch => {
-    dispatch(signUp());
+    dispatch(signUp(user));
     fetch(`${API_ORIGIN}/users`, {
         method: "POST",
         headers: {

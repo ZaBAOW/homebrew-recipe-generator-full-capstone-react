@@ -49,11 +49,6 @@ export class Login extends React.Component {
         )
     }
 }
-//
-//export default reduxForm({
-//    form: 'login',
-//    onSubmitFail: (errors, dispatch) => dispatch(focus('login', 'username'))
-//})(Login);
 
 export const mapStateToProps = state => ({
     loggedIn: state.user,

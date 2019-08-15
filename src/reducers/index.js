@@ -93,7 +93,7 @@ export default function reducer(state = initialState, action) {
         })
     }
     
-        if (action.type === actions.CLEAR_RECIPE) {
+    if (action.type === actions.CLEAR_RECIPE) {
         console.log('inserting data into props');
         console.log(action.brew.brew[0].brewName);
         return Object.assign({}, state, {
@@ -130,13 +130,13 @@ export default function reducer(state = initialState, action) {
         });
     }
     
-    if (action.type === actions.SELECT_BREW) {
-        return Object.assign({}, state, {
-            brew: action.brew,
-            brewId: action.brewId,
-            loading: false
-        });
-    }
+//    if (action.type === actions.SELECT_BREW) {
+//        return Object.assign({}, state, {
+//            brew: action.brew,
+//            brewId: action.brewId,
+//            loading: false
+//        });
+//    }
     
     if (action.type === actions.SUBMIT_BREW) {
         return Object.assign({} , state, {

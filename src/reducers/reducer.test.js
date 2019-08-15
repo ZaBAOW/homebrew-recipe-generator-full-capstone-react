@@ -4,7 +4,9 @@ import {
     signUp,
     logUser,
     logIn,
-    logOut
+    logOut,
+    appendResults,
+    appendArchive
 } from '../actions';
 
 describe('Reducer', () => {
@@ -46,5 +48,19 @@ describe('Reducer', () => {
         expect(myState.user).toEqual(null);
         expect(myState.archive).toEqual([]);
         expect(myState.loggedUsers).toEqual([]);
+    });
+    
+    it('Should return brews to be shown in results', () => {
+        let results = [{"password": "willyb4321", "username": "zebra1"}, {"password": "willyb4321", "username": "zebra2"}];
+        
+        const myState = reducer(undefined, appendResults(results));
+        expect(myState.browserBrews.results).toEqual(results);
+    });
+    
+    it('Should return user archive', () => {
+        let userBrews = [{"password": "willyb4321", "username": "zebra1", userId: 12345678}, {"password": "willyb4321", "username": "zebra2", userId: 12345678}];
+        
+        const myState = reducer(undefined, appendArchive(userBrews));
+        expect(myState.archiveBrews[0].results).toEqual(userBrews);
     });
 });

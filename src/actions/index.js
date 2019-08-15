@@ -115,11 +115,7 @@ export const browse = brews => ({
     type: BROWSE,
     brews
 });
-//
-//export const appendResults = results => ({
-//    type: APPEND_RESULTS,
-//    results
-//});
+
 export const appendResults = results => ({
         type: APPEND_RESULTS,
         payload: {results}

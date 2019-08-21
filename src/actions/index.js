@@ -193,7 +193,6 @@ export const logSession = user => dispatch => {
 
 // User signup
 export const signupUser = user => dispatch => {
-    dispatch(signUp(user));
     fetch(`${API_ORIGIN}/users`, {
         method: "POST",
         headers: {
@@ -216,11 +215,13 @@ export const signupUser = user => dispatch => {
     })
     .then(authToken => {
         alert('you are all signed up!!!');
+        dispatch(signUp(user));
         return storeAuthInfo(authToken.token, dispatch);
     })
     .catch(err => {
 //        dispatch(fetchErr(err));
         console.log(err);
+        return;
     })
 };
 

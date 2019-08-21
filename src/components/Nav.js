@@ -13,13 +13,14 @@ export class Nav extends React.Component {
     
     logOut() {
         console.log(this.props.user);
+        console.log(this.props.loggedIn);
         this.props.dispatch(logoutUser(this.props.user));
         this.props.dispatch(logOut());
     }
     
     
     render() {
-        if(this.props.loggedIn) {
+        if(this.props.loggedIn || this.props.loggedIn != null) {
             return (
                 <div role="navigation" className="navbar navbar-default navbar-static-top color-bgprimary-2">
                   <div className="container">

@@ -5,6 +5,7 @@
     padding: 0;
     border: 0;
     font-size: 100%;
+    font-family: "Lucida Console", Monaco, monospace;
 }
 
 #root {
@@ -38,6 +39,23 @@ h1 {
 
 .home-link {
     font-size: 32px;
+    text-decoration: none;
+}
+
+.browser-link {
+    text-decoration: none;
+}
+
+.dashboard-link {
+    text-decoration: none;
+}
+
+.logoutButton {
+    text-decoration: none;
+}
+
+.login-link {
+    text-decoration: none;
 }
 
 .navbar-collapse a {
@@ -86,6 +104,17 @@ h1 {
     max-width: 407px;
     margin-left: 0px;
     background-color: grey;
+}
+
+.signup-btn {
+    position: relative;
+    margin-right: auto;
+    display: block;
+    margin-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 /*browsing page*/
@@ -304,8 +333,8 @@ textarea {
 .dashboard-section {
     display: grid;
     position: relative;
-    background-color: chocolate;
     margin-top: 75px;
+    background-size: cover;
 }
 
 .grid-container {
@@ -339,16 +368,22 @@ textarea {
     text-align: center;
     width: 400px;
     position: relative;
+    margin-right: 30%;
 }
 
 .dashSelect {
     width: 100%;
-    padding-top: 10%
+    padding-top: 10%;
 }
 
 .dashSelect a {
     display: block;
     padding-bottom: 10px;
+    text-decoration: none;
+    color: black;
+    border: 1px solid black;
+    border-radius: 5px;
+    margin-top: 20px;
 }
 
 /*Footer css*/
@@ -471,6 +506,19 @@ footer {
 .tooltip:hover .tooltiptext {
   visibility: visible;
   opacity: 1;
+}
+
+/*footer*/
+
+.contact-info {
+    display: inline-block;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.contact-info a {
+    font-size: 36px;
+    color: #87a20c;
 }
 
 

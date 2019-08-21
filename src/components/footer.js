@@ -6,34 +6,23 @@ export default function Footer(props) {
     return (
         <footer className="section section-primary color-bgsecondary-2-2">
           <div className="container">
-            <div className="row">
-              <div className="col-sm-6">
-                <h1 className="color-secondary-2-4">Footer header</h1>
-                    <p className="color-secondary-2-4">This is the page footer</p>
-              </div>
-              <div className="col-sm-6">
-                <p className="text-info text-right">
-                  <br />
-                  <br />
-                </p>
-                <div className="row">
-                  <div className="col-md-12 hidden-lg hidden-md hidden-sm text-left">
-                    <Link to="#"><i className="fa fa-3x fa-fw fa-instagram text-inverse"></i></Link>
-                    <Link to="#"><i className="fa fa-3x fa-fw fa-twitter text-inverse"></i></Link>
-                    <Link to="#"><i className="fa fa-3x fa-fw fa-facebook text-inverse"></i></Link>
-                    <Link to="#"><i className="fa fa-3x fa-fw fa-github text-inverse"></i></Link>
-                  </div>
-                </div>
-                <div className="row">
-                  <div className="col-md-12 hidden-xs text-right">
-                    <Link to="#"><i className="fa fa-3x fa-fw fa-instagram text-inverse"></i></Link>
-                    <Link to="#"><i className="fa fa-3x fa-fw fa-twitter text-inverse"></i></Link>
-                    <Link to="#"><i className="fa fa-3x fa-fw fa-facebook text-inverse"></i></Link>
-                    <Link to="#"><i className="fa fa-3x fa-fw fa-github text-inverse"></i></Link>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <ul>
+                <li class="contact-info">
+                    <a href="mailto:amkadesky@aol.com?subject=Hello" target="_blank" aria-label="Email Andrew">
+                    <i aria-hidden="" class="fas fa-envelope" title="Email"></i>
+                </a>
+                </li>
+                <li class="contact-info">
+                    <a href="https://github.com/ZaBAOW" target="_blank" aria-label="View GitHub profile">
+                    <i aria-hidden="" class="fab fa-github" title="GitHub"></i>
+                </a>
+                </li>
+                <li class="contact-info">
+                    <a href="https://www.linkedin.com/in/andrew-kadesky-566aa2127/" target="_blank" aria-label="View LinkedIn profile">
+                    <i aria-hidden="" class="fab fa-linkedin" title="LinkedIn"></i>
+                </a>
+                </li>
+            </ul>
           </div>
         </footer>
     )

@@ -163,11 +163,12 @@ const storeAuthInfo = (authToken, dispatch) => {
     dispatch(authSuccess(decodedToken));
     saveAuthToken(authToken);
     console.log('authToken succesfully stored');
-    dispatch(logSession({ user: decodedToken.user }));
+    console.log(decodedToken.username);
+    dispatch(logSession({ user: decodedToken.username }));
 };
 
 export const logSession = user => dispatch => {
-  console.log('user being logged in: ', user);
+  console.log('user being logged in: ', user.user);
   fetch(`${API_ORIGIN}/auth/userLoggedIn`, {
     method: "POST",
     mode: "cors",
@@ -183,9 +184,9 @@ export const logSession = user => dispatch => {
       return res.json();
     })
     .then(res => {
-      console.log(res.loggedIn[0]._id);
-      const id = res.loggedIn[0]._id;
-      dispatch(logUser(res.loggedIn[0]));
+      console.log('id to be stored', res.loggedIn._id);
+      const id = res.loggedIn._id;
+      dispatch(logUser(res.loggedIn));
       saveId(id);
     });
 };
@@ -202,13 +203,14 @@ export const signupUser = user => dispatch => {
     })
     .then(res => {
         if (!res.ok) {
+            alert('That Username has already been taken');
             return Promise.reject(res.statusText);
         }
         console.log('first check')
         return res.json();
     })
     .then(authToken => {
-        console.log(authToken);
+        alert('you are all signed up!!!');
         return storeAuthInfo(authToken.token, dispatch);
     })
     .catch(err => {
@@ -221,7 +223,7 @@ export const signupUser = user => dispatch => {
 export const loginUser = user => dispatch => {
     dispatch(request());
     console.log("api url", API_ORIGIN);
-    console.log('loggin you in...');
+    console.log('logging you in...', user);
     fetch(`${API_ORIGIN}/auth/login`, {
         method:"POST",
         headers: {
@@ -231,7 +233,8 @@ export const loginUser = user => dispatch => {
     })
     .then(res => {
         if(!res.ok) {
-            return Promise.rejects(res.statusText);
+            alert('Username and/or Password was incorrect');
+            return Promise.reject(res.statusText);
         }
         return res.json();
     })

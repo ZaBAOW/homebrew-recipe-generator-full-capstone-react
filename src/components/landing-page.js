@@ -22,7 +22,7 @@ export default function Landing() {
           </div>
         </div>
       </div>
-      <div className="section">
+      <div className="section" style={{marginBottom:20 + 'px'}}>
         <div className="container">
           <div className="row">
             <div className="col-md-12 color-primary-5">

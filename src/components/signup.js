@@ -10,6 +10,7 @@ export class Signup extends React.Component {
         this.onSubmit = this.onSubmit.bind(this);
     }
     
+    
     onSubmit(e) {
         e.preventDefault();
         const inputs = [this.username, this.password];
@@ -34,7 +35,7 @@ export class Signup extends React.Component {
               </div>
               <div className="form-group">
                 <div className="col-sm-offset-2 col-sm-10">
-                  <button type="submit" className="btn btn-default" onClick={ this._toggleFormState}>Sign Up</button>
+                  <button type="submit" className="signup-btn" onClick={ this._toggleFormState}>Sign Up</button>
                 </div>
               </div>
             </form>

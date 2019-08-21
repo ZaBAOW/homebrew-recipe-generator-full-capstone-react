@@ -203,7 +203,7 @@ export const signupUser = user => dispatch => {
     .then(res => {
         if (!res.ok) {
             if(res.status === 406) {
-                alert('your password must be at least 8 characters long');
+                alert('your password must be at least 10 characters long');
                 return Promise.reject(res.statusText);
             } else if (res.status === 422) {
                 alert('that username has already been taken');

@@ -29,7 +29,7 @@ export class BrowserPage extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="browser-container">
         <section className="form-search">
           <label for="searchbar" className="color-primary-5">Search</label>
           <Browser

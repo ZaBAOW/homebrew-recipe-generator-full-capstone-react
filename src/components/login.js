@@ -22,8 +22,6 @@ export class Login extends React.Component {
         };
         console.log('user:', user);
         this.props.dispatch(loginUser(user));
-//        this.props.dispatch(logoutUser(user.username));
-        console.log('user that was logged in: ', this.props.user);
         // if succesful, change nav links
         inputs.map(input => (input.value = ""));
     }
@@ -37,7 +35,7 @@ export class Login extends React.Component {
         return(
             <form className="form-horizontal" id='login-form' role="form" onSubmit={this.onSubmit}>
               <span className="tooltip">&#10068;
-                <span className="tooltiptext tooltip-bottom">For demo purposes input username: zebra and password: willyb1234</span>
+                <span className="tooltiptext tooltip-bottom">For demo use username: heroku account,  and password: willyb1234</span>
               </span>
               <h2 className="login-head color-primary-5">Login</h2>
               <label htmlFor="inputEmail3" for="loginUsername" className="control-label color-primary-5">Username</label>

@@ -56,7 +56,7 @@ export class Creator extends React.Component {
                       <div className="maltName color-primary-5 color-bgprimary-5"><label for='createMaltType' className='creator-label'>Malt Types:</label>
                         <input type="text" id='createMaltType' placeholder="name of malt" className="creator-input" ref={input => (this.maltName = input)}></input>
                       </div>
-                      <div className="maltMeasure color-primary-5 color-bgprimary-5"><label for="createMaltMeasure" className='creator-label'>Measurements:</label>
+                      <div className="maltMeasure color-primary-5 color-bgprimary-5"><label for="createMaltMeasure" className='creator-label'>Measurements(lbs.):</label>
                         <input type="text" id='createMaltMeasure' placeholder="amount of malt" className="creator-input" ref={input => (this.maltMeasure = input)}></input>
                       </div>
                     </div>
@@ -64,7 +64,7 @@ export class Creator extends React.Component {
                       <div className="hopsName"><label for='createHopsType' className='creator-label'>Hops Types:</label>
                         <input type="text" id='createHopsType' placeholder="name of hops" className="creator-input" ref={input => (this.hopsName = input)}></input>
                       </div>
-                      <div className="hopsMeasure color-primary-5 color-bgprimary-5"><label for="createHopsMeasure" className='creator-label'>Measurements:</label>
+                      <div className="hopsMeasure color-primary-5 color-bgprimary-5"><label for="createHopsMeasure" className='creator-label'>Measurements(oz.):</label>
                         <input type="text" id="createHopsMeasure" placeholder="amount of hops" className="creator-input" ref={input => (this.hopsMeasure = input)}></input>
                       </div>
                     </div>
@@ -72,7 +72,7 @@ export class Creator extends React.Component {
                       <div className="yeastName"><label for="createYeastType" className='creator-label'>Yeast Types:</label>
                         <input type="text" id='createYeastType' placeholder="name of yeast" className="creator-input" ref={input => (this.yeastName = input)}></input>
                       </div>
-                      <div className="yeastMeasure color-primary-5 color-bgprimary-5"><label for="createYeastMeasure" className='creator-label'>Measurements:</label>
+                      <div className="yeastMeasure color-primary-5 color-bgprimary-5"><label for="createYeastMeasure" className='creator-label'>Measurements(lbs.):</label>
                         <input type="text" id="createYeastMeasure" placeholder="amount of yeast" className="creator-input" ref={input => (this.yeastMeasure = input)}></input>
                       </div>
                       <label for='createYeastSchedule' className="color-primary-5 color-bgprimary-5">Yeast Schedule:</label>

@@ -163,8 +163,8 @@ const storeAuthInfo = (authToken, dispatch) => {
     dispatch(authSuccess(decodedToken));
     saveAuthToken(authToken);
     console.log('authToken succesfully stored');
-    console.log(decodedToken.username);
-    dispatch(logSession({ user: decodedToken.username }));
+    console.log(decodedToken.sub);
+    dispatch(logSession({ user: decodedToken.sub }));
 };
 
 export const logSession = user => dispatch => {
@@ -184,8 +184,8 @@ export const logSession = user => dispatch => {
       return res.json();
     })
     .then(res => {
-      console.log('id to be stored', res.loggedIn._id);
-      const id = res.loggedIn._id;
+      console.log('id to be stored', res.loggedIn);
+      const id = res.loggedIn;
       dispatch(logUser(res.loggedIn));
       saveId(id);
     });

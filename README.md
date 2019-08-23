@@ -6,6 +6,7 @@ and promoting of brew recipes created by and shared between fellow
 homebrewers
 
 ### Active demo
+https://homebrew-recipe-generator-reac.herokuapp.com/
 
 ## User Stories
  - As a visiter, I should be able to create an account
@@ -33,6 +34,17 @@ Archive Page View
 ![Archive Page](./README_Images/Archive_Page.png)
 
 ## Userflow
+The user will begin on the Landing page in a "Logged Out" version of the
+site with the immediate option to sign up and create an account.  If this user
+does not wish to create an account they can visit the browser page to search
+for different type of existing brew recipes.  Or if the user already has an
+account created, they can go to the login page and log in to their account from
+there.  If the user decide to create an account, if their input meets the conditions for a valid
+account, they will be immediately logged in.  This will render the "Logged In"
+version of the site.  They will then have access to the dashboard page, which
+from there allows users access to both the recipe creation page and their recipe
+archive page.  When a user is done they will log out by simple clicking the
+"Log Out" link in the navigation bar and will be sent back to the login page.
 
 ## Functionality
  - Users will have the ability to create their own account for the website
@@ -40,12 +52,6 @@ Archive Page View
     and subsequently 'POST' them
  - Users will be able to browse all recipes posted to the database and select them in order to
     view them
-
-## Look and Feel
-(insert screenshots of website pages)
-Color palette ideas:
-    - summer palettes
-        - yellow/orange
         
 ## Business Objects 
 
@@ -85,10 +91,6 @@ Color palette ideas:
 	- schedule (textarea input)
 	- brewId
 
-## Responsiveness
-App is responsive across most mobile, tablet, laptop, and desktop screen resolutions.
-(include images of website pages in responsive format)
-
 ## Accesibility
 accessiblity of this app was confimed by the use of aXe software
 
@@ -101,6 +103,7 @@ Homebrew-recipe-generator was built with:
     - Javascript
     - jQuery
     - Reactjs
+    - Enzyme
     
 ### Back end
     - Node.js
@@ -111,9 +114,10 @@ Homebrew-recipe-generator was built with:
     - mLab database
 
 ## Roadmap
-(include discussions of ambitious impovemnent and thoughts of monotization of website)
 - Allowing users to comment on and like a brew recipes
 - Allow users to like/dislike brews found by the browser
+- Allow users to edit their already existing recipes
+- Allow users to delete their recipes
 
 ## Typical Commands for Node.js and React.js
 ### React command lines

@@ -1,5 +1,4 @@
 import React from 'react';
-//import './footer.css';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 export default function Footer(props) {

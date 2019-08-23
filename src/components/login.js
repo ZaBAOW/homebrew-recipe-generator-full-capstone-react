@@ -1,5 +1,4 @@
 import React from 'react';
-//import './landing-page.css';
 import {reduxForm, Field, focus} from 'redux-form';
 import { Link, Redirect } from  "react-router-dom";
 import { connect } from "react-redux";

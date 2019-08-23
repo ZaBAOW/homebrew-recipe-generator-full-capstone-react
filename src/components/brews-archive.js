@@ -10,9 +10,6 @@ import ViewBrew from './brew-viewer';
 
 export class Yourbrews extends React.Component {
 
-//  deleteRecipe(target) {
-//    this.props.dispatch(deleteRecipe(target.id, this.props.authToken));
-//  }
     constructor () {
         super()
         this.state = {

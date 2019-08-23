@@ -404,21 +404,6 @@ export const viewRecipe = brewId => dispatch => {
     })
 }
 
-// Append search results to result area
-//export const Append = brews => dispatch => {
-//    const type = APPEND_RESULTS;
-//    console.log('displaying results...');
-//    console.log('length of brews ',brews.length);
-//    for(var i = 0; i < brews.length; i++) {
-//        const resultObj = {
-//            brewName: brews[i].brewName,
-//            id: brews[i].id,
-//            abv: brews[i].abv,
-//            userId: brews[i].userId
-//        }
-//    }
-//}
-
 // submitting a homebrew
 export const submitRecipe = (brew, userID, token) => dispatch => {
     console.log(brew);

@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from "react-redux";
 import { logOut, logoutUser } from "../actions";
 import Logo from '../images/homebrew-generator-logo.png';
-//import './nav.css';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 export class Nav extends React.Component {

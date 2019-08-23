@@ -48,12 +48,5 @@ export const mapStateToProps = state => ({
     error: state.error
 });
 
-//function mapDispatchToProps(dispatch) {
-//    return {
-//        loggedIn: (state.user) => {
-//            dispatch()
-//        }
-//    }
-//}
 
 export default connect(mapStateToProps)(Signup);

@@ -56,30 +56,29 @@ archive page.  When a user is done they will log out by simple clicking the
 ## Business Objects 
 
  - User (collection)
+    - username
 	- password
-	- firstname
-	- lastname
 	- id
 
- - Homebrew (collection)
+ - Brew (collection)
 	- name (title)
 	- abv% (calculated frontend/known)
-	- brewid
+	- id
 	- userId
 
  - Malts types (collection)
 	- type name
-	- measurements (value in oz.)
+	- measurements (value in lbs.)
 	- brewId
 
  - Hops Types (collection)
 	- type name
-	- measurements (value in oz.)
+	- measurements (value in lbs.)
 	- brewId
 
  - Yeast (one type instance) (collection)
 	- yeast name
-	- schedule (textarea input)
+	- measure (value in oz.)
 	- brewId
 
  - Yeast (multiple type instance)

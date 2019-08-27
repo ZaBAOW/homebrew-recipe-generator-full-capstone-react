@@ -27,7 +27,7 @@ export class Archive extends React.Component {
     
     render() {
         return (
-            <div>
+            <div className="archive-container">
                 <section className="archive-section">
                     <Yourbrews />
                 </section>

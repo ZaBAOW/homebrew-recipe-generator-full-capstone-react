@@ -181,6 +181,10 @@ p {
 }
 
 /*archive brew card*/
+.archive-container {
+    margin-top: 50%;
+}
+
 .results-list {
     display: grid;
     grid-template-columns: auto;
@@ -209,9 +213,9 @@ p {
 /*brew-creator + brew-viewer css*/
 .brew-form {
     border: 1px solid black;
-    width: 600px;
+    width: 80%;
     height: auto;
-    margin-top: 70px;
+    margin-top: 50%;
     margin-left: auto;
     margin-right: auto;
     position: relative;
@@ -234,14 +238,16 @@ p {
 }
 
 .creator-label {
-    display: inline-block;
+    display: block;
     width: 20%;
     padding: 5px;
+    font-size: 42px;
 }
 
 .creator-input {
     padding: 3px;
     margin: 3px;
+    font-size: 40px;
 }
 
 textarea {
@@ -249,6 +255,7 @@ textarea {
     width: 95%;
     display: block;
     margin: auto;
+    font-size: 40px;
 
 }
 
@@ -368,6 +375,8 @@ textarea {
     padding-right: 10px;
     border-radius: 8px;
     border: 4px black solid;
+    font-size: 55px;
+    margin-left: 12%;
 }
 
 .hide-all {
@@ -597,9 +606,11 @@ footer {
         grid-template-columns: auto auto;
     }
     
+/*
     .archive-section {
         margin-top: 60px;
     }
+*/
     
     /*    dashboard style*/
     .dash-select {

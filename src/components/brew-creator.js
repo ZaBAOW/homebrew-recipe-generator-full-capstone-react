@@ -75,12 +75,12 @@ export class Creator extends React.Component {
                       <div className="yeastMeasure color-primary-5 color-bgprimary-5"><label for="createYeastMeasure" className='creator-label'>Measurements(lbs.):</label>
                         <input type="text" id="createYeastMeasure" placeholder="amount of yeast" className="creator-input" ref={input => (this.yeastMeasure = input)}></input>
                       </div>
-                      <label for='createYeastSchedule' className="color-primary-5 color-bgprimary-5">Yeast Schedule:</label>
+                      <label for='createYeastSchedule' className="creator-label color-primary-5 color-bgprimary-5">Yeast Schedule:</label>
                         <textarea className="yeastSchedule color-primary-5" id="createYeastSchedule" rows="15" col="100" placeholder="Type your yeast schedule here" className="yeast-schedule" ref={input => (this.yeastSchedule = input)}></textarea>
                     </div>
                     <div className="mash-scheduleSection color-primary-5 color-bgprimary-5">
                       <div>
-                        <label for="createMashSchedule">Mash Schedule:</label>
+                        <label for="createMashSchedule" className="creator-label">Mash Schedule:</label>
                         <textarea className="mashTextarea" id="createMashSchedule" rows="15" col="100" placeholder="type your schedule here" ref={input => (this.mashSchedule = input)}></textarea>
                       </div>
                     </div>

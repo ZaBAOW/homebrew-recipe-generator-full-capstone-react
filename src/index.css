@@ -61,7 +61,7 @@ p {
 
 .browser-link {
     font-size: 20px;
-    margin-right: 10%;
+    margin-right: 10px;
     text-decoration: none;
 }
 
@@ -597,62 +597,65 @@ footer {
 
 
 /*non-mobile style*/
-@media only screen and (min-width: 630px) {
-/*
+@media only screen and (min-width: 700px) {
     body {
         background-color: red;
     }
-*/
     
-    /*    navigation bar*/
-/*
+    /*    landing page desktop*/
+    .landing-page {
+        margin-top: 12%;
+    }
+    
+    /*    navigation bar desktop*/
     .logo {
-        max-width: 12%;
+        width: 100px;
         display: inline-block;
         margin-left: 0%;
     }
     
     .home-link {
-        font-size: 30px;
-    }
-    
-    .logoutButton {
-        font-size: 25px;
-    }
-    
-    .browser-link {
-        font-size: 25px;
-    }
-    
-    .dashboard-link {
-        font-size: 25px;
+        font-size: 36px;
     }
     
     .login-link {
-        font-size: 25px;
-    }
-*/
-    
-    /*    general text*/
-/*
-    h1 {
-        font-size: 24px;
+        margin-left: 30px;
     }
     
-    h2 {
-        font-size: 21px;
+    /*    browser page desktop*/
+    .browser-container {
+        margin-top: 10%;
     }
     
-    p {
-        font-size: 16px;
+    /*    login page desktop*/
+    #login-form {
+        margin-top: 10%;
     }
-*/
     
-    /*    signup form*/
-/*
-    .sign-up {
-        margin-left: 0%;
+    dashboard page {
+        margin-top: -20%;
     }
-*/
+    
+    .dash-desc {
+        margin-top: 10%;
+    }
+    
+    .grid-container-dashboard {
+        padding-top: 0%;
+    }
+    
+    /*    recipe create page desktop*/
+    .brew-form {
+        margin-top: 20%;
+    }
+    
+    /*    archive page desktop*/
+    .archive-container {
+        margin-top: 20%;
+    }
+    
+    .brewItem {
+        margin-left: 5%;
+    }
 }
 

@@ -14,24 +14,25 @@
 
 /*navbar css*/
 h1 {
-    font-size: 50px;
+    font-size: 23px;
     z-index: 10000;
 }
 
 h2 {
-    font-size: 45px;
+    font-size: 20px;
 }
 
 h3 {
-    font-size: 45px;
+    font-size: 20px;
 }
 
 p {
-    font-size: 40px;
+    font-size: 18px;
 }
 
 .logo {
     max-width: 30%;
+    width: 200px;
     display: block;
     margin-left: 33%;
 }
@@ -53,29 +54,29 @@ p {
 }
 
 .home-link {
-    font-size: 80px;
+    font-size: 24px;
     margin-left: 1%;
     text-decoration: none;
 }
 
 .browser-link {
-    font-size: 60px;
+    font-size: 20px;
     margin-right: 10%;
     text-decoration: none;
 }
 
 .dashboard-link {
-    font-size: 60px;
+    font-size: 20px;
     text-decoration: none;
 }
 
 .logoutButton {
-    font-size: 60px;
+    font-size: 20px;
     text-decoration: none;
 }
 
 .login-link {
-    font-size: 60px;
+    font-size: 20px;
     text-decoration: none;
 }
 
@@ -111,7 +112,7 @@ p {
 
 /*landing page*/
 .landing-page {
-    margin-top: 39%;
+    margin-top: 30%;
 }
 
 .form-horizontal {
@@ -126,8 +127,8 @@ p {
 }
 
 .sign-up {
-    max-width: 80%;
-    margin-left: 8%;
+    max-width: 100%;
+    margin-left: 0%;
     background-color: grey;
 }
 
@@ -140,7 +141,7 @@ p {
     padding-right: 10px;
     padding-top: 10px;
     padding-bottom: 10px;
-    font-size: 40px;
+    font-size: 20px;
 }
 
 /*browsing page*/
@@ -154,7 +155,7 @@ p {
 }
 
 .search-header {
-    font-size: 60px;
+    font-size: 30px;
 }
 
 .searchInput {
@@ -162,7 +163,7 @@ p {
     padding: 5px 10px;
     border: 1px solid black;
     display: block;
-    font-size: 50px;
+    font-size: 20px;
 }
 
 .search {
@@ -173,7 +174,7 @@ p {
     padding-right: 10px;
     padding-top: 10px;
     padding-bottom: 10px;
-    font-size: 40px
+    font-size: 18px
 }
 
 .brew-outer {
@@ -199,6 +200,7 @@ p {
     border-radius: 10px;
     padding-top: 10px;
     padding-bottom: 10px;
+    margin-right: 5%;
 }
 
 .view-button {
@@ -207,7 +209,7 @@ p {
     padding-right: 10px;
     padding-top: 10px;
     padding-bottom: 10px;
-    font-size: 45px;
+    font-size: 20px;
 }
 
 /*brew-creator + brew-viewer css*/
@@ -222,8 +224,8 @@ p {
 }
 
 .container {
-    padding-left: 50px;
-    padding-right: 50px;
+    padding-left: 18px;
+    padding-right: 18px;
 }
 
 .root-container {
@@ -241,13 +243,13 @@ p {
     display: block;
     width: 20%;
     padding: 5px;
-    font-size: 42px;
+    font-size: 20px;
 }
 
 .creator-input {
     padding: 3px;
     margin: 3px;
-    font-size: 40px;
+    font-size: 20px;
 }
 
 textarea {
@@ -255,7 +257,7 @@ textarea {
     width: 95%;
     display: block;
     margin: auto;
-    font-size: 40px;
+    font-size: 20px;
 
 }
 
@@ -364,7 +366,7 @@ textarea {
     margin-top: 10px;
     width: auto;
     overflow: auto;
-    font-size: 39px;
+    font-size: 18px;
 }
 
 .submit-button {
@@ -375,8 +377,8 @@ textarea {
     padding-right: 10px;
     border-radius: 8px;
     border: 4px black solid;
-    font-size: 55px;
-    margin-left: 12%;
+    font-size: 25px;
+    margin-left: 3%;
 }
 
 .hide-all {
@@ -387,7 +389,7 @@ textarea {
     padding-bottom: 10px;
     border-radius: 3px;
     border: 3px solid grey;
-    font-size: 40px
+    font-size: 20px
 }
 
 /*dashboard css*/
@@ -448,7 +450,7 @@ textarea {
     border: 1px solid black;
     border-radius: 5px;
     margin-top: 20px;
-    font-size: 40px;
+    font-size: 20px;
 }
 
 /*Footer css*/
@@ -463,7 +465,7 @@ footer {
 /*login page css*/
 #login-form {
     display: block;
-    max-width: 60%;
+    max-width: 80%;
     margin: auto;
     margin-top: 40%;
     background-color: grey;
@@ -471,7 +473,7 @@ footer {
 
 .login-head {
     text-align: center;
-    font-size: 60px;
+    font-size: 30px;
 }
 
 .form-horizontal {
@@ -482,7 +484,7 @@ footer {
 
 .control-label {
     display: inline-block;
-    font-size: 50px;
+    font-size: 24px;
     
 }
 
@@ -493,7 +495,7 @@ footer {
     padding: 10px;
     display: block;
     width: 100%;
-    font-size: 45px;
+    font-size: 18px;
 }
 
 .login-btn {
@@ -505,7 +507,7 @@ footer {
     margin-right: auto;
     padding-top: 10px;
     padding-bottom: 10px;
-    font-size: 40px;
+    font-size: 20px;
 }
 
 /*colors*/
@@ -553,13 +555,13 @@ footer {
 .tooltip {
   position: relative;
   display: inline-block;
-  font-size: 43px;
+  font-size: 25px;
   border-bottom: 1px dotted black;
 }
 
 .tooltip .tooltiptext {
   visibility: hidden;
-  width: 389px;
+  width: 164px;
   background-color: #1a97dc;
   color: #fff;
   text-align: center;
@@ -571,6 +573,7 @@ footer {
   left: 105%;
   opacity: 0;
   transition: opacity 0.3s;
+  font-size: 15px;
 }
 
 
@@ -593,144 +596,63 @@ footer {
 }
 
 
+/*non-mobile style*/
+@media only screen and (min-width: 630px) {
 /*
-@media only screen and (max-width: 1024px) {
-    .results-list {
-        grid-template-columns: auto auto
-    }
-}
-*/
-
-@media only screen and (max-width: 768px) {
-    .results-list {
-        grid-template-columns: auto auto;
-    }
-    
-/*
-    .archive-section {
-        margin-top: 60px;
+    body {
+        background-color: red;
     }
 */
     
-    /*    dashboard style*/
-    .dash-select {
-        text-align: center;
-        position: relative;
-        margin-right: auto;
-        margin-left: auto;
-        width: 75%;
-        margin-top: 10px;
-    }
-    
-    .dashSelect {
-        width: 100%;
-    }
-    
-    .dash-desc {
-        position: relative;
-        margin-right: auto;
-        margin-left: auto;
-        width: 75%;
-    }
-    
-    .grid-container-dashboard {
-        display: grid;
-        grid-template-columns: auto;
-        padding-top: 10%;
-        padding-bottom: 10%;
-    }
-    
-    .dashSelect {
-        padding-top: 0%;
-    }
-    
-    .home-link {
-        vertical-align: middle;
-    }
-    
+    /*    navigation bar*/
+/*
     .logo {
-        vertical-align: middle;
-    }
-    
-}
-
-@media only screen and (max-width: 480px) {
-    .root-container {
-        margin-top: 81px;
-    }
-    
-    .results-list {
-        grid-template-columns: auto;
-    }
-    
-    .brewItem {
-        width: 98%;
-        margin-left: auto;
-        margin-right: auto;
-    }
-    
-    .brew-form {
-        width: 90%;
-        max-width: 400px;
+        max-width: 12%;
+        display: inline-block;
+        margin-left: 0%;
     }
     
     .home-link {
-        vertical-align: middle;
-    }
-    
-    .logo {
-        vertical-align: middle;
-    }
-}
-
-@media only screen and (max-width: 320px) {
-    .container {
-        padding-left: 0px;
-        padding-right: 0px;
-    }
-    
-    .root-container {
-        margin-top: 74px;
-    }
-    
-    .home-link {
-        font-size: 24px;
-        vertical-align: middle;
-    }
-    
-    .browser-link {
-        font-size: 18px
-    }
-    
-    .dashboard-link {
-        font-size: 18px
+        font-size: 30px;
     }
     
     .logoutButton {
-        font-size: 18px
+        font-size: 25px;
+    }
+    
+    .browser-link {
+        font-size: 25px;
+    }
+    
+    .dashboard-link {
+        font-size: 25px;
     }
     
     .login-link {
-        font-size: 18px;
+        font-size: 25px;
+    }
+*/
+    
+    /*    general text*/
+/*
+    h1 {
+        font-size: 24px;
     }
     
-    .tooltip .tooltiptext {
-        width: 150px;
+    h2 {
+        font-size: 21px;
     }
     
-    .creator-label {
-        width: 100%;
+    p {
+        font-size: 16px;
     }
+*/
     
-    .form-section {
-        margin-right: auto;
-        margin-left: auto;
-        width: 90%;
+    /*    signup form*/
+/*
+    .sign-up {
+        margin-left: 0%;
     }
-    
-    .logo {
-        vertical-align: middle;
-        margin-left: 5px;
-    }
+*/
 }
 

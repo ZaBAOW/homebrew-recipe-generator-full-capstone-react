@@ -55,7 +55,7 @@ p {
 
 .home-link {
     font-size: 24px;
-    margin-left: 1%;
+    margin-left: 10%;
     text-decoration: none;
 }
 
@@ -229,8 +229,6 @@ p {
 }
 
 .root-container {
-    margin-left: 5px;
-    margin-right: 5px;
     margin-top: 50px;
 }
 
@@ -598,13 +596,14 @@ footer {
 
 /*non-mobile style*/
 @media only screen and (min-width: 700px) {
-    body {
-        background-color: red;
-    }
     
     /*    landing page desktop*/
     .landing-page {
         margin-top: 12%;
+    }
+    
+    .sign-up {
+        max-width: 60%;
     }
     
     /*    navigation bar desktop*/
@@ -616,6 +615,7 @@ footer {
     
     .home-link {
         font-size: 36px;
+        margin-left: 1%;
     }
     
     .login-link {
@@ -625,6 +625,10 @@ footer {
     /*    browser page desktop*/
     .browser-container {
         margin-top: 10%;
+    }
+    
+    .results-list {
+        grid-template-columns: auto auto;
     }
     
     /*    login page desktop*/
@@ -656,6 +660,28 @@ footer {
     
     .brewItem {
         margin-left: 5%;
+    }
+}
+
+@media only screen and (min-width: 1024px) {
+    .sign-up {
+        max-width: 40%;
+    }
+    
+    .results-list {
+        grid-template-columns: auto auto auto;
+    }
+    
+    .login-link {
+        margin-left: 0%;
+    }
+    
+    .searchInput {
+        width: 40%;
+    }
+    
+    #login-form {
+        max-width: 35%;
     }
 }
 

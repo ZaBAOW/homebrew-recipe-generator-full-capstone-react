@@ -685,3 +685,17 @@ footer {
     }
 }
 
+@media only screen and (min-width: 1600px) {
+    .sign-up {
+        max-width: 30%;
+    }
+    
+    .searchInput {
+        width: 30%;
+    }
+    
+    #login-form {
+        max-width: 25%;
+    }
+}
+

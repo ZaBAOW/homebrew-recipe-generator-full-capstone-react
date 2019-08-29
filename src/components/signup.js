@@ -26,11 +26,11 @@ export class Signup extends React.Component {
         return(
             <form className="form-horizontal sign-up" aria-label="signup form" role="form" onSubmit={this.onSubmit}>
               <div className="form-group">
-                  <label htmlFor="inputEmail3" for='signupUsername' className="control-label color-primary-5">Username</label>
+                  <label htmlFor="inputEmail3" className="control-label color-primary-5">Username</label>
                   <input type="username" className="form-control" id="signupUsername" placeholder="Username" ref={input => (this.username = input)}></input>
               </div>
               <div className="form-group">
-                  <label htmlFor="inputPassword3" for='signupPassword' className="control-label color-primary-5">Password</label>
+                  <label htmlFor="inputPassword3" className="control-label color-primary-5">Password</label>
                   <input type="password" className="form-control" id="signupPassword" placeholder="Password" ref={input => (this.password = input)}></input>
               </div>
               <div className="form-group">

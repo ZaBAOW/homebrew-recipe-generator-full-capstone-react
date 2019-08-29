@@ -37,9 +37,9 @@ export class Login extends React.Component {
                 <span className="tooltiptext tooltip-bottom">For demo use username: heroku account,  and password: willyb1234</span>
               </span>
               <h2 className="login-head color-primary-5">Login</h2>
-              <label htmlFor="inputEmail3" for="loginUsername" className="control-label color-primary-5">Username</label>
+              <label htmlFor="loginUsername" className="control-label color-primary-5">Username</label>
               <input type="username" className="form-control" id="loginUsername" placeholder="myUsername" ref={input => (this.username = input)}></input>
-              <label htmlFor="inputPassword3" for="loginPassword" className="control-label color-primary-5" >Password</label>
+              <label htmlFor="loginPassword" className="control-label color-primary-5" >Password</label>
               <input type="password" className="form-control" id="loginPassword" placeholder="myPassword" ref={input => (this.password = input)}></input>
               <button type="submit" className="login-btn">Log In</button>
             </form>

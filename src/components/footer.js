@@ -6,19 +6,19 @@ export default function Footer(props) {
         <footer className="section section-primary color-bgsecondary-2-2">
           <div className="container">
             <ul>
-                <li class="contact-info">
+                <li className="contact-info">
                     <a href="mailto:amkadesky@aol.com?subject=Hello" target="_blank" aria-label="Email Andrew">
-                    <i aria-hidden="" class="fas fa-envelope" title="Email"></i>
+                    <i aria-hidden="" className="fas fa-envelope" title="Email"></i>
                 </a>
                 </li>
-                <li class="contact-info">
+                <li className="contact-info">
                     <a href="https://github.com/ZaBAOW" target="_blank" aria-label="View GitHub profile">
-                    <i aria-hidden="" class="fab fa-github" title="GitHub"></i>
+                    <i aria-hidden="" className="fab fa-github" title="GitHub"></i>
                 </a>
                 </li>
-                <li class="contact-info">
+                <li className="contact-info">
                     <a href="https://www.linkedin.com/in/andrew-kadesky-566aa2127/" target="_blank" aria-label="View LinkedIn profile">
-                    <i aria-hidden="" class="fab fa-linkedin" title="LinkedIn"></i>
+                    <i aria-hidden="" className="fab fa-linkedin" title="LinkedIn"></i>
                 </a>
                 </li>
             </ul>

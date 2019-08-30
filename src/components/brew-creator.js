@@ -84,7 +84,7 @@ export class Creator extends React.Component {
                         <textarea className="mashTextarea" id="createMashSchedule" rows="15" col="100" placeholder="type your schedule here" ref={input => (this.mashSchedule = input)}></textarea>
                       </div>
                     </div>
-                    <button className="submit-button">Submit Hombrew</button>
+                    <button className="submit-button">Submit Homebrew</button>
                   </div>
                 </div>
               </div>

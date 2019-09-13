@@ -2,12 +2,9 @@ import React from 'react';
 import { connect } from "react-redux";
 import { logOut, logoutUser } from "../actions";
 import Logo from '../images/homebrew-generator-logo.png';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Link } from "react-router-dom";
 
 export class Nav extends React.Component {
-    constructor(props) {
-        super(props);
-    }
     
     
     logOut() {
@@ -26,7 +23,7 @@ export class Nav extends React.Component {
                     <div className="navbar-header">
                     </div>
                     <div className="collapse navbar-collapse" id="navbar-ex-collapse">
-                      <img src={Logo} role="img" alt="homebrew logo" className='logo'></img>
+                      <img src={Logo} alt="homebrew logo" className='logo'></img>
                       <a href="/" className='home-link'>Homebrew generator</a>
                       <ul className="nav navbar-nav navbar-right">
                         <li>
@@ -52,8 +49,8 @@ export class Nav extends React.Component {
                     <div className="navbar-header">
                     </div>
                     <div className="collapse navbar-collapse" id="navbar-ex-collapse">
-                      <img src={Logo} role="img" alt="homebrew logo" className='logo'></img>
-                      <a href="/"  role="link" className='home-link color-primary-4'>Homebrew generator</a>
+                      <img src={Logo} alt="homebrew logo" className='logo'></img>
+                      <a href="/"  className='home-link color-primary-4'>Homebrew generator</a>
                       <ul className="nav navbar-nav navbar-right">
                         <li>
                           <Link to="/browser" role="link" className='browser-link color-primary-4'>Browse</Link>

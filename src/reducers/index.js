@@ -33,7 +33,6 @@ export default function reducer(state = initialState, action) {
     }
     
     if (action.type === actions.SIGN_UP) {
-        const newUser = action.user;
         return Object.assign({}, state, {
             error: null,
             user: action.user

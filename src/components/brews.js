@@ -1,12 +1,8 @@
     
 import React from "react";
-import Spinner from "react-spinkit";
 import { connect } from "react-redux";
-import ReactTooltip from 'react-tooltip';
 import $ from "jquery";
-import { deleteRecipe, viewRecipe } from "../actions";
-import { Redirect } from "react-router-dom";
-import { findDOMNode } from 'react-dom';
+import { viewRecipe } from "../actions";
 
 import ViewBrew from './brew-viewer';
 
@@ -46,13 +42,12 @@ export class Brews extends React.Component {
   render() {
 
     let resultsList = [];
-    const style =  this.state.isHidden ? {display: 'none'} : {};
     // for rendering search list
     console.log(this.props.browserBrews);
     if (this.props.browserBrews === undefined) {
         console.log('brew prop is undefined');
     } else {
-        if (this.props.browserBrews.length == 0){
+        if (this.props.browserBrews.length === 0){
             console.log('brew prop is 0');
             console.log(this.props.browserBrews.length);
         } else {
@@ -65,18 +60,16 @@ export class Brews extends React.Component {
             console.log('newIndex:', newIndex);
             console.log('oldIndex', oldIndex);
             console.log('current index:', index);
-            if((newIndex + 1) == resultsList.length) {
+            if((newIndex + 1) === resultsList.length) {
                 console.log('finished displaying results');
-            } else if(newIndex != oldIndex) {
+            } else if(newIndex !== oldIndex) {
                 const brewId = brew._id;
                 const brewName = brew.brewName;
                 console.log(brewId);
-                const {items} = this.props;
                 console.log('conditional passed');
                 oldIndex = newIndex;
                 const recipeTemplate =  <ViewBrew recipe = {this.props} id = {brewId} />
                 console.log(recipeTemplate);
-                const popoverClass = 'recipe-popoup-'+brew.brewName;
                 return (
                   <div className="brewItem color-bgsecondary-1-2" key={index}>
                     <h2>Brew Name: {brewName}</h2>
@@ -89,7 +82,6 @@ export class Brews extends React.Component {
                   </div>
                 );
             }
-
           });
         }
     } 

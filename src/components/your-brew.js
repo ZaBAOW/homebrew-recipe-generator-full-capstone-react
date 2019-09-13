@@ -1,5 +1,4 @@
 import React from 'react';
-import Nav from "./Nav";
 import Yourbrews from './brews-archive'
 import { connect } from  'react-redux';
 import $ from  'jquery';

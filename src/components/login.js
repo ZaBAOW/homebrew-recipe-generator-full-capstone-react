@@ -1,8 +1,7 @@
 import React from 'react';
-import {reduxForm, Field, focus} from 'redux-form';
-import { Link, Redirect } from  "react-router-dom";
+import { Redirect } from  "react-router-dom";
 import { connect } from "react-redux";
-import {loginUser, logoutUser} from '../actions';
+import {loginUser} from '../actions';
 
 export class Login extends React.Component {
       constructor(props) {
@@ -32,8 +31,8 @@ export class Login extends React.Component {
         }
         
         return(
-            <form className="form-horizontal" id='login-form' role="form" onSubmit={this.onSubmit}>
-              <span className="tooltip">&#10068;
+            <form className="form-horizontal" id='login-form' onSubmit={this.onSubmit}>
+              <span className="tooltip" aria-label="hint" role="img">&#10068;
                 <span className="tooltiptext tooltip-bottom">For demo use username: heroku account,  and password: willyb1234</span>
               </span>
               <h2 className="login-head color-primary-5">Login</h2>

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 
 import {connect} from 'react-redux';
-import store from './store';
 
 import Landing from './components/landing-page';
 import Login from './components/login';
@@ -9,15 +8,13 @@ import Signup from './components/signup';
 import Footer from './components/footer';
 import Dashboard from './components/dashboard';
 import BrowserPage from './components/browser-page';
-import Result from './components/browser-result';
 import Creator from './components/brew-creator';
-import Viewer from './components/brew-viewer';
 import Archive from './components/your-brew';
 import Welcome from './components/welcome';
 import {refreshAuthToken} from './actions/index';
 import Nav from './components/Nav';
 
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 import './App.css';
 

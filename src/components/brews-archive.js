@@ -1,11 +1,7 @@
 import React from "react";
-import Spinner from "react-spinkit";
 import { connect } from "react-redux";
 import $ from 'jquery';
-import ReactTooltip from 'react-tooltip';
-import { deleteRecipe, viewRecipe } from "../actions";
-import {findDOMNode} from 'react-dom';
-import { Redirect } from "react-router-dom";
+import { viewRecipe } from "../actions";
 import ViewBrew from './brew-viewer';
 
 export class Yourbrews extends React.Component {
@@ -36,7 +32,7 @@ export class Yourbrews extends React.Component {
     console.log(this.props.archiveBrews);
     if(this.props.archiveBrews === undefined) {
         console.log('brew prop is undefined')
-    } else if (this.props.archiveBrews.length == 0) {
+    } else if (this.props.archiveBrews.length === 0) {
       console.log('brew prop is null')
       console.log(this.props.archiveBrews.length);
     } else {
@@ -45,7 +41,6 @@ export class Yourbrews extends React.Component {
       resultsList = this.props.archiveBrews[0].results.map((brew, index) => {
         const brewId = brew._id;
         console.log(brewId);
-        const {items} = this.props;
         const brewName = brew.brewName;
         const recipeTemplate =  <ViewBrew recipe = {this.props} id = {brewId} />
         return (

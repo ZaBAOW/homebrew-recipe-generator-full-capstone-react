@@ -1,6 +1,5 @@
 import React from 'react';
 
-import { Link, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import { signupUser } from "../actions/index";
 
@@ -24,7 +23,7 @@ export class Signup extends React.Component {
     
     render() {
         return(
-            <form className="form-horizontal sign-up" aria-label="signup form" role="form" onSubmit={this.onSubmit}>
+            <form className="form-horizontal sign-up" aria-label="signup form" onSubmit={this.onSubmit}>
               <div className="form-group">
                   <label htmlFor="inputEmail3" className="control-label color-primary-5">Username</label>
                   <input type="username" className="form-control" id="signupUsername" placeholder="Username" ref={input => (this.username = input)}></input>

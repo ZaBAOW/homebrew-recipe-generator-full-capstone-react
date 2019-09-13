@@ -312,11 +312,12 @@ export const fetchProtectedData = () => (dispatch, getState) => {
 export const refreshAuthToken = () => (dispatch, getState) => {
     dispatch(authRequest());
     const authToken = getState().authToken;
+    console.log('refresh token', authToken);
     return fetch(`${API_ORIGIN}/auth/refresh`, {
         method: 'POST',
         headers: {
             // Provide our existing token as credentials to get a new one
-            Authorization: `Bearer ${authToken}`
+            Authorization: `JWT ${authToken}`
         }
     })
         .then(res => normalizeResponseErrors(res))
@@ -326,6 +327,7 @@ export const refreshAuthToken = () => (dispatch, getState) => {
             // We couldn't get a refresh token because our current credentials
             // are invalid or expired, or something else went wrong, so clear
             // them and sign us out
+            console.log(err);
             dispatch(authError(err));
             dispatch(clearAuth());
             clearAuthToken(authToken);

@@ -1,5 +1,4 @@
 import React from "react";
-import Nav from "./Nav";
 import Browser from "./browser";
 import Brews from "./brews";
 import $ from 'jquery';
@@ -7,7 +6,6 @@ import $ from 'jquery';
 import { connect } from "react-redux";
 import { browseBrews} from "../actions";
 import { clearDropdown } from "../custom";
-import { findDOMNode } from 'react-dom';
 
 export class BrowserPage extends React.Component {
 
@@ -37,7 +35,7 @@ export class BrowserPage extends React.Component {
           </div>
         </section>
         <button className='hide-all' onClick={() => this.handleHide()}>Hide Recipes</button>
-        <span className="tooltip">&#10068;
+        <span className="tooltip" role="img" aria-label="hint">&#10068;
                 <span className="tooltiptext tooltip-bottom">click this button to close any and all open recipes</span>
             </span>
       </div>

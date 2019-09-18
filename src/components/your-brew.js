@@ -9,14 +9,11 @@ export class Archive extends React.Component {
     
     
     componentDidMount() {
-        console.log('archive component mounted')
         this.getArchive();
     }
     
     getArchive() {
-        console.log('getting your recipes')
         const userId = localStorage.getItem('userId');
-        console.log(userId);
         this.props.dispatch(getYourBrews(userId));
     }
     

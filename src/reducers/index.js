@@ -48,7 +48,6 @@ export default function reducer(state = initialState, action) {
     }
     
     if (action.type === actions.LOG_IN_LIST) {
-        console.log(action.users)
         return Object.assign({}, state,  {
             error: null,
             loading: false,
@@ -77,7 +76,6 @@ export default function reducer(state = initialState, action) {
     }
     
     if (action.type === actions.VIEW_BREW) {
-        console.log('brew in reducer', action.brew);
         return Object.assign({}, state, {
             brewName: action.brew.brew[0].brewName,
             abv: action.brew.brew[0].abv,
@@ -93,8 +91,6 @@ export default function reducer(state = initialState, action) {
     }
     
     if (action.type === actions.CLEAR_RECIPE) {
-        console.log('inserting data into props');
-        console.log(action.brew.brew[0].brewName);
         return Object.assign({}, state, {
             brewName: "",
             abv: "",

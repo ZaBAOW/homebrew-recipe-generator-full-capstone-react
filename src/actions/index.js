@@ -154,21 +154,14 @@ export const error = err => ({
 });
 
 const storeAuthInfo = (authToken, dispatch) => {
-    console.log(authToken);
-    console.log("start");
-    console.log("authToken: ", jwtDecode(authToken));
-    console.log("end");
     const decodedToken = jwtDecode(authToken);
     dispatch(setAuthToken(authToken));
     dispatch(authSuccess(decodedToken));
     saveAuthToken(authToken);
-    console.log('authToken succesfully stored');
-    console.log(decodedToken.username);
     dispatch(logSession({ user: decodedToken.username }));
 };
 
 export const logSession = user => dispatch => {
-  console.log('user being logged in: ', user.user);
   fetch(`${API_ORIGIN}/auth/userLoggedIn`, {
     method: "POST",
     mode: "cors",
@@ -184,7 +177,6 @@ export const logSession = user => dispatch => {
       return res.json();
     })
     .then(res => {
-      console.log('id to be stored', res.loggedIn);
       const id = res.loggedIn;
       dispatch(logUser(res.loggedIn));
       saveId(id);
@@ -210,7 +202,6 @@ export const signupUser = user => dispatch => {
                 return Promise.reject(res.statusText);
             }
         }
-        console.log('first check')
         return res.json();
     })
     .then(authToken => {
@@ -220,7 +211,6 @@ export const signupUser = user => dispatch => {
     })
     .catch(err => {
 //        dispatch(fetchErr(err));
-        console.log(err);
         return;
     })
 };
@@ -228,8 +218,6 @@ export const signupUser = user => dispatch => {
 // User Login
 export const loginUser = user => dispatch => {
     dispatch(request());
-    console.log("api url", API_ORIGIN);
-    console.log('logging you in...', user);
     fetch(`${API_ORIGIN}/auth/login`, {
         method:"POST",
         headers: {
@@ -245,7 +233,6 @@ export const loginUser = user => dispatch => {
         return res.json();
     })
     .then(authToken => {
-        console.log('authToken: ', authToken.authToken);
         storeAuthInfo(authToken.authToken, dispatch)})
     .catch(err => {
         console.log(err);
@@ -254,8 +241,6 @@ export const loginUser = user => dispatch => {
 
 // User Logout
 export const logoutUser = user => dispatch => {
-    console.log('logging you out...');
-    console.log(user);
     fetch(`${API_ORIGIN}/auth/userLoggedIn`, {
         method: "DELETE",
         mode: "cors",
@@ -265,7 +250,6 @@ export const logoutUser = user => dispatch => {
         body: JSON.stringify({ user: user })
     })
     .then(res => {
-        console.log('youve been logged out');
         clearAuthToken();
         dispatch(logOut());
     })
@@ -312,7 +296,6 @@ export const fetchProtectedData = () => (dispatch, getState) => {
 export const refreshAuthToken = () => (dispatch, getState) => {
     dispatch(authRequest());
     const authToken = getState().authToken;
-    console.log('refresh token', authToken);
     return fetch(`${API_ORIGIN}/auth/refresh`, {
         method: 'POST',
         headers: {
@@ -344,7 +327,6 @@ export const browseBrews = keyword => dispatch => {
         }
     })
     .then(res => {
-        console.log(res);
         if (!res.ok) {
             return Promise.reject(res.statusText);
         }
@@ -361,8 +343,6 @@ export const browseBrews = keyword => dispatch => {
 };
 
 export const getYourBrews = userId => dispatch => {
-    console.log('fetching brews form database...');
-    console.log(userId);
     return fetch(`${API_ORIGIN}/brews/getArchive/${userId}`, {
         method: 'GET',
         headers: {
@@ -374,12 +354,9 @@ export const getYourBrews = userId => dispatch => {
     })
     .then(res => {
         const brews = res.data;
-        console.log(res.status);
-        console.log(brews);
         if(res.status === 400) {
             return;
         }else if (res.status === 200) {
-            console.log('your archive:', brews);
             dispatch(appendArchive(brews));
             return brews;
         }
@@ -387,7 +364,6 @@ export const getYourBrews = userId => dispatch => {
 }
 
 export const viewRecipe = brewId => dispatch => {
-    console.log(brewId);
     return fetch(`${API_ORIGIN}/brews/viewBrew/${brewId}`, {
         method: 'GET',
         headers: {
@@ -395,12 +371,11 @@ export const viewRecipe = brewId => dispatch => {
         }
     })
     .then(res => {
-        console.log(res);
+
         return res.json();
     })
     .then(res => {
         const brew = res.data;
-        console.log('data to be sent to reducer: ', res.data)
         dispatch(viewBrew(brew));
         return brew;
     })
@@ -408,9 +383,6 @@ export const viewRecipe = brewId => dispatch => {
 
 // submitting a homebrew
 export const submitRecipe = (brew, userID, token) => dispatch => {
-    console.log(brew);
-    console.log(userID);
-    console.log(token);
     const brewObj = {
         brewName: brew.brewName,
         abv: brew.abv,
@@ -424,17 +396,12 @@ export const submitRecipe = (brew, userID, token) => dispatch => {
         mashSchedule: brew.mashSchedule
     };
     const checkArray = Object.values(brewObj);
-    console.log(checkArray);
-    console.log(checkArray[0]);
     for(var i = 0; i <= checkArray.length; i++) {
-        console.log(checkArray[i]);
         if(checkArray[i] === "") {
-            console.log([i]);
             return alert('A field was left blank!');
         }
     }
     const userBrew = { brew: brewObj, id: userID};
-    console.log('userbrew: ', userBrew);
     dispatch(request());
     fetch(`${API_ORIGIN}/brews`, {
         method: 'POST',
@@ -451,7 +418,6 @@ export const submitRecipe = (brew, userID, token) => dispatch => {
         return res.json();
     })
     .then(res => {
-        console.log(res);
         alert('Congrats, you just posted a recipe to the database!!!')
         dispatch(addedToDatabase(res));
     })
@@ -483,7 +449,6 @@ export const logger = store => next => actions => {
         console.group(actions.type);
         console.info('dispatching', actions);
         let result = next(actions);
-        console.log('next state', store.getState());
         console.groupEnd();
         return result;
     }

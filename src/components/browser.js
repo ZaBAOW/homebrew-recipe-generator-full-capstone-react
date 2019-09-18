@@ -12,7 +12,6 @@ export default class Browser extends React.Component {
     onSubmit(e) {
         e.preventDefault();
         const keyword = this.textInput.value.trim();
-        console.log('keyword recieved');
         if (keyword) {
             this.props.onSearch(keyword);
         }

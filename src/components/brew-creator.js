@@ -19,8 +19,6 @@ export class Creator extends React.Component {
     
     onSubmit(e) {
         e.preventDefault();
-        const inputs = [this.brewName.value, this.abv.value, this.maltName.value, this.maltMeasure.value, this.hopsName.value, this.hopsMeasure.value, this.yeastName.value, this.yeastMeasure.value, this.yeastSchedule.value, this.mashSchedule.value]
-        console.log(inputs);
         const homeBrew = {
             brewName: this.brewName.value,
             abv: this.abv.value,
@@ -33,9 +31,7 @@ export class Creator extends React.Component {
             yeastSchedule: this.yeastSchedule.value,
             mashSchedule: this.mashSchedule.value
         }
-        console.log(homeBrew);
         const userId = localStorage.getItem('userId');
-        console.log(localStorage.getItem('userId'));
         const token = localStorage.getItem('authToken');
         this.props.dispatch(submitRecipe(homeBrew, userId, token));
     }
@@ -76,7 +72,7 @@ export class Creator extends React.Component {
                         <input type="text" id="createYeastMeasure" placeholder="amount of yeast" className="creator-input" ref={input => (this.yeastMeasure = input)}></input>
                       </div>
                       <label htmlFor='createYeastSchedule' className="creator-label color-primary-5 color-bgprimary-5">Yeast Schedule:</label>
-                        <textarea className="yeastSchedule color-primary-5" id="createYeastSchedule" rows="15" col="100" placeholder="Type your yeast schedule here" className="yeast-schedule" ref={input => (this.yeastSchedule = input)}></textarea>
+                        <textarea className="yeastSchedule" id="createYeastSchedule" rows="15" col="100" placeholder="Type your yeast schedule here" ref={input => (this.yeastSchedule = input)}></textarea>
                     </div>
                     <div className="mash-scheduleSection color-primary-5 color-bgprimary-5">
                       <div>

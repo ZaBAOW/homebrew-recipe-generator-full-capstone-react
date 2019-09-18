@@ -11,14 +11,11 @@ export class Login extends React.Component {
 
     onSubmit(e, state) {
         e.preventDefault();
-        console.log('attempting to log you in...');
         const inputs = [this.username, this.password];
-        console.log('inputs:', inputs);
         const user = {
           username: this.username.value,
           password: this.password.value
         };
-        console.log('user:', user);
         this.props.dispatch(loginUser(user));
         // if succesful, change nav links
         inputs.map(input => (input.value = ""));

@@ -1,7 +1,7 @@
 import React from 'react';
 import verifyLogin from './login-verification';
 import { connect } from "react-redux";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Background from '../images/Malt_en_grain.JPG';
 
 var sectionStyle = {

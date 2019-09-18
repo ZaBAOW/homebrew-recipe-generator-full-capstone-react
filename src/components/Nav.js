@@ -2,14 +2,12 @@ import React from 'react';
 import { connect } from "react-redux";
 import { logOut, logoutUser } from "../actions";
 import Logo from '../images/homebrew-generator-logo.png';
-import { BrowserRouter as Router, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export class Nav extends React.Component {
     
     
     logOut() {
-        console.log(this.props.user);
-        console.log(this.props.loggedIn);
         this.props.dispatch(logoutUser(this.props.user));
         this.props.dispatch(logOut());
     }

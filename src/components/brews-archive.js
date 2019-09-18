@@ -29,18 +29,15 @@ export class Yourbrews extends React.Component {
       
     let resultsList = [];
     // for rendering search list
-    console.log(this.props.archiveBrews);
     if(this.props.archiveBrews === undefined) {
         console.log('brew prop is undefined')
     } else if (this.props.archiveBrews.length === 0) {
-      console.log('brew prop is null')
-      console.log(this.props.archiveBrews.length);
+      return (
+        <p style={{color: "white"}}>You have not posted any recipes yet.</p>
+      )
     } else {
-      console.log('archiveBrews length is not 0!');
-      console.log('archiveBrews length: ', this.props.archiveBrews[0].results);
       resultsList = this.props.archiveBrews[0].results.map((brew, index) => {
         const brewId = brew._id;
-        console.log(brewId);
         const brewName = brew.brewName;
         const recipeTemplate =  <ViewBrew recipe = {this.props} id = {brewId} />
         return (

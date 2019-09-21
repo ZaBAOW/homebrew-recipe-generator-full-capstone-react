@@ -30,7 +30,9 @@ export class Yourbrews extends React.Component {
     let resultsList = [];
     // for rendering search list
     if(this.props.archiveBrews === undefined) {
-        console.log('brew prop is undefined')
+        return(
+            <p></p>
+        )
     } else if (this.props.archiveBrews.length === 0) {
       return (
         <p style={{color: "white"}}>You have not posted any recipes yet.</p>

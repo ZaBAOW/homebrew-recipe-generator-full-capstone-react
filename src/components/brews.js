@@ -55,7 +55,7 @@ export class Brews extends React.Component {
           resultsList = this.props.browserBrews.results.map((brew, index) => {
             newIndex = index;
             if((newIndex + 1) === resultsList.length) {
-                console.log('finished displaying results');
+                return
             } else if(newIndex !== oldIndex) {
                 const brewId = brew._id;
                 const brewName = brew.brewName;

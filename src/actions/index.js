@@ -235,7 +235,7 @@ export const loginUser = user => dispatch => {
     .then(authToken => {
         storeAuthInfo(authToken.authToken, dispatch)})
     .catch(err => {
-        console.log(err);
+        //console.log(err);
     });
 };
 
@@ -254,7 +254,7 @@ export const logoutUser = user => dispatch => {
         dispatch(logOut());
     })
     .catch(err => {
-        console.log(err);
+        //console.log(err);
     });
 };
 
@@ -310,7 +310,7 @@ export const refreshAuthToken = () => (dispatch, getState) => {
             // We couldn't get a refresh token because our current credentials
             // are invalid or expired, or something else went wrong, so clear
             // them and sign us out
-            console.log(err);
+            //console.log(err);
             dispatch(authError(err));
             dispatch(clearAuth());
             clearAuthToken(authToken);
@@ -338,7 +338,7 @@ export const browseBrews = keyword => dispatch => {
         return brews;
     })
     .catch(err => {
-        console.log(err);
+        //console.log(err);
     });
 };
 
@@ -422,7 +422,7 @@ export const submitRecipe = (brew, userID, token) => dispatch => {
         dispatch(addedToDatabase(res));
     })
     .catch(err => {
-        console.log(err);
+        //console.log(err);
     })
 };
 
@@ -441,7 +441,7 @@ export const deleteRecipe = (id, token) => dispatch => {
         dispatch(deleteFromDatabase(id));
     })
     .catch(err => {
-        console.log(err);
+        //console.log(err);
     });
 };
 
